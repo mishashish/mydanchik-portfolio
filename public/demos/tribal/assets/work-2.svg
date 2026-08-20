@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <rect fill="#110e0c" width="800" height="1000"/>
+  <g fill="none" stroke="#e8dccf" stroke-width="8" stroke-linecap="square">
+    <path d="M120 220 H680"/>
+    <path d="M160 320 H640"/>
+    <path d="M200 420 H600"/>
+    <path d="M140 520 L220 580 L140 640 M660 520 L580 580 L660 640"/>
+    <path d="M260 700 H540"/>
+    <path d="M300 180 L400 260 L500 180"/>
+    <path d="M280 800 L400 900 L520 800"/>
+  </g>
+  <g fill="#c45c3a">
+    <circle cx="200" cy="320" r="8"/><circle cx="600" cy="320" r="8"/>
+    <circle cx="400" cy="580" r="10"/>
+  </g>
+  <text x="36" y="960" fill="#9a9086" font-family="Arial" font-size="26" letter-spacing="3">SHOULDER BAND</text>
+</svg>

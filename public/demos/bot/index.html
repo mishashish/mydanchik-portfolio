@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Access / Pay Bot Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <style>
+      body { margin: 0; background: #050505; color: #eee; font-family: VT323, monospace; }
+      .wrap { max-width: 760px; margin: 0 auto; padding: 24px 16px; }
+      h1 { font-family: 'Press Start 2P', monospace; font-size: 15px; line-height: 1.5; }
+      .card { border: 2px solid #fff; padding: 14px; margin: 12px 0; }
+      .row { display: flex; gap: 8px; flex-wrap: wrap; }
+      button, a.btn {
+        border: 2px solid #fff; background: #fff; color: #000; font-family: 'Press Start 2P', monospace;
+        font-size: 9px; padding: 10px 12px; cursor: pointer; text-decoration: none;
+      }
+      a.ghost, button.ghost { background: transparent; color: #fff; }
+      #log { white-space: pre-wrap; color: #9fe7b4; font-size: 20px; min-height: 120px; }
+      .muted { color: #aaa; font-size: 20px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <a class="btn ghost" href="/">← BACK</a>
+      <h1>ACCESS / PAY BOT DEMO</h1>
+      <p class="muted">Симуляция команд бота + ссылка на webapp оплаты.</p>
+      <div class="card row">
+        <button type="button" data-c="/start">/start</button>
+        <button type="button" data-c="/access">/access</button>
+        <button type="button" data-c="/pay">/pay</button>
+        <a class="btn" href="/demos/pay/index.html">OPEN WEBAPP</a>
+      </div>
+      <div class="card" id="log">bot online…</div>
+    </div>
+    <script>
+      const log = document.getElementById('log')
+      const replies = {
+        '/start': 'Привет! Я Access/Pay bot.\nКоманды: /access /pay',
+        '/access': 'Проверка доступа…\nuser: demo_user\nstatus: ALLOWED ✅',
+        '/pay': 'Тариф: PRO\nсумма: 15 TON\nwebapp: /demos/pay/index.html',
+      }
+      document.querySelectorAll('button[data-c]').forEach((b) => {
+        b.onclick = () => {
+          log.textContent = '> ' + b.dataset.c + '\n\n' + replies[b.dataset.c]
+        }
+      })
+    </script>
+  </body>
+</html>

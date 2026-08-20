@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OLX Pulse — live search + deal score</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=12" />
+    <link rel="stylesheet" href="../_shared/demo-note.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <div class="topInner">
+          <a class="logo" href="#">
+            <span class="logoMark">OP</span>
+            <span>
+              OLX Pulse
+              <small>Live OLX · filter · deal score</small>
+            </span>
+          </a>
+          <nav class="nav">
+            <button type="button" class="navBtn active" data-tab="search">Results</button>
+            <button type="button" class="navBtn" data-tab="fav">Saved <span id="favCount">0</span></button>
+          </nav>
+          <div class="topRight">
+            <span class="live" id="livePill">OLX</span>
+            <a class="ghost" href="/">← Portfolio</a>
+          </div>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="heroCard">
+          <h1>Пошук по OLX з аналітичним score</h1>
+          <p>
+            Живі оголошення з OLX.ua: аналітика кращих лотів, перевірка ціни, стану й опису —
+            демо-парсер під клієнтські задачі збору й ранжування.
+          </p>
+          <form class="searchRow" id="searchForm">
+            <input id="q" type="search" placeholder="Що шукаєш… iphone, ноутбук, квартира" autocomplete="off" value="iphone" />
+            <select id="city">
+              <option value="">Уся Україна</option>
+              <option value="Київ">Київ</option>
+              <option value="Львів">Львів</option>
+              <option value="Одеса">Одеса</option>
+              <option value="Харків">Харків</option>
+              <option value="Дніпро">Дніпро</option>
+            </select>
+            <button type="submit" class="btnRed" id="searchBtn">Шукати на OLX</button>
+          </form>
+          <div class="chips" id="chips"></div>
+        </div>
+      </section>
+
+      <section class="layout">
+        <aside class="side">
+          <div class="panel">
+            <div class="panelHead">
+              <h2>Аналітика</h2>
+              <button type="button" class="textBtn" id="resetBtn">Reset</button>
+            </div>
+            <label class="field">
+              <span>Min score</span>
+              <input id="minScore" type="number" min="0" max="100" step="1" value="0" />
+            </label>
+            <p class="hintMini">0 = показати всі; score лише сортує. Підніми, якщо хочеш лише топ-угоди.</p>
+            <label class="field">
+              <span>Мін. ціна ₴</span>
+              <input id="min" type="number" min="0" step="100" placeholder="0" />
+            </label>
+            <label class="field">
+              <span>Макс. ціна ₴</span>
+              <input id="max" type="number" min="0" step="100" placeholder="Any" />
+            </label>
+            <label class="field">
+              <span>Категорія</span>
+              <button type="button" class="catPickBtn" id="catPickBtn" aria-haspopup="dialog">
+                <span id="catPickLabel">Усі категорії</span>
+                <span aria-hidden="true">▾</span>
+              </button>
+              <input type="hidden" id="category" value="" />
+              <input type="hidden" id="categoryRoot" value="" />
+            </label>
+            <label class="field">
+              <span>Стан</span>
+              <select id="state">
+                <option value="">Будь-який</option>
+                <option value="new">Новий</option>
+                <option value="used">Вживаний</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Сортування</span>
+              <select id="sort">
+                <option value="score">Score: high → low</option>
+                <option value="category">Категорія A → Я</option>
+                <option value="priceAsc">Ціна: зростання</option>
+                <option value="priceDesc">Ціна: спад</option>
+                <option value="fresh">Найновіші</option>
+                <option value="discount">Знижка</option>
+              </select>
+            </label>
+            <button type="button" class="btnBlue full" id="applyBtn">Застосувати</button>
+          </div>
+          <div class="panel muted" id="stats">
+            <b>Score formula</b>
+            <div>ціна vs медіана · опис · стан</div>
+            <div>+ знижка · свіжість · фото</div>
+            <div>+ промо / продавець online</div>
+          </div>
+          <div class="panel bestPanel" id="bestPanel">
+            <b>Кращі товари</b>
+            <p class="bestEmpty">Зроби пошук — тут з’являться топ-лоти з поясненням.</p>
+          </div>
+        </aside>
+
+        <main class="main">
+          <div class="toolbar">
+            <div>
+              <h2 id="countTitle">Оголошення</h2>
+              <p id="count">Ready</p>
+            </div>
+            <div class="viewToggle">
+              <button type="button" class="on" id="gridBtn">Gallery</button>
+              <button type="button" id="listBtn">List</button>
+            </div>
+          </div>
+          <div id="loading" class="loading hidden">Тягну OLX…</div>
+          <div id="cards" class="cards grid"></div>
+          <div id="empty" class="empty hidden">Нічого не знайдено.</div>
+        </main>
+      </section>
+    </div>
+
+    <div class="modal hidden" id="modal">
+      <div class="modalCard" role="dialog" aria-modal="true">
+        <button type="button" class="close" id="closeModal" aria-label="Close">×</button>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+
+    <div class="catModal hidden" id="catModal" role="dialog" aria-modal="true" aria-label="Категорії OLX">
+      <div class="catSheet">
+        <div class="catSheetTop">
+          <button type="button" class="catBack hidden" id="catBack">← Назад</button>
+          <h3 id="catSheetTitle">Категорії</h3>
+          <button type="button" class="close" id="catClose" aria-label="Close">×</button>
+        </div>
+        <div class="catCrumbs" id="catCrumbs">Усі категорії</div>
+        <div class="catBody" id="catBody"></div>
+        <div class="catSheetFoot">
+          <button type="button" class="btnGhost" id="catClear">Усі категорії</button>
+          <button type="button" class="btnBlue" id="catApply">Застосувати</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js?v=16"></script>
+    <script src="../_shared/demo-note.js"></script>
+  </body>
+</html>

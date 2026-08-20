@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>VOID BREACH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=24" />
+  </head>
+  <body>
+    <div id="boot" class="screen">
+      <p class="tag">mydanchik · void kernel saga</p>
+      <h1>VOID<br />BREACH</h1>
+      <p class="story">
+        WASD move · arrows shoot · exit through green wall gaps<br />
+        <span class="controls">First room is training · explore the floor anytime</span>
+      </p>
+      <div class="heroCard">
+        <canvas width="112" height="112" id="heroPreview"></canvas>
+        <div>
+          <h3>BYTE</h3>
+          <p>mage · staff · fireballs · random monster dungeon each run</p>
+        </div>
+      </div>
+      <button type="button" id="startBtn" class="big">ENTER BRIEFING</button>
+      <a class="back" href="/">← portfolio</a>
+    </div>
+
+    <div id="gameWrap" class="hidden">
+      <header class="hud">
+        <div id="hearts" class="hearts"></div>
+        <div id="stats"></div>
+        <div id="floor"></div>
+      </header>
+
+      <div class="stageBox">
+        <canvas id="game" width="768" height="480" tabindex="0"></canvas>
+        <p class="focusHint" id="focusHint">WASD move · arrows shoot</p>
+        <div class="pad" aria-label="touch controls">
+          <div class="dpad">
+            <button type="button" class="padBtn" data-pad="KeyW">▲</button>
+            <div class="dpadMid">
+              <button type="button" class="padBtn" data-pad="KeyA">◀</button>
+              <button type="button" class="padBtn" data-pad="KeyS">▼</button>
+              <button type="button" class="padBtn" data-pad="KeyD">▶</button>
+            </div>
+          </div>
+          <div class="padActions">
+            <button type="button" class="padBtn attack" data-pad="attack">CAST</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="toast"></div>
+      <div id="itemBanner" class="hidden"></div>
+    </div>
+
+    <div id="end" class="screen hidden">
+      <h2 id="endTitle">RUN OVER</h2>
+      <p id="endText"></p>
+      <button type="button" id="againBtn" class="big">AGAIN</button>
+      <a class="back" href="/">← portfolio</a>
+    </div>
+
+    <script src="game.js?v=27"></script>
+  </body>
+</html>

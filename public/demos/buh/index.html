@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buh Bot Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <style>
+      body { margin: 0; background: #050505; color: #eee; font-family: VT323, monospace; }
+      .wrap { max-width: 760px; margin: 0 auto; padding: 24px 16px; }
+      h1 { font-family: 'Press Start 2P', monospace; font-size: 16px; line-height: 1.5; }
+      .card { border: 2px solid #fff; padding: 14px; margin: 12px 0; }
+      .row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+      button, a.btn {
+        border: 2px solid #fff; background: #fff; color: #000; font-family: 'Press Start 2P', monospace;
+        font-size: 9px; padding: 10px 12px; cursor: pointer; text-decoration: none;
+      }
+      button.ghost { background: transparent; color: #fff; }
+      pre { background: #0b0b0b; border: 1px solid #333; padding: 12px; white-space: pre-wrap; font-size: 18px; color: #9fe7b4; }
+      .muted { color: #aaa; font-size: 20px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <a class="btn ghost" href="/">← BACK</a>
+      <h1>BUH BOT DEMO</h1>
+      <p class="muted">Демо: загрузка документа → OCR/парсинг → Excel-строка.</p>
+      <div class="card">
+        <div>1) Выбери тип документа</div>
+        <div class="row">
+          <button type="button" data-t="PDF счёт">PDF</button>
+          <button type="button" data-t="фото чека">PHOTO OCR</button>
+          <button type="button" data-t="DOCX акт">DOCX</button>
+        </div>
+      </div>
+      <div class="card">
+        <div>2) Результат парсинга</div>
+        <pre id="out">Жду файл…</pre>
+      </div>
+    </div>
+    <script>
+      const out = document.getElementById('out')
+      document.querySelectorAll('button[data-t]').forEach((b) => {
+        b.onclick = () => {
+          out.textContent =
+            'file: demo.' + b.dataset.t.split(' ')[0].toLowerCase() + '\n' +
+            'type: ' + b.dataset.t + '\n' +
+            'vendor: ТОВ Example\n' +
+            'amount: 12 450.00 UAH\n' +
+            'date: 2026-08-12\n' +
+            'status: parsed OK\n' +
+            'export: Excel row ready'
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="480" viewBox="0 0 1400 480">
+  <rect width="1400" height="480" fill="#0a0908"/>
+  <g fill="none" stroke="#c45c3a" stroke-width="2" opacity="0.35">
+    <path d="M0 120 H1400 M0 240 H1400 M0 360 H1400"/>
+  </g>
+  <g fill="none" stroke="#e8dccf" stroke-width="5" transform="translate(180,40)">
+    <path d="M80 20 L140 90 L80 150 L20 90 Z M80 150 V380"/>
+    <path d="M0 210 L80 270 L160 210 M-20 300 L80 360 L180 300"/>
+  </g>
+  <g fill="none" stroke="#e8dccf" stroke-width="5" transform="translate(1080,40) scale(-1,1)">
+    <path d="M80 20 L140 90 L80 150 L20 90 Z M80 150 V380"/>
+    <path d="M0 210 L80 270 L160 210 M-20 300 L80 360 L180 300"/>
+  </g>
+  <text x="700" y="220" text-anchor="middle" fill="#f2ebe3" font-family="Impact, Arial Black, sans-serif" font-size="72" letter-spacing="6">SESSION WEEK</text>
+  <text x="700" y="280" text-anchor="middle" fill="#c45c3a" font-family="Arial, sans-serif" font-size="26" letter-spacing="4">mid-size blackwork · >4V;</text>
+</svg>

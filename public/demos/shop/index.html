@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop Bot Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <style>
+      body { margin: 0; background: #050505; color: #eee; font-family: VT323, monospace; }
+      .wrap { max-width: 780px; margin: 0 auto; padding: 24px 16px; }
+      h1 { font-family: 'Press Start 2P', monospace; font-size: 14px; line-height: 1.5; }
+      .card { border: 2px solid #fff; padding: 14px; margin: 12px 0; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .item { border: 1px solid #444; padding: 10px; }
+      button, a.btn {
+        border: 2px solid #fff; background: #fff; color: #000; font-family: 'Press Start 2P', monospace;
+        font-size: 9px; padding: 10px 12px; cursor: pointer; text-decoration: none; margin-top: 8px;
+      }
+      a.ghost { background: transparent; color: #fff; }
+      #cart, #log { font-size: 20px; white-space: pre-wrap; }
+      .muted { color: #aaa; font-size: 20px; }
+      @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <a class="btn ghost" href="/">← BACK</a>
+      <h1>SHOP / ORDERS BOT</h1>
+      <p class="muted">Демо магазина в Telegram: каталог → корзина → заказ.</p>
+      <div class="card grid">
+        <div class="item">☕ Coffee · 120₴ <br/><button type="button" data-p="Coffee" data-price="120">ADD</button></div>
+        <div class="item">🍩 Donut · 60₴ <br/><button type="button" data-p="Donut" data-price="60">ADD</button></div>
+        <div class="item">🧃 Juice · 80₴ <br/><button type="button" data-p="Juice" data-price="80">ADD</button></div>
+        <div class="item">🥐 Croissant · 90₴ <br/><button type="button" data-p="Croissant" data-price="90">ADD</button></div>
+      </div>
+      <div class="card">
+        <div id="cart">корзина пуста</div>
+        <button type="button" id="order">CHECKOUT</button>
+      </div>
+      <div class="card" id="log">bot: /catalog</div>
+    </div>
+    <script>
+      const cart = []
+      const cartEl = document.getElementById('cart')
+      const log = document.getElementById('log')
+      const draw = () => {
+        if (!cart.length) {
+          cartEl.textContent = 'корзина пуста'
+          return
+        }
+        const sum = cart.reduce((a, x) => a + x.price, 0)
+        cartEl.textContent = cart.map((x) => `• ${x.name} — ${x.price}₴`).join('\n') + `\n\nитого: ${sum}₴`
+      }
+      document.querySelectorAll('button[data-p]').forEach((b) => {
+        b.onclick = () => {
+          cart.push({ name: b.dataset.p, price: Number(b.dataset.price) })
+          log.textContent = `user: add ${b.dataset.p}\nbot: добавлено в корзину`
+          draw()
+        }
+      })
+      document.getElementById('order').onclick = () => {
+        if (!cart.length) {
+          log.textContent = 'bot: корзина пуста'
+          return
+        }
+        const sum = cart.reduce((a, x) => a + x.price, 0)
+        const oid = Math.floor(1000 + Math.random() * 9000)
+        log.textContent = `bot: заказ #${oid} оформлен\nсумма: ${sum}₴\nстатус: WAITING PAYMENT`
+        cart.length = 0
+        draw()
+      }
+    </script>
+  </body>
+</html>

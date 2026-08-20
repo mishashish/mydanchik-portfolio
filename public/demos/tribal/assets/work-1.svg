@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <rect fill="#0d0b0a" width="800" height="1000"/>
+  <g fill="none" stroke="#e8dccf" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M400 60 L470 150 L400 220 L330 150 Z"/>
+    <path d="M400 220 V900"/>
+    <path d="M300 300 L400 380 L500 300"/>
+    <path d="M250 420 L400 560 L550 420"/>
+    <path d="M280 620 L400 720 L520 620"/>
+    <path d="M320 780 L400 850 L480 780"/>
+    <path d="M360 150 H440 M400 100 V150"/>
+    <path d="M340 380 L400 430 L460 380 M300 560 L400 640 L500 560"/>
+  </g>
+  <circle cx="400" cy="150" r="12" fill="#c45c3a"/>
+  <text x="36" y="960" fill="#9a9086" font-family="Arial" font-size="26" letter-spacing="3">SPINE TOTEM</text>
+</svg>

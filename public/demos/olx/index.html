@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DealFinder — OLX Smart Parser</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css?v=4" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="headerInner">
+          <a class="logo" href="#">
+            <span class="logoMark">DF</span>
+            <span>
+              DealFinder
+              <small>Smart OLX Parser</small>
+            </span>
+          </a>
+          <nav class="nav">
+            <button type="button" class="navBtn active" data-tab="search">Пошук</button>
+            <button type="button" class="navBtn" data-tab="fav">Обране <span id="favCount">0</span></button>
+          </nav>
+          <div class="headerRight">
+            <span class="badgeLive">Demo mode</span>
+            <a class="ghostLink" href="/">Назад до портфоліо</a>
+          </div>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="heroInner">
+          <h1>Знайдіть вигідні пропозиції на OLX швидше</h1>
+          <p>
+            Розумний пошук з оцінкою вигідності, фільтрами та збереженням обраного.
+            Готово для клієнтської демонстрації.
+          </p>
+          <div class="searchBox">
+            <input id="q" type="search" placeholder="Що шукаємо? Наприклад: iPhone 15, PS5, MacBook" />
+            <select id="cat">
+              <option value="">Усі категорії</option>
+              <option value="phones">Телефони</option>
+              <option value="pc">Комп’ютери</option>
+              <option value="game">Ігри та консолі</option>
+              <option value="transport">Транспорт</option>
+              <option value="home">Дім і сад</option>
+            </select>
+            <select id="city">
+              <option value="">Вся Україна</option>
+              <option value="Київ">Київ</option>
+              <option value="Львів">Львів</option>
+              <option value="Одеса">Одеса</option>
+              <option value="Харків">Харків</option>
+              <option value="Дніпро">Дніпро</option>
+            </select>
+            <button type="button" class="btnPrimary" id="searchBtn">Шукати</button>
+          </div>
+          <div class="chips" id="chips"></div>
+        </div>
+      </section>
+
+      <section class="content">
+        <aside class="sidebar">
+          <div class="panel">
+            <div class="panelHead">
+              <h2>Фільтри</h2>
+              <button type="button" class="textBtn" id="resetBtn">Скинути</button>
+            </div>
+
+            <label class="field">
+              <span>Ціна від, ₴</span>
+              <input id="min" type="number" min="0" placeholder="0" />
+            </label>
+            <label class="field">
+              <span>Ціна до, ₴</span>
+              <input id="max" type="number" min="0" placeholder="Будь-яка" />
+            </label>
+            <label class="field">
+              <span>Стан</span>
+              <select id="cond">
+                <option value="">Будь-який</option>
+                <option value="new">Новий</option>
+                <option value="used">Б/в</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Сортування</span>
+              <select id="sort">
+                <option value="score">Спочатку вигідні</option>
+                <option value="priceAsc">Ціна: зростання</option>
+                <option value="priceDesc">Ціна: спадання</option>
+                <option value="new">Спочатку нові</option>
+              </select>
+            </label>
+
+            <label class="check">
+              <input id="photoOnly" type="checkbox" />
+              <span>Тільки з фото</span>
+            </label>
+            <label class="check">
+              <input id="bestOnly" type="checkbox" />
+              <span>Лише Score ≥ 70</span>
+            </label>
+
+            <label class="field">
+              <span>Мін. Score: <b id="scoreLabel">0</b></span>
+              <input id="score" type="range" min="0" max="90" value="0" step="1" autocomplete="off" />
+            </label>
+
+            <button type="button" class="btnPrimary full" id="applyBtn">Застосувати</button>
+          </div>
+
+          <div class="panel stats" id="stats"></div>
+        </aside>
+
+        <main class="main">
+          <div class="toolbar">
+            <div>
+              <h2 id="countTitle">Оголошення</h2>
+              <p id="count">0 результатів</p>
+            </div>
+            <div class="viewToggle">
+              <button type="button" class="on" id="gridBtn">Сітка</button>
+              <button type="button" id="listBtn">Список</button>
+            </div>
+          </div>
+
+          <div id="cards" class="cards grid"></div>
+          <div id="empty" class="empty hidden">
+            Нічого не знайдено. Спробуйте змінити фільтри або запит.
+          </div>
+        </main>
+      </section>
+    </div>
+
+    <div class="modal hidden" id="modal">
+      <div class="modalCard" role="dialog" aria-modal="true">
+        <button type="button" class="close" id="closeModal" aria-label="Закрити">×</button>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+
+    <script src="app.js?v=4"></script>
+  </body>
+</html>

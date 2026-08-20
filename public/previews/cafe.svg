@@ -1,0 +1,19 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f4efe6"/>
+  <rect x="0" y="0" width="960" height="8" fill="#121212"/>
+  <text x="56" y="92" fill="#e11d2e" font-family="Arial Black, Arial, sans-serif" font-size="72">KŌHI</text>
+  <text x="56" y="140" fill="#121212" font-family="Georgia, serif" font-size="36" font-style="italic">menu</text>
+  <text x="56" y="180" fill="#5c5650" font-family="Arial, sans-serif" font-size="18">Kyiv · Podil · cream / red / cobalt</text>
+  <circle cx="780" cy="200" r="110" fill="#000"/>
+  <circle cx="780" cy="200" r="100" fill="none" stroke="#0033ff" stroke-width="8"/>
+  <rect x="735" y="145" width="90" height="110" rx="8" fill="#fff" stroke="#0033ff" stroke-width="6"/>
+  <rect x="755" y="125" width="50" height="28" fill="#fff" stroke="#0033ff" stroke-width="5"/>
+  <circle cx="780" cy="118" r="10" fill="#0033ff"/>
+  <path d="M825 180 Q860 200 825 240" fill="none" stroke="#0033ff" stroke-width="6"/>
+  <rect x="56" y="240" width="520" height="220" fill="#fffdf8" stroke="#121212" stroke-width="4"/>
+  <text x="80" y="290" fill="#e11d2e" font-family="Arial, sans-serif" font-size="16" font-weight="700">ESPRESSO BASED</text>
+  <text x="80" y="330" fill="#121212" font-family="Arial Black, Arial, sans-serif" font-size="22">Shadow Roast</text>
+  <text x="80" y="360" fill="#5c5650" font-family="Arial, sans-serif" font-size="16">Dark, deep, and slightly dangerous</text>
+  <text x="80" y="410" fill="#e11d2e" font-family="Arial, sans-serif" font-size="16" font-weight="700">POUR OVER</text>
+  <text x="80" y="450" fill="#121212" font-family="Arial Black, Arial, sans-serif" font-size="22">Crocodile Sunrise</text>
+</svg>

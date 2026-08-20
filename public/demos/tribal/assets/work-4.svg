@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <rect fill="#100d0b" width="800" height="1000"/>
+  <g fill="none" stroke="#e8dccf" stroke-width="5">
+    <path d="M160 160 L400 80 L640 160 L560 400 L640 640 L400 900 L160 640 L240 400 Z"/>
+    <path d="M240 280 L400 200 L560 280 L500 420 L560 560 L400 720 L240 560 L300 420 Z"/>
+    <path d="M320 380 L400 330 L480 380 L450 470 L480 560 L400 620 L320 560 L350 470 Z"/>
+  </g>
+  <circle cx="400" cy="470" r="14" fill="#c45c3a"/>
+  <text x="36" y="960" fill="#9a9086" font-family="Arial" font-size="26" letter-spacing="3">BLACKWORK MESH</text>
+</svg>

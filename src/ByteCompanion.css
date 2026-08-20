@@ -1,0 +1,43 @@
+.byteDungeon {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  image-rendering: pixelated;
+  touch-action: none;
+  opacity: 0.72;
+}
+
+.byteHit {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  will-change: transform;
+  pointer-events: none;
+  touch-action: none;
+  opacity: 0;
+}
+
+.byteTag {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .byteDungeon {
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .byteDungeon {
+    opacity: 0.35;
+  }
+}

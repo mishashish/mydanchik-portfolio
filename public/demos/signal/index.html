@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIGNAL DECK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="deck">
+      <header class="bar">
+        <a class="back" href="/">← PORTFOLIO</a>
+        <div class="brand">
+          <b>SIGNAL DECK</b>
+          <span>LIVE · OPEN API · NO KEYS</span>
+        </div>
+        <div class="barRight">
+          <span class="pill" id="clock">00:00:00</span>
+          <span class="pill on" id="linkState">● LINK</span>
+        </div>
+      </header>
+
+      <main class="grid">
+        <section class="panel radarPanel">
+          <div class="panelHead">
+            <span>RADAR / SWEEP</span>
+            <span id="sweepLabel">0°</span>
+          </div>
+          <canvas id="radar" width="420" height="420"></canvas>
+          <p class="hint">Каждый blip = монета из live-ленты. Скорость вращения = волатильность рынка.</p>
+        </section>
+
+        <section class="panel feedPanel">
+          <div class="panelHead">
+            <span>MARKET FEED</span>
+            <button type="button" class="mini" id="refreshBtn">REFRESH</button>
+          </div>
+          <div class="feed" id="feed">
+            <div class="loading">UPLINK… CoinGecko</div>
+          </div>
+        </section>
+
+        <section class="panel logPanel">
+          <div class="panelHead"><span>TERMINAL</span><span>v0.4</span></div>
+          <pre id="log"></pre>
+          <div class="cmds">
+            <button type="button" data-cmd="scan">SCAN</button>
+            <button type="button" data-cmd="pulse">PULSE</button>
+            <button type="button" data-cmd="mute">MUTE ALERTS</button>
+          </div>
+        </section>
+
+        <section class="panel statsPanel">
+          <div class="panelHead"><span>SESSION</span></div>
+          <div class="stats" id="stats">
+            <div><b id="sCount">—</b><span>assets</span></div>
+            <div><b id="sGain">—</b><span>gainers</span></div>
+            <div><b id="sLoss">—</b><span>losers</span></div>
+            <div><b id="sPing">—</b><span>latency</span></div>
+          </div>
+          <p class="note">
+            Данные с <a href="https://www.coingecko.com/en/api" target="_blank" rel="noopener">CoinGecko</a>
+            (публичный API, без Client ID). Демо для портфолио MYDANCHIK.
+          </p>
+        </section>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

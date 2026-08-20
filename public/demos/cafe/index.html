@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KŌHI — Coffee · Kyiv</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=9" />
+    <link rel="stylesheet" href="../_shared/demo-note.css" />
+  </head>
+  <body>
+    <header class="top">
+      <a class="logo" href="#top" aria-label="KŌHI home">
+        <img class="logoMark" src="assets/logo.png?v=5" alt="" width="40" height="40" />
+        <span>KŌHI</span>
+      </a>
+      <nav>
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#history">History</a>
+        <a href="#order">Pay</a>
+      </nav>
+      <div class="topRight">
+        <button type="button" class="chip" id="cartBtn">Cart <b id="cartCount">0</b></button>
+        <a class="back" href="/">← Portfolio</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="heroBleed">
+          <img class="heroPhoto" src="assets/croc-menu.png?v=5" alt="KŌHI coffee" />
+          <div class="heroOverlay">
+            <p class="tag">Kyiv · Podil · コーヒー</p>
+            <h1>KŌHI</h1>
+            <p class="script">menu & pay</p>
+            <p class="lead">Крем, червоний акцент і синій moka — кава з характером. Меню з фото, демо-оплата, історія й відгуки.</p>
+            <div class="cta">
+              <a class="btn" href="#menu">Open menu</a>
+              <a class="btn ghost" href="#order">Оплата</a>
+            </div>
+          </div>
+        </div>
+        <aside class="heroAside">
+          <img class="shopLine" src="assets/shop-line.png?v=5" alt="Cafe storefront" />
+          <div class="badgeRow">
+            <img class="mokaLine" src="assets/moka-line.png?v=5" alt="Moka pot logo" />
+            <div>
+              <b>Batch #218</b>
+              <strong id="batchName">Ethiopia Guji</strong>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="menu" id="menu">
+        <div class="secHead">
+          <h2>MENU</h2>
+          <p>Фото · розділи · тортики · у кошик · оплата в демо</p>
+        </div>
+        <div class="menuTabs" id="menuTabs"></div>
+        <div class="menuGrid" id="menuGrid"></div>
+      </section>
+
+      <section class="about" id="about">
+        <div class="secHead">
+          <h2>ABOUT</h2>
+          <p>Про заклад KŌHI</p>
+        </div>
+        <div class="aboutGrid">
+          <article class="aboutCard">
+            <h3>Де ми</h3>
+            <p>Поділ, вул. Сагайдачного · відкритий простір, світло з вітрини, запах свіжого роасту.</p>
+            <ul>
+              <li>Вт–Нд · 09:00–21:00</li>
+              <li>Самовивіз · Wi‑Fi · розетка біля вікна</li>
+              <li>Batch roast кілька разів на тиждень</li>
+            </ul>
+          </article>
+          <article class="aboutCard">
+            <h3>Що всередині</h3>
+            <p>Еспресо-бар, V60 станція, вітрина з випічкою. Синій moka на стіні — щоб не переплутати з іншими.</p>
+            <p class="muted">Демо-сайт: оплата симулюється локально, гроші не списуються.</p>
+          </article>
+          <article class="aboutCard mapCard">
+            <h3>На мапі</h3>
+            <iframe
+              title="KŌHI map"
+              loading="lazy"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=30.512%2C50.462%2C30.524%2C50.468&layer=mapnik&marker=50.465%2C30.518"
+            ></iframe>
+          </article>
+        </div>
+      </section>
+
+      <section class="reviews" id="reviews">
+        <div class="secHead">
+          <h2>REVIEWS</h2>
+          <p>Відгуки гостей</p>
+        </div>
+        <div class="reviewGrid" id="reviewGrid"></div>
+        <form class="reviewForm" id="reviewForm">
+          <h3>Залишити відгук</h3>
+          <div class="row2">
+            <input id="revName" type="text" maxlength="40" placeholder="Ім’я" required />
+            <select id="revStars">
+              <option value="5">★★★★★</option>
+              <option value="4">★★★★</option>
+              <option value="3">★★★</option>
+            </select>
+          </div>
+          <textarea id="revText" rows="3" maxlength="240" placeholder="Смак, атмосфера, сервіс…" required></textarea>
+          <button type="submit" class="btn">Надіслати</button>
+        </form>
+      </section>
+
+      <section class="history" id="history">
+        <div class="secHead">
+          <h2>HISTORY</h2>
+          <p>Твої замовлення в цьому браузері</p>
+        </div>
+        <div id="historyList" class="historyList"></div>
+      </section>
+
+      <section class="roast" id="roast">
+        <div class="secHead">
+          <h2>ROAST CLOCK</h2>
+          <p>Живий таймер партії</p>
+        </div>
+        <div class="roastPanel">
+          <div class="gauge">
+            <svg viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="52" class="track" />
+              <circle cx="60" cy="60" r="52" class="prog" id="roastArc" />
+            </svg>
+            <div class="gaugeVal"><b id="roastTemp">198°</b><span>C</span></div>
+          </div>
+          <div class="roastInfo">
+            <p><b id="roastPhase">Development</b></p>
+            <p id="roastTimer">00:00</p>
+            <p class="hint">First crack уже був. Слухай тишу барабана.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="origins" id="origins">
+        <div class="secHead">
+          <h2>ORIGINS</h2>
+          <p>Клікай регіон — підсвітиться карта смаку</p>
+        </div>
+        <div class="originGrid" id="originGrid"></div>
+        <div class="tasteMap" id="tasteMap"></div>
+      </section>
+
+      <section class="order" id="order">
+        <div class="secHead">
+          <h2>ОПЛАТА</h2>
+          <p>QR столика → mono · меню онлайн · демо-оплата</p>
+        </div>
+        <div class="payChoices">
+          <article class="payChoice">
+            <h3>Оплатити столик</h3>
+            <p>На столі QR → відкривається <b>mono</b> → платиш без імені й телефону. Демо для портфоліо.</p>
+            <div class="tablePick" id="tablePick" role="group" aria-label="Стіл">
+              <button type="button" class="tableChip on" data-table="3" data-total="420" data-label="біля вікна">
+                <span>Стіл №3</span>
+                <b>420 ₴</b>
+              </button>
+              <button type="button" class="tableChip" data-table="7" data-total="380" data-label="бар">
+                <span>Стіл №7</span>
+                <b>380 ₴</b>
+              </button>
+              <button type="button" class="tableChip" data-table="12" data-total="560" data-label="тераса">
+                <span>Стіл №12</span>
+                <b>560 ₴</b>
+              </button>
+              <button type="button" class="tableChip" data-table="18" data-total="290" data-label="куток">
+                <span>Стіл №18</span>
+                <b>290 ₴</b>
+              </button>
+            </div>
+            <button type="button" class="btn monoBtn" id="tableMonoBtn">Відкрити mono · оплатити</button>
+            <p class="formNote" id="tableNote">Симуляція скану QR столика №3</p>
+          </article>
+          <article class="payChoice online">
+            <h3>Оплатити онлайн</h3>
+            <p>Зібрав кошик з меню — оплати самовивіз / pickup карткою.</p>
+            <ul class="payBullets">
+              <li>Додай позиції в MENU</li>
+              <li>Відкрий Cart</li>
+              <li>Натисни «Оплатити онлайн»</li>
+            </ul>
+            <div class="payOnlineActions">
+              <a class="btn" href="#menu">До меню</a>
+              <button type="button" class="btn ghostInk" id="payOnlineBtn">Оплатити онлайн</button>
+            </div>
+            <p class="formNote" id="onlineNote"></p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <aside class="cartDrawer hidden" id="cartDrawer">
+      <div class="cartTop">
+        <h3>Cart</h3>
+        <button type="button" id="cartClose">✕</button>
+      </div>
+      <div id="cartList"></div>
+      <div class="cartSum">Разом: <b id="cartSum">0 ₴</b></div>
+      <button type="button" class="btn full" id="payBtn">Оплатити онлайн</button>
+      <button type="button" class="btn ghostInk full" id="cartClear">Очистити</button>
+    </aside>
+
+    <div class="payModal hidden" id="payModal" role="dialog" aria-modal="true">
+      <div class="payCard">
+        <button type="button" class="close" id="payClose">✕</button>
+        <h3 id="payTitle">Оплата онлайн · демо</h3>
+        <p class="payHint">Картка не списується — лише симуляція для портфоліо.</p>
+        <p class="payAmount">До сплати: <b id="payAmount">0 ₴</b></p>
+        <div class="walletPay" aria-label="Швидка оплата">
+          <button type="button" class="walletBtn gpay" id="gPayBtn">
+            <span class="gMark" aria-hidden="true">G</span>
+            Pay
+          </button>
+          <button type="button" class="walletBtn apay" id="aPayBtn">
+            <span class="aMark" aria-hidden="true"></span>
+            Pay
+          </button>
+        </div>
+        <p class="payOr">або карткою</p>
+        <form id="payForm" class="payForm">
+          <input id="payName" type="text" placeholder="Ім’я на картці" required maxlength="40" />
+          <input id="payCard" type="text" inputmode="numeric" placeholder="ACCT-000003" required maxlength="19" />
+          <div class="row2">
+            <input id="payExp" type="text" placeholder="MM/YY" required maxlength="5" />
+            <input id="payCvv" type="password" placeholder="CVV" required maxlength="4" />
+          </div>
+          <select id="payWhen">
+            <option>Самовивіз · сьогодні 16:00</option>
+            <option>Самовивіз · сьогодні 18:00</option>
+            <option>Самовивіз · завтра 11:00</option>
+          </select>
+          <button type="submit" class="btn full" id="paySubmit">Підтвердити оплату</button>
+          <p class="formNote" id="payNote"></p>
+        </form>
+      </div>
+    </div>
+
+    <div class="payModal hidden" id="monoModal" role="dialog" aria-modal="true" aria-label="mono оплата">
+      <div class="monoSheet">
+        <button type="button" class="close monoClose" id="monoClose">✕</button>
+        <div class="monoBrand">
+          <span class="monoMark" aria-hidden="true">m</span>
+          <div>
+            <strong>mono</strong>
+            <small>оплата столика · демо</small>
+          </div>
+        </div>
+        <p class="monoMerchant">KŌHI Café</p>
+        <p class="monoTable" id="monoTable">Стіл №3</p>
+        <p class="monoSum" id="monoSum">420 ₴</p>
+        <p class="monoHint">Як після скану QR на столі — без анкети клієнта.</p>
+        <button type="button" class="monoPayBtn" id="monoPayBtn">Сплатити</button>
+        <p class="formNote monoNote" id="monoNote"></p>
+      </div>
+    </div>
+
+    <div class="scrim hidden" id="scrim"></div>
+
+    <footer>
+      <span>KŌHI · demo café</span>
+      <a href="/">Portfolio</a>
+    </footer>
+    <script src="app.js?v=9"></script>
+    <script src="../_shared/demo-note.js"></script>
+  </body>
+</html>

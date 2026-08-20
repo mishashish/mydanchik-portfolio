@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INKWARD — Tribal Tattoo Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=6" />
+    <link rel="stylesheet" href="../_shared/demo-note.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="nav">
+      <a class="mark" href="#top">
+        <img id="navLogo" class="logoImg" src="./assets/logo.svg" alt="" width="36" height="36" />
+        <span id="markText">INKWARD</span>
+      </a>
+      <nav>
+        <a href="#work">Works</a>
+        <a href="#journal">Articles</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#map">Map</a>
+        <a href="#book">Book</a>
+      </nav>
+      <div class="navRight">
+        <button type="button" class="ghostBtn" id="adminOpen">Admin</button>
+        <a class="mini" href="/">← Portfolio</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="heroCopy">
+          <p class="eyebrow" id="heroEyebrow">Tribal · Blackwork · Kyiv</p>
+          <h1 id="heroTitle">INKWARD</h1>
+          <p class="lead" id="heroLead">Трайбл, що дихає з тілом. Гострі лінії, довга тінь, тиша в студії.</p>
+          <div class="cta">
+            <a class="btn" href="#book">Записатись</a>
+            <a class="btn ghost" href="#work">Дивитись роботи</a>
+          </div>
+          <div class="heroStats" id="heroStats"></div>
+        </div>
+        <div class="heroArt" aria-hidden="true">
+          <svg class="totem" viewBox="0 0 200 320" fill="none">
+            <path class="stroke draw" d="M100 12 L118 48 L100 70 L82 48 Z M100 70 V290 M70 110 L100 140 L130 110 M60 170 L100 210 L140 170 M78 250 L100 275 L122 250" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+            <circle class="pulse" cx="100" cy="48" r="6" fill="currentColor"/>
+          </svg>
+        </div>
+      </section>
+
+      <section class="promo" id="promo">
+        <div class="banners" id="banners"></div>
+      </section>
+
+      <section class="strip" id="work">
+        <div class="stripHead">
+          <h2>Selected marks</h2>
+          <p id="gallerySub">Галерея трайбл-робіт. Завантажуй свої фото в Admin.</p>
+        </div>
+        <div class="gallery" id="gallery"></div>
+      </section>
+
+      <section class="journal" id="journal">
+        <div class="stripHead">
+          <h2>Articles</h2>
+          <p>Студія, майстри, процес і догляд — без опитувань.</p>
+        </div>
+        <div class="posts" id="posts"></div>
+      </section>
+
+      <section class="reviews" id="reviews">
+        <div class="stripHead">
+          <h2>Reviews</h2>
+          <p>Відгуки клієнтів.</p>
+        </div>
+        <div class="reviewGrid" id="reviewGrid"></div>
+        <form class="reviewForm" id="reviewForm">
+          <h3>Залишити відгук</h3>
+          <div class="row2">
+            <input id="revName" type="text" maxlength="40" placeholder="Ім’я" required />
+            <select id="revStars">
+              <option value="5">★★★★★</option>
+              <option value="4">★★★★</option>
+              <option value="3">★★★</option>
+            </select>
+          </div>
+          <textarea id="revText" rows="3" maxlength="280" placeholder="Як пройшла сесія…" required></textarea>
+          <button type="submit" class="btn">Надіслати</button>
+        </form>
+      </section>
+
+      <section class="mapSec" id="map">
+        <div class="mapCopy">
+          <h2>Where</h2>
+          <p id="addrText">Київ, Поділ · вул. Сагайдачного 12</p>
+          <p class="muted" id="hoursText">Вт–Нд · 12:00–21:00 · лише за записом</p>
+          <a class="btn ghost" id="mapsLink" href="https://www.openstreetmap.org/?mlat=50.4635&mlon=30.5215#map=17/50.4635/30.5215" target="_blank" rel="noreferrer">Відкрити мапу</a>
+        </div>
+        <div class="mapFrame">
+          <iframe
+            id="mapFrame"
+            title="INKWARD on map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=30.5155%2C50.4605%2C30.5275%2C50.4665&layer=mapnik&marker=50.4635%2C30.5215"
+          ></iframe>
+        </div>
+      </section>
+
+      <section class="book" id="book">
+        <div>
+          <h2>Book a seat</h2>
+          <p id="bookText">Напиши ідею — зберемо ескіз під твій силует.</p>
+          <p class="contactLine" id="contactLine"></p>
+        </div>
+        <a class="btn" id="mailBtn" href="mailto:book@inkward.studio">Написати</a>
+      </section>
+    </main>
+
+    <footer>
+      <span>INKWARD · demo studio</span>
+      <a href="/">MYDANCHIK portfolio</a>
+    </footer>
+
+    <div class="adminScrim hidden" id="adminScrim"></div>
+    <aside class="admin hidden" id="admin" aria-label="Admin panel">
+      <div class="adminTop">
+        <h2>Admin</h2>
+        <button type="button" class="ghostBtn" id="adminClose">✕</button>
+      </div>
+      <div class="adminLogin" id="adminLogin">
+        <p>Пароль демо: <code>inkward</code></p>
+        <input id="adminPass" type="password" placeholder="Password" />
+        <button type="button" class="btn" id="adminLoginBtn">Увійти</button>
+      </div>
+      <div class="adminBody hidden" id="adminBody">
+        <nav class="adminTabs">
+          <button type="button" class="on" data-tab="stats">Stats</button>
+          <button type="button" data-tab="brand">Logo</button>
+          <button type="button" data-tab="banners">Banners</button>
+          <button type="button" data-tab="gallery">Gallery</button>
+          <button type="button" data-tab="posts">Articles</button>
+          <button type="button" data-tab="contact">Contact</button>
+          <button type="button" data-tab="reviews">Reviews</button>
+        </nav>
+
+        <section class="adminPane on" data-pane="stats">
+          <h3>Статистика</h3>
+          <div class="statGrid" id="statGrid"></div>
+          <button type="button" class="btn ghost" id="resetStats">Скинути лічильники</button>
+          <button type="button" class="btn ghost" id="resetDemo">Скинути весь демо-контент</button>
+        </section>
+
+        <section class="adminPane" data-pane="brand">
+          <h3>Лого</h3>
+          <img id="logoPreview" class="logoPreview" src="./assets/logo.svg" alt="" />
+          <label class="up">
+            <span>Завантажити лого з комп’ютера</span>
+            <input type="file" id="logoUpload" accept="image/*" />
+          </label>
+        </section>
+
+        <section class="adminPane" data-pane="banners">
+          <h3>Банери</h3>
+          <input id="bannerTitle" type="text" placeholder="Заголовок банера" />
+          <input id="bannerText" type="text" placeholder="Короткий текст" />
+          <label class="up">
+            <span>Фото банера з комп’ютера (опційно)</span>
+            <input type="file" id="bannerFile" accept="image/*" />
+          </label>
+          <img id="bannerPreview" class="logoPreview hidden" alt="" />
+          <button type="button" class="btn" id="bannerAdd">Додати банер</button>
+          <p class="muted" style="margin:0;font-size:12px">Без фото підставиться дефолтний банер студії.</p>
+          <div class="adminList" id="adminBanners"></div>
+        </section>
+
+        <section class="adminPane" data-pane="gallery">
+          <h3>Галерея</h3>
+          <label class="up">
+            <span>Завантажити роботи з комп’ютера</span>
+            <input type="file" id="imgUpload" accept="image/*" multiple />
+          </label>
+          <input id="imgCaption" type="text" placeholder="Підпис (опційно)" />
+          <div class="adminList" id="adminGallery"></div>
+        </section>
+
+        <section class="adminPane" data-pane="posts">
+          <h3>Стаття + фото</h3>
+          <input id="postTitle" type="text" placeholder="Заголовок" />
+          <input id="postTag" type="text" placeholder="Тег: Студія / Майстри / Процес…" />
+          <textarea id="postBody" rows="4" placeholder="Текст статті"></textarea>
+          <label class="up">
+            <span>Прикріпити фото</span>
+            <input type="file" id="postImage" accept="image/*" />
+          </label>
+          <img id="postImgPreview" class="logoPreview hidden" alt="" />
+          <button type="button" class="btn" id="postAdd">Опублікувати</button>
+          <div class="adminList" id="adminPosts"></div>
+        </section>
+
+        <section class="adminPane" data-pane="contact">
+          <h3>Контакти / сайт</h3>
+          <label>Назва<input id="cTitle" type="text" /></label>
+          <label>Підзаголовок<input id="cEyebrow" type="text" /></label>
+          <label>Лід<textarea id="cLead" rows="2"></textarea></label>
+          <label>Адреса<input id="cAddr" type="text" /></label>
+          <label>Години<input id="cHours" type="text" /></label>
+          <label>Email<input id="cEmail" type="email" /></label>
+          <label>Телефон<input id="cPhone" type="text" /></label>
+          <label>Telegram<input id="cTg" type="text" /></label>
+          <label>Map lat<input id="cLat" type="text" /></label>
+          <label>Map lon<input id="cLon" type="text" /></label>
+          <button type="button" class="btn" id="contactSave">Зберегти</button>
+        </section>
+
+        <section class="adminPane" data-pane="reviews">
+          <h3>Модерація відгуків</h3>
+          <div class="adminList" id="adminReviews"></div>
+        </section>
+
+        <button type="button" class="btn ghost full" id="adminLogout">Вийти</button>
+      </div>
+    </aside>
+
+    <script src="app.js?v=6"></script>
+    <script src="../_shared/demo-note.js"></script>
+  </body>
+</html>

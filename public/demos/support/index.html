@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Support Bot Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <style>
+      body { margin: 0; background: #050505; color: #eee; font-family: VT323, monospace; }
+      .wrap { max-width: 780px; margin: 0 auto; padding: 24px 16px; }
+      h1 { font-family: 'Press Start 2P', monospace; font-size: 14px; line-height: 1.5; }
+      .card { border: 2px solid #fff; padding: 14px; margin: 12px 0; }
+      .row { display: flex; gap: 8px; flex-wrap: wrap; }
+      button, a.btn {
+        border: 2px solid #fff; background: #fff; color: #000; font-family: 'Press Start 2P', monospace;
+        font-size: 9px; padding: 10px 12px; cursor: pointer; text-decoration: none;
+      }
+      a.ghost { background: transparent; color: #fff; }
+      #chat { min-height: 160px; white-space: pre-wrap; color: #9fe7b4; font-size: 20px; }
+      .muted { color: #aaa; font-size: 20px; }
+      .ticket { border: 1px solid #444; padding: 8px; margin-top: 8px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <a class="btn ghost" href="/">← BACK</a>
+      <h1>SUPPORT / CRM BOT</h1>
+      <p class="muted">Демо бота поддержки: тикеты, статусы, ответ админа.</p>
+      <div class="card row">
+        <button type="button" data-a="new">NEW TICKET</button>
+        <button type="button" data-a="status">STATUS</button>
+        <button type="button" data-a="reply">ADMIN REPLY</button>
+      </div>
+      <div class="card" id="chat">bot: /help — создай тикет</div>
+      <div class="card" id="board"></div>
+    </div>
+    <script>
+      let id = 1042
+      let open = false
+      const chat = document.getElementById('chat')
+      const board = document.getElementById('board')
+      const render = () => {
+        board.innerHTML = open
+          ? `<div class="ticket"><b>#${id}</b> · OPEN<br/>тема: не приходит оплата<br/>priority: HIGH</div>`
+          : '<div class="ticket">тикетов нет</div>'
+      }
+      render()
+      document.querySelectorAll('button[data-a]').forEach((b) => {
+        b.onclick = () => {
+          const a = b.dataset.a
+          if (a === 'new') {
+            open = true
+            id++
+            chat.textContent = `user: /ticket\nbot: тикет #${id} создан\nстатус: OPEN`
+          } else if (a === 'status') {
+            chat.textContent = open
+              ? `bot: #${id} → OPEN · ожидает оператора`
+              : 'bot: активных тикетов нет'
+          } else {
+            if (!open) {
+              chat.textContent = 'bot: сначала создай тикет'
+            } else {
+              open = false
+              chat.textContent = `admin: проверили платёж, всё ок\nbot: #${id} → CLOSED ✅`
+            }
+          }
+          render()
+        }
+      })
+    </script>
+  </body>
+</html>

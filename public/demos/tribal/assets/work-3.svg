@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <rect fill="#0d0b0a" width="800" height="1000"/>
+  <g fill="none" stroke="#e8dccf" stroke-width="8" stroke-linecap="square">
+    <path d="M400 80 L430 200 L400 320 L370 200 Z"/>
+    <path d="M400 320 V880"/>
+    <path d="M340 400 L400 470 L460 400"/>
+    <path d="M300 540 L400 650 L500 540"/>
+    <path d="M330 720 L400 790 L470 720"/>
+    <path d="M360 200 H440"/>
+  </g>
+  <path d="M250 280 L290 340 L250 400" fill="none" stroke="#c45c3a" stroke-width="5"/>
+  <path d="M550 280 L510 340 L550 400" fill="none" stroke="#c45c3a" stroke-width="5"/>
+  <text x="36" y="960" fill="#9a9086" font-family="Arial" font-size="26" letter-spacing="3">FOREARM SPEAR</text>
+</svg>

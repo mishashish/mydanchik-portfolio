@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Оплата TON</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    .wrap { padding: 16px; max-width: 640px; margin: 0 auto; }
+    .card { border: 1px solid rgba(127,127,127,.35); border-radius: 14px; padding: 14px; margin-bottom: 12px; }
+    .h { font-weight: 700; font-size: 18px; margin: 0 0 10px; }
+    .row { display: flex; justify-content: space-between; gap: 12px; margin: 8px 0; align-items: flex-start; }
+    .k { opacity: .75; white-space: nowrap; }
+    .v { font-weight: 600; word-break: break-all; text-align: right; }
+    .btns { display: grid; gap: 10px; margin-top: 14px; }
+    .btn {
+      display: flex; justify-content: center; align-items: center; gap: 8px;
+      border-radius: 12px; border: 0; padding: 14px;
+      font-weight: 700; text-decoration: none; font-size: 15px; cursor: pointer;
+      background: #2f7df6; color: #fff;
+    }
+    .btn.secondary { background: rgba(127,127,127,.18); color: inherit; }
+    .btn.green { background: #27ae60; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px; background: rgba(127,127,127,.12);
+      padding: 2px 5px; border-radius: 5px; cursor: pointer;
+    }
+    .hint { margin-top: 12px; font-size: 13px; line-height: 1.5; opacity: .75; }
+    .badge { font-size: 11px; background: #e74c3c; color: #fff; border-radius: 6px; padding: 2px 6px; margin-left: 6px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <p class="h">🧾 Детали платежа</p>
+
+      <div class="row"><div class="k">Тариф</div><div class="v" id="tier">—</div></div>
+      <div class="row"><div class="k">Сумма</div><div class="v"><span id="usd">—</span> $</div></div>
+      <div class="row"><div class="k">К оплате</div><div class="v" style="color:#2f7df6"><span id="amount_ton">—</span> TON</div></div>
+      <div class="row"><div class="k">Адрес</div><div class="v"><code id="to" title="Нажми чтобы скопировать">—</code></div></div>
+      <div class="row"><div class="k">Комментарий</div><div class="v"><code id="text_el" title="Нажми чтобы скопировать">—</code></div></div>
+    </div>
+
+    <div class="card">
+      <p class="h">💳 Выберите способ оплаты</p>
+      <div class="btns">
+        <button class="btn green" id="pay_auto">💎 Оплатить (авто-открытие кошелька)</button>
+        <button class="btn secondary" id="pay_tonkeeper">🌐 Tonkeeper в браузере</button>
+        <button class="btn secondary" id="copy_all">📋 Скопировать реквизиты</button>
+      </div>
+      <div class="hint" id="hint_text"></div>
+    </div>
+  </div>
+
+  <script>
+    const tg = window.Telegram?.WebApp;
+    if (tg) { tg.ready(); tg.expand(); }
+
+    const platform = tg?.platform || "unknown";
+    const isMobile = ["ios", "android"].includes(platform);
+
+    const params = new URLSearchParams(location.search);
+    const to        = params.get("to") || "";
+    const amountTon = params.get("amount_ton") || "";
+    const amountNano= params.get("amount_nanoton") || "";
+    const text      = params.get("text") || "";
+    const tier      = params.get("tier") || "";
+    const usd       = params.get("usd") || "";
+
+    const tierMap = { bronze: "🥉 Бронза", silver: "🥈 Серебро", gold: "🥇 Золото" };
+    document.getElementById("tier").textContent       = tierMap[tier] || tier || "—";
+    document.getElementById("usd").textContent        = usd || "—";
+    document.getElementById("amount_ton").textContent = amountTon || "—";
+    document.getElementById("to").textContent         = to || "—";
+    document.getElementById("text_el").textContent    = text || "—";
+
+    const tonUrl = (to && amountNano && text)
+      ? `ton://transfer/${to}?amount=${amountNano}&text=${encodeURIComponent(text)}`
+      : null;
+    const tonkeeperUrl = (to && amountNano && text)
+      ? `https://app.tonkeeper.com/transfer/${to}?amount=${amountNano}&text=${encodeURIComponent(text)}`
+      : null;
+
+    // Hint based on platform
+    const hint = document.getElementById("hint_text");
+    if (isMobile) {
+      hint.innerHTML = "📱 <b>Телефон обнаружен.</b> Кнопка «авто-открытие» запустит @wallet или Tonkeeper прямо сейчас.";
+    } else {
+      hint.innerHTML = "🖥 <b>Компьютер обнаружен.</b> Используйте «Tonkeeper в браузере» или скопируйте реквизиты и оплатите вручную через @wallet в Telegram.";
+    }
+
+    // Main pay button — smart behavior
+    document.getElementById("pay_auto").addEventListener("click", () => {
+      if (!tonUrl) return;
+      if (isMobile) {
+        // On mobile: directly trigger deep link — opens @wallet / Tonkeeper
+        window.location.href = tonUrl;
+      } else {
+        // On desktop: open tonkeeper web (works in browser without app)
+        if (tg) tg.openLink(tonkeeperUrl);
+        else window.open(tonkeeperUrl, "_blank");
+      }
+    });
+
+    // Tonkeeper web link — always browser
+    document.getElementById("pay_tonkeeper").addEventListener("click", () => {
+      if (!tonkeeperUrl) return;
+      if (tg) tg.openLink(tonkeeperUrl);
+      else window.open(tonkeeperUrl, "_blank");
+    });
+
+    // Copy all
+    document.getElementById("copy_all").addEventListener("click", async () => {
+      const s = `Адрес: ${to}\nСумма: ${amountTon} TON\nКомментарий: ${text}`;
+      try {
+        await navigator.clipboard.writeText(s);
+        if (tg) tg.showAlert("✅ Скопировано! Теперь откройте @wallet в Telegram и отправьте вручную.");
+        else alert("Скопировано!");
+      } catch {
+        prompt("Скопируйте вручную:", s);
+      }
+    });
+
+    // Click on code to copy individual field
+    document.getElementById("to").addEventListener("click", () => {
+      navigator.clipboard.writeText(to).then(() => {
+        if (tg) tg.showAlert("✅ Адрес скопирован");
+      }).catch(() => {});
+    });
+    document.getElementById("text_el").addEventListener("click", () => {
+      navigator.clipboard.writeText(text).then(() => {
+        if (tg) tg.showAlert("✅ Комментарий скопирован");
+      }).catch(() => {});
+    });
+  </script>
+</body>
+</html>

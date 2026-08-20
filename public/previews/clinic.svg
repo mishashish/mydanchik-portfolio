@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#050505"/>
+  <text x="48" y="70" fill="#fff" font-family="Consolas, monospace" font-size="28" font-weight="700">CLINIC PARSER</text>
+  <text x="48" y="110" fill="#9fe7b4" font-family="Consolas, monospace" font-size="18">telegram message ’ report row</text>
+  <rect x="48" y="150" width="420" height="320" fill="#111" stroke="#fff" stroke-width="3"/>
+  <text x="70" y="200" fill="#aaa" font-family="Consolas, monospace" font-size="18"> </text>
+  <text x="70" y="240" fill="#eee" font-family="Consolas, monospace" font-size="18">: &5=B@0;L=0O</text>
+  <text x="70" y="280" fill="#eee" font-family="Consolas, monospace" font-size="18">&": 20=>2 ..</text>
+  <text x="70" y="320" fill="#eee" font-family="Consolas, monospace" font-size="18"> /: 14:30</text>
+  <rect x="70" y="360" width="160" height="50" fill="#fff"/>
+  <text x="105" y="392" fill="#000" font-family="Consolas, monospace" font-size="18">PARSE</text>
+  <rect x="500" y="150" width="410" height="320" fill="#111" stroke="#fff" stroke-width="3"/>
+  <text x="530" y="210" fill="#9fe7b4" font-family="Consolas, monospace" font-size="20">clinic</text>
+  <text x="700" y="210" fill="#eee" font-family="Consolas, monospace" font-size="20">&5=B@0;L=0O</text>
+  <text x="530" y="270" fill="#9fe7b4" font-family="Consolas, monospace" font-size="20">patient</text>
+  <text x="700" y="270" fill="#eee" font-family="Consolas, monospace" font-size="20">20=>2 ..</text>
+  <text x="530" y="330" fill="#9fe7b4" font-family="Consolas, monospace" font-size="20">time</text>
+  <text x="700" y="330" fill="#eee" font-family="Consolas, monospace" font-size="20">14:30</text>
+  <text x="530" y="400" fill="#9fe7b4" font-family="Consolas, monospace" font-size="20">status</text>
+  <text x="700" y="400" fill="#eee" font-family="Consolas, monospace" font-size="20">ok</text>
+</svg>

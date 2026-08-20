@@ -1,0 +1,40 @@
+:root {
+  --pixel: 'Press Start 2P', monospace;
+  --pixel-body: 'VT323', monospace;
+  color-scheme: dark;
+  font-family: var(--pixel-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #050505;
+  color: #ececec;
+  -webkit-font-smoothing: none;
+}
+
+#root {
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: #fff;
+  color: #000;
+}

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1115"/>
+      <stop offset="55%" stop-color="#171a21"/>
+      <stop offset="100%" stop-color="#12151c"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" fill="url(#bg)"/>
+  <circle cx="120" cy="40" r="180" fill="#ff6a3d" opacity="0.14"/>
+  <circle cx="860" cy="80" r="140" fill="#3dd6c6" opacity="0.1"/>
+  <text x="48" y="58" fill="#f3f4f6" font-family="Segoe UI, Arial" font-size="28" font-weight="700">Shorts Lab</text>
+  <text x="48" y="88" fill="#9aa3b2" font-family="Segoe UI, Arial" font-size="16">Cut · Transcript · Burn-in subs</text>
+  <rect x="48" y="120" width="260" height="360" rx="18" fill="#171a21" stroke="#2a303b"/>
+  <text x="72" y="158" fill="#f3f4f6" font-family="Segoe UI, Arial" font-size="18" font-weight="600">Pipeline</text>
+  <rect x="72" y="178" width="212" height="36" rx="10" fill="#0f1115" stroke="#2a303b"/>
+  <rect x="72" y="230" width="212" height="44" rx="12" fill="#ff6a3d"/>
+  <text x="118" y="258" fill="#fff" font-family="Segoe UI, Arial" font-size="16" font-weight="700">Run pipeline</text>
+  <rect x="72" y="292" width="212" height="10" rx="5" fill="#2a303b"/>
+  <rect x="72" y="292" width="140" height="10" rx="5" fill="#3dd6c6"/>
+  <text x="72" y="330" fill="#9aa3b2" font-family="Segoe UI, Arial" font-size="13">1 Cut clips</text>
+  <text x="72" y="358" fill="#9aa3b2" font-family="Segoe UI, Arial" font-size="13">2 Transcript</text>
+  <text x="72" y="386" fill="#9aa3b2" font-family="Segoe UI, Arial" font-size="13">3 Burn-in subs</text>
+  <rect x="340" y="120" width="572" height="360" rx="18" fill="#171a21" stroke="#2a303b"/>
+  <rect x="368" y="150" width="220" height="300" rx="28" fill="#0b0d12" stroke="#3a4354"/>
+  <rect x="388" y="178" width="180" height="220" rx="8" fill="#1c2230"/>
+  <text x="430" y="290" fill="#fff" font-family="Segoe UI, Arial" font-size="22" font-weight="700">HOOK</text>
+  <rect x="398" y="360" width="160" height="18" rx="6" fill="rgba(255,255,255,0.18)"/>
+  <text x="430" y="374" fill="#fff" font-family="Segoe UI, Arial" font-size="11">0:03 / 0:15</text>
+  <rect x="620" y="150" width="260" height="140" rx="14" fill="#12151c" stroke="#2a303b"/>
+  <text x="640" y="180" fill="#f3f4f6" font-family="Segoe UI, Arial" font-size="15" font-weight="600">Transcript</text>
+  <text x="640" y="210" fill="#9aa3b2" font-family="Segoe UI, Arial" font-size="13">[00:01] Waitdid you hear that?</text>
+  <text x="640" y="234" fill="#9aa3b2" font-family="Segoe UI, Arial" font-size="13">[00:04] Cut. Keep this take.</text>
+  <text x="640" y="258" fill="#3dd6c6" font-family="Segoe UI, Arial" font-size="13">SRT ready · burn-in on</text>
+  <rect x="620" y="310" width="260" height="140" rx="14" fill="#12151c" stroke="#2a303b"/>
+  <text x="640" y="340" fill="#f3f4f6" font-family="Segoe UI, Arial" font-size="15" font-weight="600">Clips</text>
+  <rect x="640" y="358" width="70" height="54" rx="8" fill="#ff6a3d" opacity="0.85"/>
+  <rect x="722" y="358" width="70" height="54" rx="8" fill="#3dd6c6" opacity="0.75"/>
+  <rect x="804" y="358" width="50" height="54" rx="8" fill="#3ecf8e" opacity="0.7"/>
+</svg>
