@@ -563,6 +563,7 @@
       ground[r][midC] = T.floor[0]
     }
 
+    const doors = { n: false, e: false, s: false, w: false }
     const openDoor = (dir) => {
       doors[dir] = true
       if (dir === 'n') {

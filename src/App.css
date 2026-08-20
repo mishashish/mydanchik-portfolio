@@ -513,38 +513,98 @@
   color: #cfcfcf;
 }
 
+.stackLead {
+  margin: 0 0 18px;
+  max-width: 52ch;
+  font-family: var(--pixel-body);
+  font-size: 20px;
+  line-height: 1.35;
+  color: #bdbdbd;
+}
+
+.stackBoard {
+  display: grid;
+  gap: 22px;
+}
+
+.stackGroupHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-family: var(--pixel);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: #7dffa3;
+}
+
+.stackGroupHead i {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, #7dffa3 0, #7dffa3 12px, #2a2a2a 12px, #2a2a2a);
+}
+
 .stackGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
 
 .stackCard {
-  border: 3px solid #fff;
-  background: #0b0b0b;
-  padding: 12px;
+  border: 2px solid #2e2e2e;
+  background:
+    linear-gradient(180deg, #121212 0%, #0a0a0a 100%);
+  padding: 14px 14px 12px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.stackCard:hover {
+  border-color: #fff;
+  transform: translateY(-2px);
 }
 
 .stackTop {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   gap: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-family: var(--pixel);
   font-size: 9px;
   color: #fff;
 }
 
+.stackTop b {
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.stackLvl {
+  color: #7dffa3;
+  font-size: 9px;
+}
+
 .bar {
-  height: 12px;
-  border: 2px solid #fff;
-  background: #171717;
+  height: 8px;
+  border: 1px solid #3a3a3a;
+  background: #141414;
+  overflow: hidden;
 }
 
 .bar i {
   display: block;
   height: 100%;
-  background: repeating-linear-gradient(90deg, #fff 0 6px, #000 6px 8px);
+  background: linear-gradient(90deg, #ececec 0%, #7dffa3 100%);
+  box-shadow: 0 0 12px rgba(125, 255, 163, 0.25);
+}
+
+.stackMeta {
+  margin-top: 8px;
+  font-family: var(--pixel);
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6f6f6f;
 }
 
 .projectGrid {

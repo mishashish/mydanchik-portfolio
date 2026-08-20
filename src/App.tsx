@@ -4,7 +4,7 @@ import {
   getDict,
   LANGS,
   PROJECT_META,
-  STACK,
+  STACK_GROUPS,
   type Lang,
 } from './i18n'
 
@@ -211,15 +211,39 @@ export default function App() {
           <span>{t.stack.head}</span>
           <span>{t.stack.lvl}</span>
         </div>
-        <div className="stackGrid">
-          {STACK.map((item) => (
-            <div key={item.name} className="stackCard">
-              <div className="stackTop">
-                <b>{item.name}</b>
-                <span>{item.lvl}%</span>
+        <p className="stackLead">{t.stack.lead}</p>
+        <div className="stackBoard">
+          {STACK_GROUPS.map((group) => (
+            <div key={group.id} className="stackGroup">
+              <div className="stackGroupHead">
+                <span>{t.stack.groups[group.id]}</span>
+                <i aria-hidden="true" />
               </div>
-              <div className="bar">
-                <i style={{ width: `${item.lvl}%` }} />
+              <div className="stackGrid">
+                {group.items.map((item) => (
+                  <div key={item.name} className="stackCard">
+                    <div className="stackTop">
+                      <b>{item.name}</b>
+                      <span className="stackLvl">{item.lvl}%</span>
+                    </div>
+                    <div className="bar" aria-hidden="true">
+                      <i style={{ width: `${item.lvl}%` }} />
+                    </div>
+                    <div className="stackMeta">
+                      {item.lvl >= 90
+                        ? lang === 'uk'
+                          ? 'експерт'
+                          : 'expert'
+                        : item.lvl >= 80
+                          ? lang === 'uk'
+                            ? 'сильно'
+                            : 'strong'
+                          : lang === 'uk'
+                            ? 'впевнено'
+                            : 'solid'}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           ))}

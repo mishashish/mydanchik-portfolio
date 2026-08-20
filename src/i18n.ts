@@ -62,7 +62,13 @@ const dict = {
     },
     stack: {
       head: '02 // TECH STACK',
-      lvl: 'LVL 27 DEV',
+      lvl: 'PRODUCTION TOOLKIT',
+      lead: 'Стек під боти, парсинг і автоматизацію — те, чим реально збираю продукти клієнтам.',
+      groups: {
+        core: 'CORE',
+        bots: 'BOTS & API',
+        auto: 'AUTOMATION',
+      },
     },
     services: {
       head: '03 // ПОСЛУГИ',
@@ -105,7 +111,7 @@ const dict = {
       tip: 'WASD · SPACE вогонь. 4 серця зникають при уроні · комбо · фінал — Void Kernel.',
     },
     projects: {
-      head: '05 // ПРОЄКТИ',
+      head: '04 // ПРОЄКТИ',
       selected: 'ВИБРАНІ БІЛДИ',
       active: 'ACTIVE',
       demo: 'ДЕМО',
@@ -139,7 +145,7 @@ const dict = {
       ],
     },
     contact: {
-      head: '06 // КОНТАКТ',
+      head: '05 // КОНТАКТ',
       open: 'ВІДКРИТИЙ ДО ЗАДАЧ',
       title: 'НАПИСАТИ МЕНІ',
       text: 'Потрібен парсер, бот або автоматизація? Кидай задачу в Telegram — оцінимо і зберемо робочий інструмент.',
@@ -208,7 +214,13 @@ const dict = {
     },
     stack: {
       head: '02 // TECH STACK',
-      lvl: 'LVL 27 DEV',
+      lvl: 'PRODUCTION TOOLKIT',
+      lead: 'Stack for bots, parsing and automation — what I actually ship for clients.',
+      groups: {
+        core: 'CORE',
+        bots: 'BOTS & API',
+        auto: 'AUTOMATION',
+      },
     },
     services: {
       head: '03 // SERVICES',
@@ -251,7 +263,7 @@ const dict = {
       tip: 'WASD · SPACE fire. 4 hearts vanish on hit · combos · finale is the Void Kernel.',
     },
     projects: {
-      head: '05 // PROJECTS',
+      head: '04 // PROJECTS',
       selected: 'SELECTED BUILDS',
       active: 'ACTIVE',
       demo: 'DEMO',
@@ -285,7 +297,7 @@ const dict = {
       ],
     },
     contact: {
-      head: '06 // CONTACT',
+      head: '05 // CONTACT',
       open: 'OPEN FOR TASKS',
       title: 'MESSAGE ME',
       text: 'Need a parser, bot or automation? Message me on Telegram — we estimate and build a working tool.',
@@ -328,13 +340,34 @@ export const PROJECT_META: Record<
   },
 }
 
-export const STACK = [
-  { name: 'Python', lvl: 95 },
-  { name: 'aiogram', lvl: 90 },
-  { name: 'Selenium', lvl: 88 },
-  { name: 'SQL', lvl: 82 },
-  { name: 'Telegram API', lvl: 92 },
-  { name: 'Automation', lvl: 94 },
-  { name: 'Dashboards', lvl: 78 },
-  { name: 'JS / TS', lvl: 70 },
+export type StackItem = { name: string; lvl: number }
+export type StackGroup = { id: 'core' | 'bots' | 'auto'; items: StackItem[] }
+
+export const STACK_GROUPS: StackGroup[] = [
+  {
+    id: 'core',
+    items: [
+      { name: 'Python', lvl: 95 },
+      { name: 'TypeScript', lvl: 74 },
+      { name: 'PostgreSQL', lvl: 84 },
+    ],
+  },
+  {
+    id: 'bots',
+    items: [
+      { name: 'aiogram', lvl: 92 },
+      { name: 'Telegram Bot API', lvl: 90 },
+      { name: 'FastAPI', lvl: 82 },
+    ],
+  },
+  {
+    id: 'auto',
+    items: [
+      { name: 'Playwright', lvl: 86 },
+      { name: 'Automation / ETL', lvl: 94 },
+      { name: 'Parsing pipelines', lvl: 88 },
+    ],
+  },
 ]
+
+export const STACK: StackItem[] = STACK_GROUPS.flatMap((g) => g.items)
