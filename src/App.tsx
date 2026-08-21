@@ -1,6 +1,5 @@
 import { useEffect, useState, type MouseEvent } from 'react'
 import './App.css'
-import { ByteCompanion } from './ByteCompanion'
 import Scene3D from './Scene3D'
 import {
   getDict,
@@ -59,8 +58,6 @@ export default function App() {
 
   return (
     <div className="site">
-      <ByteCompanion />
-
       <header className="topbar">
         <a
           className="logo"
