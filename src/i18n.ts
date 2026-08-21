@@ -59,7 +59,6 @@ const dict = {
         { b: '20+', s: 'проєктів' },
         { b: '24/7', s: 'на звʼязку' },
       ],
-      sceneLabel: 'BYTE // CAMPFIRE',
     },
     stack: {
       head: '02 // TECH STACK',
@@ -134,14 +133,14 @@ const dict = {
         {
           id: 'tribal',
           title: 'INKWARD',
-          text: 'Сайт студії тату з адмінкою: галерея, пости, відгуки, мапа, статистика.',
-          tags: ['Website', 'CMS', 'Admin'],
+          text: 'Студія blackwork з записом: галерея, статті, відгуки, мапа й Admin CMS.',
+          tags: ['Website', 'CMS', 'Book'],
         },
         {
           id: 'cafe',
           title: 'KŌHI',
-          text: 'Кавʼярня: меню, кошик, оплата столика / онлайн, roast і pickup.',
-          tags: ['Website', 'Cafe', 'Brand'],
+          text: 'Кавʼярня під продаж: меню з фото, кошик, mono-стіл / онлайн-оплата, roast.',
+          tags: ['Website', 'Cafe', 'Pay'],
         },
       ],
     },
@@ -212,7 +211,6 @@ const dict = {
         { b: '20+', s: 'projects' },
         { b: '24/7', s: 'reachable' },
       ],
-      sceneLabel: 'BYTE // CAMPFIRE',
     },
     stack: {
       head: '02 // TECH STACK',
@@ -287,14 +285,14 @@ const dict = {
         {
           id: 'tribal',
           title: 'INKWARD',
-          text: 'Tattoo studio website with admin: gallery, posts, reviews, map, stats.',
-          tags: ['Website', 'CMS', 'Admin'],
+          text: 'Blackwork studio with booking: gallery, articles, reviews, map, and Admin CMS.',
+          tags: ['Website', 'CMS', 'Book'],
         },
         {
           id: 'cafe',
           title: 'KŌHI',
-          text: 'Café: menu, cart, table pay / online pay, roast and pickup.',
-          tags: ['Website', 'Cafe', 'Brand'],
+          text: 'Café built to sell: photo menu, cart, mono table / online pay, roast.',
+          tags: ['Website', 'Cafe', 'Pay'],
         },
       ],
     },

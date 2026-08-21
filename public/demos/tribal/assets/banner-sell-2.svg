@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640">
+  <rect width="1200" height="640" fill="#14110f"/>
+  <g fill="none" stroke="#f2ebe3" stroke-width="4">
+    <path d="M140 120 H420 V480 H140 Z"/>
+    <path d="M180 180 L380 180 L380 420 L180 420 Z"/>
+    <path d="M220 230 L340 230 M220 280 L340 280 M220 330 L300 330"/>
+  </g>
+  <rect x="520" y="160" width="18" height="280" fill="#c45c3a"/>
+  <text x="560" y="250" fill="#f2ebe3" font-family="Arial Black, Arial" font-size="64" letter-spacing="4">SESSION WEEK</text>
+  <text x="560" y="320" fill="#9a9086" font-family="Arial" font-size="24">24 3>48=8 · B8E0 :V<=0B0 · ;8H5 70 70?8A><</text>
+  <text x="560" y="380" fill="#c45c3a" font-family="Arial" font-size="22" letter-spacing="2">  $ ! # TG</text>
+</svg>

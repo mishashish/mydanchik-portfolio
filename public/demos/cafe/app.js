@@ -142,28 +142,28 @@
       name: 'Ethiopia',
       note: 'Жасмин · бергамот',
       taste: 'Квітковий, чайний body, довгий солодкий фініш. Ідеально під V60 і Crocodile Sunrise.',
-      img: IMG('guji.jpg'),
+      tone: '#e11d2e',
     },
     {
       id: 'col',
       name: 'Colombia',
       note: 'Какао · карамель',
       taste: 'Щільніший cup, горіхова солодкість. Дружить з молоком і Shadow Roast.',
-      img: IMG('shadow.jpg'),
+      tone: '#0033ff',
     },
     {
       id: 'ken',
       name: 'Kenya',
       note: 'Смородина · вино',
       taste: 'Яскрава кислота, соковитий mid. Для тих, хто любить «вау».',
-      img: IMG('sunrise.jpg'),
+      tone: '#2b4c7e',
     },
     {
       id: 'bra',
       name: 'Brazil',
       note: 'Горіх · шоколад',
       taste: 'М’який, низька кислота. База для еспресо-бленду KŌHI.',
-      img: IMG('flat.jpg'),
+      tone: '#b81422',
     },
   ]
 
@@ -273,8 +273,8 @@
   function renderOrigins() {
     $('originGrid').innerHTML = ORIGINS.map(
       (o, i) => `
-      <button type="button" class="origin ${i === 0 ? 'on' : ''}" data-o="${o.id}">
-        <img src="${escapeHtml(o.img)}" alt="" loading="lazy" />
+      <button type="button" class="origin ${i === 0 ? 'on' : ''}" data-o="${o.id}" style="--tone:${o.tone}">
+        <i class="originSwatch" aria-hidden="true"></i>
         <span class="originCopy"><b>${o.name}</b><span>${o.note}</span></span>
       </button>`,
     ).join('')

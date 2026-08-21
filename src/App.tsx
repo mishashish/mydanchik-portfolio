@@ -1,6 +1,5 @@
 import { useEffect, useState, type MouseEvent } from 'react'
 import './App.css'
-import Scene3D from './Scene3D'
 import {
   getDict,
   LANGS,
@@ -192,22 +191,16 @@ export default function App() {
             </div>
           </div>
 
-          <div className="aboutSideCol">
-            <div className="panel aboutScene">
-              <span className="sceneLabel">{t.about.sceneLabel}</span>
-              <Scene3D />
-            </div>
-            <div className="panel aboutSide">
-              <h3>{t.about.how}</h3>
-              <ol className="steps">
-                {t.about.steps.map((step, i) => (
-                  <li key={step}>
-                    <b>0{i + 1}</b>
-                    <span>{step}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
+          <div className="panel aboutSide">
+            <h3>{t.about.how}</h3>
+            <ol className="steps">
+              {t.about.steps.map((step, i) => (
+                <li key={step}>
+                  <b>0{i + 1}</b>
+                  <span>{step}</span>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>

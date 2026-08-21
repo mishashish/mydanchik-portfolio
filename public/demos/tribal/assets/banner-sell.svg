@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640">
+  <rect width="1200" height="640" fill="#0c0a09"/>
+  <rect x="0" y="0" width="8" height="640" fill="#c45c3a"/>
+  <g fill="none" stroke="#e8dccf" stroke-width="5" stroke-linecap="square">
+    <path d="M180 80 L260 180 L180 260 L100 180 Z M180 260 V560"/>
+    <path d="M100 340 L180 420 L260 340 M80 460 L180 540 L280 460"/>
+  </g>
+  <circle cx="180" cy="180" r="10" fill="#c45c3a"/>
+  <text x="360" y="250" fill="#f2ebe3" font-family="Arial Black, Arial" font-size="72" letter-spacing="6">OPEN SLOTS</text>
+  <text x="360" y="320" fill="#c45c3a" font-family="Arial" font-size="28" letter-spacing="4"> " ·  · BLACKWORK</text>
+  <text x="360" y="390" fill="#9a9086" font-family="Arial" font-size="22">2V4 3500 ´ · 5A:V7 C ?>40@C=>: 4> mid-size</text>
+</svg>
