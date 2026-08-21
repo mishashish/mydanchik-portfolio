@@ -59,7 +59,7 @@ const dict = {
         { b: '20+', s: 'проєктів' },
         { b: '24/7', s: 'на звʼязку' },
       ],
-      sceneLabel: 'MYD CORE // 3D',
+      sceneLabel: 'BYTE // 3D MAGE',
     },
     stack: {
       head: '02 // TECH STACK',
@@ -212,7 +212,7 @@ const dict = {
         { b: '20+', s: 'projects' },
         { b: '24/7', s: 'reachable' },
       ],
-      sceneLabel: 'MYD CORE // 3D',
+      sceneLabel: 'BYTE // 3D MAGE',
     },
     stack: {
       head: '02 // TECH STACK',
