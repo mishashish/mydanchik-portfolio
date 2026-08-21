@@ -1,5 +1,6 @@
 import { useEffect, useState, type MouseEvent } from 'react'
 import './App.css'
+import Scene3D from './Scene3D'
 import {
   getDict,
   LANGS,
@@ -9,15 +10,6 @@ import {
 } from './i18n'
 
 const NAV_IDS = ['home', 'about', 'stack', 'services', 'projects', 'contact'] as const
-
-function useClock(lang: Lang) {
-  const [now, setNow] = useState(() => new Date())
-  useEffect(() => {
-    const id = window.setInterval(() => setNow(new Date()), 1000)
-    return () => window.clearInterval(id)
-  }, [])
-  return now.toLocaleTimeString(lang === 'uk' ? 'uk-UA' : 'en-GB', { hour12: false })
-}
 
 function loadLang(): Lang {
   const saved = localStorage.getItem('myd_lang')
@@ -29,7 +21,6 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [lang, setLang] = useState<Lang>(loadLang)
   const [logoHits, setLogoHits] = useState(0)
-  const clock = useClock(lang)
   const t = getDict(lang)
   const voidUrl = `/demos/roguelike/index.html?lang=${lang}`
 
@@ -45,7 +36,6 @@ export default function App() {
   }, [logoHits])
 
   function onLogoClick(_e: MouseEvent) {
-    // 7 кліків по лого за ~2с → VOID BREACH
     setLogoHits((n) => {
       const next = n + 1
       if (next >= 7) {
@@ -66,7 +56,7 @@ export default function App() {
             onLogoClick(e)
           }}
         >
-          <img className="logoMark" src="/logo.svg" alt="" width={40} height={40} />
+          <img className="logoMark" src="/logo.svg" alt="" width={36} height={36} />
           <span className="logoText">
             MYDANCHIK
             <small>{t.logoSub}</small>
@@ -95,7 +85,6 @@ export default function App() {
             ))}
           </div>
           <span className="pill online">{t.online}</span>
-          <span className="pill">{clock}</span>
           <button
             type="button"
             className="burger"
@@ -121,11 +110,7 @@ export default function App() {
 
         <div className="heroContent">
           <p className="tagline">{t.hero.tagline}</p>
-          <h1>
-            MYDAN-
-            <br />
-            CHIK
-          </h1>
+          <h1>MYDANCHIK</h1>
           <p className="heroLead">
             {t.hero.lead1}
             <br />
@@ -138,14 +123,6 @@ export default function App() {
             <a className="btn ghost" href="#contact">
               {t.hero.contact}
             </a>
-          </div>
-          <div className="heroStats">
-            {t.hero.stats.map((s) => (
-              <div key={s.s}>
-                <b>{s.b}</b>
-                <span>{s.s}</span>
-              </div>
-            ))}
           </div>
         </div>
 
@@ -165,7 +142,7 @@ export default function App() {
               <img className="aboutLogo" src="/logo.svg" alt="" width={36} height={36} />
               <h2>MYDANCHIK</h2>
               <span className="statusPill">
-                <i /> ONLINE
+                <i /> {t.online}
               </span>
             </div>
             <p className="aboutLead">{t.about.lead}</p>
@@ -182,18 +159,6 @@ export default function App() {
                 {t.about.writeMe}
               </a>
             </div>
-          </div>
-
-          <div className="panel aboutSide">
-            <h3>{t.about.how}</h3>
-            <ol className="steps">
-              {t.about.steps.map((step, i) => (
-                <li key={step}>
-                  <b>0{i + 1}</b>
-                  <span>{step}</span>
-                </li>
-              ))}
-            </ol>
             <div className="aboutMeta">
               {t.about.meta.map((m) => (
                 <div key={m.s}>
@@ -201,6 +166,24 @@ export default function App() {
                   <span>{m.s}</span>
                 </div>
               ))}
+            </div>
+          </div>
+
+          <div className="aboutSideCol">
+            <div className="panel aboutScene">
+              <span className="sceneLabel">{t.about.sceneLabel}</span>
+              <Scene3D />
+            </div>
+            <div className="panel aboutSide">
+              <h3>{t.about.how}</h3>
+              <ol className="steps">
+                {t.about.steps.map((step, i) => (
+                  <li key={step}>
+                    <b>0{i + 1}</b>
+                    <span>{step}</span>
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
         </div>
@@ -219,30 +202,11 @@ export default function App() {
                 <span>{t.stack.groups[group.id]}</span>
                 <i aria-hidden="true" />
               </div>
-              <div className="stackGrid">
+              <div className="stackChips">
                 {group.items.map((item) => (
-                  <div key={item.name} className="stackCard">
-                    <div className="stackTop">
-                      <b>{item.name}</b>
-                      <span className="stackLvl">{item.lvl}%</span>
-                    </div>
-                    <div className="bar" aria-hidden="true">
-                      <i style={{ width: `${item.lvl}%` }} />
-                    </div>
-                    <div className="stackMeta">
-                      {item.lvl >= 90
-                        ? lang === 'uk'
-                          ? 'експерт'
-                          : 'expert'
-                        : item.lvl >= 80
-                          ? lang === 'uk'
-                            ? 'сильно'
-                            : 'strong'
-                          : lang === 'uk'
-                            ? 'впевнено'
-                            : 'solid'}
-                    </div>
-                  </div>
+                  <span key={item.name} className="stackChip">
+                    {item.name}
+                  </span>
                 ))}
               </div>
             </div>
@@ -326,20 +290,20 @@ export default function App() {
           </div>
           <div className="panel contactLinks">
             <a href="https://t.me/mydanchik_o" target="_blank" rel="noreferrer">
-              [ TELEGRAM ]
+              Telegram
             </a>
             <a href="https://www.fiverr.com/mydanchik" target="_blank" rel="noreferrer">
-              [ FIVERR ]
+              Fiverr
             </a>
             <a
               href="https://freelancehunt.com/freelancer/mydanchik.html#portfolio-rozrobka-botiv"
               target="_blank"
               rel="noreferrer"
             >
-              [ FREELANCEHUNT ]
+              Freelancehunt
             </a>
             <a href="https://www.instagram.com/_mydanchik" target="_blank" rel="noreferrer">
-              [ INSTAGRAM ]
+              Instagram
             </a>
             <p className="prompt">{t.contact.prompt}</p>
           </div>
