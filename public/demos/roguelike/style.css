@@ -17,6 +17,16 @@ html, body {
   background: #0a0c12;
   color: var(--ink);
   font-family: var(--body);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+html.game-on,
+html.game-on body {
+  overflow: hidden;
+  height: 100%;
+  height: 100dvh;
 }
 
 html.embed, html.embed body {
@@ -272,7 +282,7 @@ html.embed #game {
   max-width: 90vw;
 }
 
-/* touch pad — overlay, compact */
+/* touch pad — left stick + CAST */
 .pad {
   position: absolute;
   left: 0;
@@ -281,36 +291,54 @@ html.embed #game {
   display: none;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 8px 10px 10px;
+  padding: 10px 14px calc(12px + env(safe-area-inset-bottom, 0px));
   pointer-events: none;
   z-index: 4;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.55));
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.65));
+  gap: 12px;
 }
 
-.pad .padBtn { pointer-events: auto; }
-
-@media (hover: none), (pointer: coarse) {
-  .pad { display: flex; }
-  .focusHint { display: none; }
+.pad .padBtn,
+.pad .stick {
+  pointer-events: auto;
 }
 
-html.embed .pad {
+.stick {
+  position: relative;
+  width: 118px;
+  height: 118px;
+  touch-action: none;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.stickBase {
+  position: absolute;
+  inset: 8px;
+  border: 3px solid rgba(215, 208, 176, 0.85);
+  border-radius: 50%;
+  background: rgba(12, 16, 12, 0.55);
+}
+
+.stickKnob {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 48px;
+  height: 48px;
+  margin: -24px 0 0 -24px;
+  border: 3px solid #e8e2c8;
+  border-radius: 50%;
+  background: rgba(125, 255, 163, 0.55);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.45);
+  will-change: transform;
+}
+
+.padActions {
   display: flex;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  html.embed .pad { display: none; }
-}
-
-.dpad {
-  display: grid;
-  justify-items: center;
-  gap: 4px;
-}
-
-.dpadMid {
-  display: flex;
-  gap: 4px;
+  gap: 8px;
+  align-items: flex-end;
+  padding-bottom: 8px;
 }
 
 .padBtn {
@@ -322,7 +350,10 @@ html.embed .pad {
   font-family: var(--pixel);
   font-size: 11px;
   cursor: pointer;
-  border-radius: 2px;
+  border-radius: 4px;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .padBtn:active {
@@ -330,25 +361,35 @@ html.embed .pad {
   color: #111;
 }
 
-.padActions {
-  display: flex;
-  gap: 8px;
-  align-items: flex-end;
-}
-
 .padBtn.attack {
-  min-width: 78px;
-  min-height: 56px;
+  min-width: 92px;
+  min-height: 92px;
+  border-radius: 50%;
   background: rgba(255, 138, 58, 0.92);
   color: #1a1008;
   border-color: #ff8a3a;
+  font-size: 12px;
+  box-shadow: 0 4px 0 #8a3a10;
 }
 
-.padBtn.bomb {
-  min-width: 46px;
-  min-height: 42px;
-  background: rgba(80, 40, 30, 0.9);
-  border-color: #c08060;
+.padBtn.attack:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #8a3a10;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .pad { display: flex; }
+  .focusHint { display: none; }
+  #game { cursor: default; }
+}
+
+html.embed .pad,
+html.touch .pad {
+  display: flex;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.embed:not(.touch) .pad { display: none; }
 }
 
 html.embed .back { display: none; }
@@ -357,27 +398,63 @@ html.embed .heroCard { max-width: 100%; }
 html.embed h1 { font-size: 14px; }
 html.embed .story { font-size: 17px; }
 
+@media (max-width: 900px) {
+  .pad { display: flex; }
+  .focusHint { display: none; }
+}
+
 @media (max-width: 720px) {
-  .screen { padding: 12px; gap: 10px; }
+  .screen {
+    padding: 16px 14px calc(16px + env(safe-area-inset-bottom, 0px));
+    gap: 10px;
+    min-height: 100dvh;
+    align-content: center;
+  }
   .hud {
     font-size: 6px;
     flex-wrap: wrap;
     gap: 4px;
+    padding: 4px 6px;
   }
   .hearts { max-width: 100%; }
-  #gameWrap { padding: 4px; gap: 4px; }
+  #gameWrap {
+    padding: 4px;
+    gap: 4px;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+  .stageBox {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 0;
+  }
+  #game {
+    width: 100%;
+    max-height: calc(100dvh - 150px);
+    object-fit: contain;
+    touch-action: none;
+  }
   .pad {
     display: flex;
-    padding: 6px 8px 8px;
+    padding: 8px 12px calc(10px + env(safe-area-inset-bottom, 0px));
   }
-  .padBtn {
-    min-width: 42px;
-    min-height: 40px;
-    font-size: 10px;
+  .stick {
+    width: 132px;
+    height: 132px;
+  }
+  .stickKnob {
+    width: 54px;
+    height: 54px;
+    margin: -27px 0 0 -27px;
   }
   .padBtn.attack {
-    min-width: 70px;
-    min-height: 50px;
+    min-width: 100px;
+    min-height: 100px;
+    font-size: 13px;
   }
   html.embed #game {
     max-height: calc(100dvh - 150px);
@@ -389,10 +466,49 @@ html.embed .story { font-size: 17px; }
   .big {
     width: 100%;
     max-width: 320px;
+    min-height: 52px;
+    font-size: 12px;
   }
+  .story { font-size: 18px; }
+  .story .controls { font-size: 16px; }
 }
 
 @media (max-width: 420px) {
-  .hud #stats, .hud #floor { font-size: 5px; }
-  .padBtn { min-width: 38px; min-height: 36px; }
+  .hud #stats,
+  .hud #floor {
+    font-size: 5px;
+  }
+  .stick {
+    width: 120px;
+    height: 120px;
+  }
+  .padBtn.attack {
+    min-width: 88px;
+    min-height: 88px;
+  }
 }
+
+@media (orientation: landscape) and (max-height: 480px) {
+  #game {
+    max-height: calc(100dvh - 88px);
+  }
+  .stick {
+    width: 96px;
+    height: 96px;
+  }
+  .stickKnob {
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+  }
+  .padBtn.attack {
+    min-width: 72px;
+    min-height: 72px;
+    font-size: 10px;
+  }
+  .pad {
+    padding: 4px 10px calc(6px + env(safe-area-inset-bottom, 0px));
+  }
+  .hud { font-size: 5px; }
+}
+

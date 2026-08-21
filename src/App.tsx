@@ -1,5 +1,6 @@
 import { useEffect, useState, type MouseEvent } from 'react'
 import './App.css'
+import { ByteCompanion } from './ByteCompanion'
 import Scene3D from './Scene3D'
 import {
   getDict,
@@ -11,6 +12,15 @@ import {
 
 const NAV_IDS = ['home', 'about', 'stack', 'services', 'projects', 'contact'] as const
 
+function useClock(lang: Lang) {
+  const [now, setNow] = useState(() => new Date())
+  useEffect(() => {
+    const id = window.setInterval(() => setNow(new Date()), 1000)
+    return () => window.clearInterval(id)
+  }, [])
+  return now.toLocaleTimeString(lang === 'uk' ? 'uk-UA' : 'en-GB', { hour12: false })
+}
+
 function loadLang(): Lang {
   const saved = localStorage.getItem('myd_lang')
   if (saved === 'uk' || saved === 'en') return saved
@@ -21,6 +31,7 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [lang, setLang] = useState<Lang>(loadLang)
   const [logoHits, setLogoHits] = useState(0)
+  const clock = useClock(lang)
   const t = getDict(lang)
   const voidUrl = `/demos/roguelike/index.html?lang=${lang}`
 
@@ -48,6 +59,8 @@ export default function App() {
 
   return (
     <div className="site">
+      <ByteCompanion />
+
       <header className="topbar">
         <a
           className="logo"
@@ -56,7 +69,7 @@ export default function App() {
             onLogoClick(e)
           }}
         >
-          <img className="logoMark" src="/logo.svg" alt="" width={36} height={36} />
+          <img className="logoMark" src="/logo.svg" alt="" width={40} height={40} />
           <span className="logoText">
             MYDANCHIK
             <small>{t.logoSub}</small>
@@ -85,6 +98,7 @@ export default function App() {
             ))}
           </div>
           <span className="pill online">{t.online}</span>
+          <span className="pill clock">{clock}</span>
           <button
             type="button"
             className="burger"
@@ -110,7 +124,11 @@ export default function App() {
 
         <div className="heroContent">
           <p className="tagline">{t.hero.tagline}</p>
-          <h1>MYDANCHIK</h1>
+          <h1>
+            MYDAN-
+            <br />
+            CHIK
+          </h1>
           <p className="heroLead">
             {t.hero.lead1}
             <br />
@@ -123,6 +141,14 @@ export default function App() {
             <a className="btn ghost" href="#contact">
               {t.hero.contact}
             </a>
+          </div>
+          <div className="heroStats">
+            {t.hero.stats.map((s) => (
+              <div key={s.s}>
+                <b>{s.b}</b>
+                <span>{s.s}</span>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -290,20 +316,20 @@ export default function App() {
           </div>
           <div className="panel contactLinks">
             <a href="https://t.me/mydanchik_o" target="_blank" rel="noreferrer">
-              Telegram
+              [ TELEGRAM ]
             </a>
             <a href="https://www.fiverr.com/mydanchik" target="_blank" rel="noreferrer">
-              Fiverr
+              [ FIVERR ]
             </a>
             <a
               href="https://freelancehunt.com/freelancer/mydanchik.html#portfolio-rozrobka-botiv"
               target="_blank"
               rel="noreferrer"
             >
-              Freelancehunt
+              [ FREELANCEHUNT ]
             </a>
             <a href="https://www.instagram.com/_mydanchik" target="_blank" rel="noreferrer">
-              Instagram
+              [ INSTAGRAM ]
             </a>
             <p className="prompt">{t.contact.prompt}</p>
           </div>

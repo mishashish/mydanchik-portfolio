@@ -2,16 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <title>VOID BREACH</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=24" />
+    <link rel="stylesheet" href="style.css?v=30" />
   </head>
   <body>
     <div id="boot" class="screen">
       <p class="tag">mydanchik · void kernel saga</p>
       <h1>VOID<br />BREACH</h1>
-      <p class="story">
+      <p class="story" id="bootStory">
         WASD move · arrows shoot · exit through green wall gaps<br />
         <span class="controls">First room is training · explore the floor anytime</span>
       </p>
@@ -37,16 +42,12 @@
         <canvas id="game" width="768" height="480" tabindex="0"></canvas>
         <p class="focusHint" id="focusHint">WASD move · arrows shoot</p>
         <div class="pad" aria-label="touch controls">
-          <div class="dpad">
-            <button type="button" class="padBtn" data-pad="KeyW">▲</button>
-            <div class="dpadMid">
-              <button type="button" class="padBtn" data-pad="KeyA">◀</button>
-              <button type="button" class="padBtn" data-pad="KeyS">▼</button>
-              <button type="button" class="padBtn" data-pad="KeyD">▶</button>
-            </div>
+          <div class="stick" id="moveStick" aria-label="move stick">
+            <div class="stickBase"></div>
+            <div class="stickKnob" id="stickKnob"></div>
           </div>
           <div class="padActions">
-            <button type="button" class="padBtn attack" data-pad="attack">CAST</button>
+            <button type="button" class="padBtn attack" data-pad="attack" id="castBtn">CAST</button>
           </div>
         </div>
       </div>
@@ -62,6 +63,6 @@
       <a class="back" href="/">← portfolio</a>
     </div>
 
-    <script src="game.js?v=28"></script>
+    <script src="game.js?v=30"></script>
   </body>
 </html>

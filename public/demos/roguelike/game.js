@@ -36,6 +36,16 @@
     (window.parent && window.parent !== window)
   if (EMBED) document.documentElement.classList.add('embed')
 
+  const IS_TOUCH =
+    window.matchMedia('(hover: none), (pointer: coarse)').matches ||
+    window.matchMedia('(max-width: 900px)').matches ||
+    'ontouchstart' in window
+  if (IS_TOUCH) document.documentElement.classList.add('touch')
+
+  const stickVec = { x: 0, y: 0 }
+  const moveStick = document.getElementById('moveStick')
+  const stickKnob = document.getElementById('stickKnob')
+
   const qs = new URLSearchParams(location.search)
   const LANG = (() => {
     const fromQ = (qs.get('lang') || '').toLowerCase()
@@ -1329,11 +1339,21 @@
 
   function aim(p) {
     // touch CAST / click — стріляй в сторону курсора
-    if (window.__roguePtr && (keys.attack || window.__roguePtr.down)) {
+    if (window.__roguePtr && (keys.attack || window.__roguePtr.down) && !IS_TOUCH) {
       const dx = window.__roguePtr.x - p.x
       const dy = window.__roguePtr.y - p.y
       if (Math.hypot(dx, dy) > 10) {
         const len = Math.hypot(dx, dy)
+        return { x: dx / len, y: dy / len }
+      }
+    }
+    // mobile CAST — auto-aim nearest enemy
+    if (keys.attack) {
+      const n = nearest(p)
+      if (n) {
+        const dx = n.x - p.x
+        const dy = n.y - p.y
+        const len = Math.hypot(dx, dy) || 1
         return { x: dx / len, y: dy / len }
       }
     }
@@ -1458,7 +1478,12 @@
     if (keys.KeyS || keys.padDown) my += 1
     if (keys.KeyA || keys.padLeft) mx -= 1
     if (keys.KeyD || keys.padRight) mx += 1
-    if (window.__roguePtr && window.__roguePtr.down) {
+    if (stickVec.x || stickVec.y) {
+      mx += stickVec.x
+      my += stickVec.y
+    }
+    // desktop click-drag walk; on phone stick handles movement
+    if (!IS_TOUCH && window.__roguePtr && window.__roguePtr.down) {
       const dx = window.__roguePtr.x - p.x
       const dy = window.__roguePtr.y - p.y
       if (Math.hypot(dx, dy) > 14) {
@@ -2040,10 +2065,14 @@
 
   startBtn.disabled = true
   startBtn.textContent = '…'
+  const setPlayingUi = (on) => {
+    document.documentElement.classList.toggle('game-on', on)
+  }
   startBtn.onclick = () => {
     boot.classList.add('hidden')
     end.classList.add('hidden')
     gameWrap.classList.remove('hidden')
+    setPlayingUi(true)
     newRun()
     canvas.focus({ preventScroll: true })
     hideFocusHintSoon()
@@ -2052,6 +2081,7 @@
     end.classList.add('hidden')
     boot.classList.add('hidden')
     gameWrap.classList.remove('hidden')
+    setPlayingUi(true)
     newRun()
     canvas.focus({ preventScroll: true })
     hideFocusHintSoon()
@@ -2090,10 +2120,63 @@
     btn.addEventListener('lostpointercapture', off)
   })
 
+  // Virtual move stick (phone)
+  if (moveStick && stickKnob) {
+    const maxR = 42
+    let active = false
+    const syncKnob = (nx, ny) => {
+      stickKnob.style.transform = `translate(${nx * maxR}px, ${ny * maxR}px)`
+    }
+    const setFromEvent = (e) => {
+      const rect = moveStick.getBoundingClientRect()
+      const cx = rect.left + rect.width / 2
+      const cy = rect.top + rect.height / 2
+      let dx = e.clientX - cx
+      let dy = e.clientY - cy
+      const len = Math.hypot(dx, dy) || 1
+      const dead = 10
+      if (len < dead) {
+        stickVec.x = 0
+        stickVec.y = 0
+        syncKnob(0, 0)
+        return
+      }
+      const clamped = Math.min(1, len / maxR)
+      dx = (dx / len) * clamped
+      dy = (dy / len) * clamped
+      stickVec.x = dx
+      stickVec.y = dy
+      syncKnob(dx, dy)
+    }
+    const clearStick = () => {
+      active = false
+      stickVec.x = 0
+      stickVec.y = 0
+      syncKnob(0, 0)
+    }
+    moveStick.addEventListener('pointerdown', (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+      active = true
+      moveStick.setPointerCapture(e.pointerId)
+      setFromEvent(e)
+      if (focusHint) focusHint.classList.add('off')
+    })
+    moveStick.addEventListener('pointermove', (e) => {
+      if (!active) return
+      e.preventDefault()
+      setFromEvent(e)
+    })
+    moveStick.addEventListener('pointerup', clearStick)
+    moveStick.addEventListener('pointercancel', clearStick)
+    moveStick.addEventListener('lostpointercapture', clearStick)
+  }
+
   window.__roguePtr = { x: 0, y: 0, down: false }
   canvas.tabIndex = 0
   canvas.addEventListener('pointerdown', (e) => {
     if (!G || gameWrap.classList.contains('hidden')) return
+    if (IS_TOUCH) return
     canvas.focus({ preventScroll: true })
     if (focusHint) focusHint.classList.add('off')
     canvas.setPointerCapture(e.pointerId)
@@ -2109,7 +2192,7 @@
     // click/hold = walk toward point (cast via SPACE / CAST)
   })
   canvas.addEventListener('pointermove', (e) => {
-    if (!window.__roguePtr.down) return
+    if (IS_TOUCH || !window.__roguePtr.down) return
     const rect = canvas.getBoundingClientRect()
     window.__roguePtr.x = ((e.clientX - rect.left) / rect.width) * W
     window.__roguePtr.y = ((e.clientY - rect.top) / rect.height) * H
@@ -2119,6 +2202,18 @@
   }
   canvas.addEventListener('pointerup', up)
   canvas.addEventListener('pointercancel', up)
+
+  // Mobile boot copy
+  const bootStory = document.getElementById('bootStory')
+  if (bootStory && IS_TOUCH) {
+    bootStory.innerHTML =
+      LANG === 'uk'
+        ? 'Стік — ходити · CAST — стріляти (автоприціл) · вихід — зелені двері<br /><span class="controls">Перша кімната — тренування</span>'
+        : 'Stick to move · CAST to shoot (auto-aim) · exit via green gaps<br /><span class="controls">First room is training</span>'
+  }
+  if (focusHint && IS_TOUCH) {
+    focusHint.textContent = LANG === 'uk' ? 'Стік · CAST' : 'Stick · CAST'
+  }
 
   requestAnimationFrame(frame)
 })()
