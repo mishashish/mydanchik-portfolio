@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=9" />
+    <link rel="stylesheet" href="style.css?v=10" />
     <link rel="stylesheet" href="../_shared/demo-note.css" />
   </head>
   <body>
@@ -32,7 +32,7 @@
     <main id="top">
       <section class="hero">
         <div class="heroBleed">
-          <img class="heroPhoto" src="assets/croc-menu.png?v=5" alt="KŌHI coffee" />
+          <img class="heroPhoto" src="assets/hero.jpg?v=6" alt="KŌHI coffee" />
           <div class="heroOverlay">
             <p class="tag">Kyiv · Podil · コーヒー</p>
             <h1>KŌHI</h1>
@@ -45,9 +45,9 @@
           </div>
         </div>
         <aside class="heroAside">
-          <img class="shopLine" src="assets/shop-line.png?v=5" alt="Cafe storefront" />
+          <img class="shopLine" src="assets/shop.jpg?v=6" alt="Cafe storefront" />
           <div class="badgeRow">
-            <img class="mokaLine" src="assets/moka-line.png?v=5" alt="Moka pot logo" />
+            <img class="mokaLine" src="assets/moka.jpg?v=6" alt="Moka pot" />
             <div>
               <b>Batch #218</b>
               <strong id="batchName">Ethiopia Guji</strong>
@@ -71,19 +71,25 @@
           <p>Про заклад KŌHI</p>
         </div>
         <div class="aboutGrid">
-          <article class="aboutCard">
-            <h3>Де ми</h3>
-            <p>Поділ, вул. Сагайдачного · відкритий простір, світло з вітрини, запах свіжого роасту.</p>
-            <ul>
-              <li>Вт–Нд · 09:00–21:00</li>
-              <li>Самовивіз · Wi‑Fi · розетка біля вікна</li>
-              <li>Batch roast кілька разів на тиждень</li>
-            </ul>
+          <article class="aboutCard aboutCard--photo">
+            <img class="aboutImg" src="assets/shop.jpg?v=6" alt="KŌHI на Подолі" />
+            <div class="aboutBody">
+              <h3>Де ми</h3>
+              <p>Поділ, вул. Сагайдачного · відкритий простір, світло з вітрини, запах свіжого роасту.</p>
+              <ul>
+                <li>Вт–Нд · 09:00–21:00</li>
+                <li>Самовивіз · Wi‑Fi · розетка біля вікна</li>
+                <li>Batch roast кілька разів на тиждень</li>
+              </ul>
+            </div>
           </article>
-          <article class="aboutCard">
-            <h3>Що всередині</h3>
-            <p>Еспресо-бар, V60 станція, вітрина з випічкою. Синій moka на стіні — щоб не переплутати з іншими.</p>
-            <p class="muted">Демо-сайт: оплата симулюється локально, гроші не списуються.</p>
+          <article class="aboutCard aboutCard--photo">
+            <img class="aboutImg" src="assets/moka.jpg?v=6" alt="Інтерʼєр KŌHI" />
+            <div class="aboutBody">
+              <h3>Що всередині</h3>
+              <p>Еспресо-бар, V60 станція, вітрина з випічкою. Синій moka на стіні — щоб не переплутати з іншими.</p>
+              <p class="muted">Демо-сайт: оплата симулюється локально, гроші не списуються.</p>
+            </div>
           </article>
           <article class="aboutCard mapCard">
             <h3>На мапі</h3>
@@ -131,6 +137,9 @@
           <p>Живий таймер партії</p>
         </div>
         <div class="roastPanel">
+          <div class="roastVisual">
+            <img src="assets/guji.jpg?v=6" alt="Roast batch" />
+          </div>
           <div class="gauge">
             <svg viewBox="0 0 120 120">
               <circle cx="60" cy="60" r="52" class="track" />
@@ -274,7 +283,7 @@
       <span>KŌHI · demo café</span>
       <a href="/">Portfolio</a>
     </footer>
-    <script src="app.js?v=9"></script>
+    <script src="app.js?v=10"></script>
     <script src="../_shared/demo-note.js"></script>
   </body>
 </html>

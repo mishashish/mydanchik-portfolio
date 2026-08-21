@@ -59,7 +59,7 @@ const dict = {
         { b: '20+', s: 'проєктів' },
         { b: '24/7', s: 'на звʼязку' },
       ],
-      sceneLabel: 'BYTE // 3D MAGE',
+      sceneLabel: 'BYTE // CAMPFIRE',
     },
     stack: {
       head: '02 // TECH STACK',
@@ -212,7 +212,7 @@ const dict = {
         { b: '20+', s: 'projects' },
         { b: '24/7', s: 'reachable' },
       ],
-      sceneLabel: 'BYTE // 3D MAGE',
+      sceneLabel: 'BYTE // CAMPFIRE',
     },
     stack: {
       head: '02 // TECH STACK',
@@ -334,11 +334,11 @@ export const PROJECT_META: Record<
   },
   tribal: {
     demo: '/demos/tribal/index.html',
-    preview: '/previews/tribal.svg',
+    preview: '/previews/tribal.jpg',
   },
   cafe: {
     demo: '/demos/cafe/index.html',
-    preview: '/previews/cafe.svg',
+    preview: '/previews/cafe.jpg',
   },
 }
 

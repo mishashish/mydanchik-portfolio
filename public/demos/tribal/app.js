@@ -1,7 +1,7 @@
 (() => {
   'use strict'
 
-  const KEY = 'inkward_studio_v5'
+  const KEY = 'inkward_studio_v6'
   const PASS = 'inkward'
   const MAX_STORE = 2_500_000 // ~2.5MB — інакше вкладка «не відповідає»
 
@@ -23,31 +23,31 @@
     banners: [
       {
         id: 'b1',
-        src: './assets/banner.svg',
+        src: './assets/banner.jpg',
         title: 'Open slots · March',
         text: 'Custom blackwork totems. Quiet room. Sharp lines.',
       },
       {
         id: 'b2',
-        src: './assets/banner-2.svg',
+        src: './assets/banner-2.jpg',
         title: 'Session week',
         text: 'Mid-size blackwork на Подолі. Кидай референс у TG.',
       },
     ],
     gallery: [
-      { id: 'g1', src: './assets/work-1.svg', caption: 'Spine totem' },
-      { id: 'g2', src: './assets/work-2.svg', caption: 'Shoulder band' },
-      { id: 'g3', src: './assets/work-3.svg', caption: 'Forearm spear' },
-      { id: 'g4', src: './assets/work-4.svg', caption: 'Blackwork mesh' },
-      { id: 'g5', src: './assets/work-5.svg', caption: 'Session lines' },
-      { id: 'g6', src: './assets/work-6.svg', caption: 'Diamond mark' },
+      { id: 'g1', src: './assets/work-1.jpg', caption: 'Spine totem' },
+      { id: 'g2', src: './assets/work-2.jpg', caption: 'Shoulder band' },
+      { id: 'g3', src: './assets/work-3.jpg', caption: 'Forearm spear' },
+      { id: 'g4', src: './assets/work-4.jpg', caption: 'Blackwork mesh' },
+      { id: 'g5', src: './assets/work-5.jpg', caption: 'Session lines' },
+      { id: 'g6', src: './assets/work-6.jpg', caption: 'Diamond mark' },
     ],
     posts: [
       {
         id: 'a1',
         title: 'Про студію INKWARD',
         body: 'Ми на Подолі — тиха кімната, чистий інструмент, без зайвого шуму. Працюємо лише з трайблом і blackwork: довгі лінії, геометрія, тотеми під силует тіла. Перед сесією завжди збираємо ескіз і проговорюємо догляд.',
-        image: './assets/banner.svg',
+        image: './assets/banner.jpg',
         tag: 'Студія',
         at: Date.now() - 86400000 * 12,
       },
@@ -55,7 +55,7 @@
         id: 'a2',
         title: 'Майстер Олег · blackwork',
         body: 'Олег — головний майстер INKWARD. 7 років у лінії: спинні тотеми, плечові пояси, щільний mesh. Любить гостру геометрію і довгі сесії без поспіху. Запис через TG — кидай референс і місце на тілі.',
-        image: './assets/work-1.svg',
+        image: './assets/work-1.jpg',
         tag: 'Майстри',
         at: Date.now() - 86400000 * 8,
       },
@@ -63,7 +63,7 @@
         id: 'a3',
         title: 'Майстриня Ніна · fine tribal',
         body: 'Ніна робить тонкий трайбл і орнаменти на передпліччя / гомілку. Читає анатомію, підганяє візерунок під рух м’яза. Якщо хочеш «легший» рисунок без важкої заливки — це до неї.',
-        image: './assets/work-3.svg',
+        image: './assets/work-3.jpg',
         tag: 'Майстри',
         at: Date.now() - 86400000 * 5,
       },
@@ -71,7 +71,7 @@
         id: 'a4',
         title: 'Як проходить сесія',
         body: '1) Консультація і ескіз. 2) Підготовка шкіри й трасування. 3) Робота лінією з паузами. 4) Інструкція з догляду на руки. Середня mid-size сесія — 2–4 години. Великі спинні проєкти ділимо на кілька візитів.',
-        image: './assets/work-5.svg',
+        image: './assets/work-5.jpg',
         tag: 'Процес',
         at: Date.now() - 86400000 * 2,
       },
@@ -79,7 +79,7 @@
         id: 'a5',
         title: 'Догляд перші 14 днів',
         body: 'М’яке миття, тонка плівка мазі, без сонця, басейну й тренувань з тертям. Якщо свербіння сильне або з’явилась червона кайма — одразу пиши майстру в TG. Ми залишаємось на зв’язку після сесії.',
-        image: './assets/work-4.svg',
+        image: './assets/work-4.jpg',
         tag: 'Догляд',
         at: Date.now() - 86400000,
       },
@@ -257,7 +257,7 @@
         (g) => `
       <article class="shot">
         <img src="${escapeHtml(g.src)}" alt="${escapeHtml(g.caption || 'work')}" loading="lazy"
-          onerror="this.onerror=null;this.src='./assets/work-1.svg'" />
+          onerror="this.onerror=null;this.src='./assets/work-1.jpg'" />
         <span>${escapeHtml(g.caption || 'work')}</span>
       </article>`,
       )
@@ -481,7 +481,7 @@
   $('bannerAdd').onclick = () => {
     const title = $('bannerTitle').value.trim() || 'INKWARD'
     const text = $('bannerText').value.trim()
-    const src = pendingBannerImage || './assets/banner.svg'
+    const src = pendingBannerImage || './assets/banner.jpg'
     state.banners.unshift({ id: uid(), src, title, text })
     pendingBannerImage = ''
     $('bannerTitle').value = ''

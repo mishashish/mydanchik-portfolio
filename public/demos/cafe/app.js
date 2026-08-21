@@ -1,7 +1,7 @@
 (() => {
   'use strict'
 
-  const IMG = (file) => `assets/${file}?v=5`
+  const IMG = (file) => `assets/${file}?v=6`
 
   const MENU = [
     {
@@ -142,24 +142,28 @@
       name: 'Ethiopia',
       note: 'Жасмин · бергамот',
       taste: 'Квітковий, чайний body, довгий солодкий фініш. Ідеально під V60 і Crocodile Sunrise.',
+      img: IMG('guji.jpg'),
     },
     {
       id: 'col',
       name: 'Colombia',
       note: 'Какао · карамель',
       taste: 'Щільніший cup, горіхова солодкість. Дружить з молоком і Shadow Roast.',
+      img: IMG('shadow.jpg'),
     },
     {
       id: 'ken',
       name: 'Kenya',
       note: 'Смородина · вино',
       taste: 'Яскрава кислота, соковитий mid. Для тих, хто любить «вау».',
+      img: IMG('sunrise.jpg'),
     },
     {
       id: 'bra',
       name: 'Brazil',
       note: 'Горіх · шоколад',
       taste: 'М’який, низька кислота. База для еспресо-бленду KŌHI.',
+      img: IMG('flat.jpg'),
     },
   ]
 
@@ -270,8 +274,8 @@
     $('originGrid').innerHTML = ORIGINS.map(
       (o, i) => `
       <button type="button" class="origin ${i === 0 ? 'on' : ''}" data-o="${o.id}">
-        <b>${o.name}</b>
-        <span>${o.note}</span>
+        <img src="${escapeHtml(o.img)}" alt="" loading="lazy" />
+        <span class="originCopy"><b>${o.name}</b><span>${o.note}</span></span>
       </button>`,
     ).join('')
     $('tasteMap').textContent = ORIGINS[0].taste
