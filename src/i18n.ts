@@ -133,8 +133,8 @@ const dict = {
         {
           id: 'tribal',
           title: 'INKWARD',
-          text: 'Студія blackwork з записом: галерея, статті, відгуки, мапа й Admin CMS.',
-          tags: ['Website', 'CMS', 'Book'],
+          text: 'Neo tribal studio: атмосфера, галерея на тілі, journal, запис і Admin CMS.',
+          tags: ['Neo Tribal', 'CMS', 'Book'],
         },
         {
           id: 'cafe',
@@ -285,8 +285,8 @@ const dict = {
         {
           id: 'tribal',
           title: 'INKWARD',
-          text: 'Blackwork studio with booking: gallery, articles, reviews, map, and Admin CMS.',
-          tags: ['Website', 'CMS', 'Book'],
+          text: 'Neo tribal studio: body-led gallery, journal, booking, and Admin CMS.',
+          tags: ['Neo Tribal', 'CMS', 'Book'],
         },
         {
           id: 'cafe',

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="700" viewBox="0 0 1400 700">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c0c0c"/>
+      <stop offset="100%" stop-color="#1a1816"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="700" fill="url(#g)"/>
+  <g fill="none" stroke="#eae6e0" stroke-width="3.5" stroke-linecap="round" opacity="0.9">
+    <path d="M80 80 C200 40 340 120 380 240 C420 360 320 480 240 560 C160 640 120 680 80 620"/>
+    <path d="M160 160 C260 140 340 220 320 320"/>
+    <path d="M200 280 C280 260 340 340 300 420"/>
+    <path d="M240 440 C300 430 360 500 340 560"/>
+    <path d="M400 100 L480 180 L440 240 L520 320 L480 400 L560 480"/>
+  </g>
+  <text x="620" y="280" fill="#f4f0ea" font-family="Arial Black, Arial" font-size="72" letter-spacing="8">NEO TRIBAL</text>
+  <text x="620" y="350" fill="#9a9590" font-family="Arial" font-size="26" letter-spacing="3">;V=VW ?V4 0=0B><VN · blackwork · =530B82=89 ?@>ABV@</text>
+  <text x="620" y="420" fill="#cfc8bf" font-family="Arial" font-size="22">Hip · thigh · spine · shoulder</text>
+</svg>

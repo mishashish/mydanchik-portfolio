@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200">
+  <rect width="900" height="1200" fill="#080808"/>
+  <g fill="none" stroke="#e8e4df" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M210 180 C280 140 420 130 480 210 C540 290 520 420 470 520 C410 650 330 760 300 920"/>
+    <path d="M300 920 C360 860 470 820 560 880 C640 930 680 1020 690 1100"/>
+    <path d="M250 260 C340 240 430 280 450 360"/>
+    <path d="M280 340 C360 320 420 380 400 460"/>
+    <path d="M320 480 C390 470 440 530 420 600"/>
+    <path d="M340 620 C400 610 450 680 430 740"/>
+    <path d="M360 200 L420 260 L380 320 L450 380 L400 440"/>
+    <path d="M480 240 L540 300 L500 360 L560 420"/>
+    <path d="M200 400 C260 380 300 440 280 500 C260 560 220 600 180 640"/>
+    <path d="M520 560 C600 540 660 600 640 680 C620 760 560 820 500 860"/>
+  </g>
+  <g fill="#e8e4df">
+    <polygon points="360,180 380,210 350,220"/>
+    <polygon points="560,300 580,330 545,335"/>
+    <polygon points="420,700 445,740 400,745"/>
+  </g>
+  <text x="48" y="1148" fill="#6a6660" font-family="Arial" font-size="28" letter-spacing="6">NEO · HIP FLOW</text>
+</svg>

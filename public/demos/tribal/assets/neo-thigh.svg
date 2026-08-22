@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200">
+  <rect width="900" height="1200" fill="#0a0a0a"/>
+  <g fill="#111" stroke="#f0ebe4" stroke-width="6" stroke-linejoin="round">
+    <path d="M340 80 L520 80 L580 200 L560 420 L500 720 L420 1100 L300 1100 L280 720 L240 420 L260 200 Z" fill="#0d0d0d"/>
+  </g>
+  <g fill="none" stroke="#f0ebe4" stroke-width="5" stroke-linecap="round">
+    <path d="M360 140 C420 120 500 140 520 200 C540 280 500 340 460 400"/>
+    <path d="M380 220 C450 210 500 260 490 330"/>
+    <path d="M400 360 C470 350 510 420 480 500 C450 580 420 640 400 720"/>
+    <path d="M420 760 C470 750 510 820 490 900 C470 980 440 1040 420 1080"/>
+    <path d="M300 300 C350 280 390 340 370 400 C350 460 310 520 290 580"/>
+    <path d="M320 620 C380 600 420 680 390 760"/>
+    <path d="M450 180 L510 260 L470 320 L530 400 L490 480"/>
+    <path d="M340 480 L390 540 L350 600 L400 680"/>
+  </g>
+  <g fill="#f0ebe4">
+    <circle cx="470" cy="170" r="6"/>
+    <polygon points="510,260 530,290 500,295"/>
+    <polygon points="400,680 420,720 385,725"/>
+  </g>
+  <text x="48" y="1148" fill="#6a6660" font-family="Arial" font-size="28" letter-spacing="6">NEO · THIGH BLACK</text>
+</svg>

@@ -3,25 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>INKWARD — Tribal Tattoo Studio</title>
+    <title>INKWARD — Neo Tribal Studio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=8" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=9" />
     <link rel="stylesheet" href="../_shared/demo-note.css" />
   </head>
   <body>
     <div class="noise" aria-hidden="true"></div>
+    <div class="inkDrift" aria-hidden="true"></div>
+
     <header class="nav">
       <a class="mark" href="#top">
-        <img id="navLogo" class="logoImg" src="./assets/logo.svg" alt="" width="36" height="36" />
+        <img id="navLogo" class="logoImg" src="./assets/logo.svg" alt="" width="32" height="32" />
         <span id="markText">INKWARD</span>
       </a>
       <nav>
+        <a href="#neo">Neo</a>
         <a href="#work">Works</a>
-        <a href="#journal">Articles</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#map">Map</a>
+        <a href="#zones">Zones</a>
+        <a href="#journal">Journal</a>
         <a href="#book">Book</a>
       </nav>
       <div class="navRight">
@@ -32,30 +34,43 @@
 
     <main id="top">
       <section class="hero">
+        <div class="heroMedia" id="heroMedia">
+          <img class="heroPhoto" src="./assets/hero-ink.jpg" alt="" />
+          <div class="heroShade"></div>
+          <svg class="heroLines" viewBox="0 0 400 640" fill="none" aria-hidden="true">
+            <path class="draw" d="M120 40 C180 20 260 60 280 140 C300 220 240 300 200 380 C160 460 140 540 160 600" />
+            <path class="draw d2" d="M160 80 C220 70 270 120 260 180 C250 250 200 300 180 360" />
+            <path class="draw d3" d="M200 200 L260 260 L230 310 L290 370 L250 430" />
+            <path class="draw d4" d="M90 220 C140 200 170 260 150 320 C130 380 90 430 70 480" />
+            <circle class="pulse" cx="200" cy="100" r="4" fill="currentColor" />
+          </svg>
+        </div>
         <div class="heroCopy">
-          <p class="eyebrow" id="heroEyebrow">Tribal · Blackwork · Kyiv</p>
+          <p class="eyebrow" id="heroEyebrow">Neo Tribal · Kyiv</p>
           <h1 id="heroTitle">INKWARD</h1>
-          <p class="lead" id="heroLead">Трайбл під твій силует. Ескіз → сесія → догляд. Без черг у відкритому просторі — лише запис.</p>
+          <p class="lead" id="heroLead">Нео-трайбл, що лягає на тіло: гострі лінії, blackwork, негативний простір і рух силуету.</p>
           <div class="cta">
-            <a class="btn" href="#book">Записатись · від 3500 ₴</a>
+            <a class="btn" href="#book">Записатись</a>
             <a class="btn ghost" href="#work">Дивитись роботи</a>
           </div>
-          <p class="heroPitch">3 вільні слоти цього тижня · Поділ · відповідь у TG за день</p>
-          <div class="heroStats" id="heroStats"></div>
-        </div>
-        <div class="heroArt" aria-hidden="true">
-          <svg class="totem" viewBox="0 0 200 320" fill="none">
-            <path class="stroke draw" d="M100 12 L118 48 L100 70 L82 48 Z M100 70 V290 M70 110 L100 140 L130 110 M60 170 L100 210 L140 170 M78 250 L100 275 L122 250" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
-            <circle class="pulse" cx="100" cy="48" r="6" fill="currentColor"/>
-          </svg>
         </div>
       </section>
 
-      <section class="offerBar" aria-label="offer">
-        <div><b>01</b><span>Ескіз під тіло</span></div>
-        <div><b>02</b><span>Сесія 2–4 год</span></div>
-        <div><b>03</b><span>Догляд 14 днів</span></div>
-        <a class="btn" href="#book">Хочу слот</a>
+      <section class="neo" id="neo">
+        <div class="neoText reveal">
+          <p class="kicker">Що таке neo</p>
+          <h2>Лінії як частина силуету</h2>
+          <p>
+            Не класичний орнамент «поверх шкіри», а сучасна графіка під анатомію:
+            витягнуті штрихи, симетрія, щільний black і повітря між формами.
+          </p>
+        </div>
+        <ul class="neoList reveal">
+          <li><b>Анатомія</b><span>композиція під плече, стегно, спину</span></li>
+          <li><b>Blackwork</b><span>контраст і глибина без шуму</span></li>
+          <li><b>Негатив</b><span>порожнеча працює як частина малюнка</span></li>
+          <li><b>Рух</b><span>лінії ведуть по м’язу, не проти нього</span></li>
+        </ul>
       </section>
 
       <section class="promo" id="promo">
@@ -63,28 +78,53 @@
       </section>
 
       <section class="strip" id="work">
-        <div class="stripHead">
+        <div class="stripHead reveal">
           <h2>Selected marks</h2>
-          <p id="gallerySub">Реальні лінії під запис. У Admin можна підставити свої фото клієнтів.</p>
+          <p id="gallerySub">Нео на тілі — від тонкої лінії до щільного black. У Admin можна додати свої фото.</p>
         </div>
         <div class="gallery" id="gallery"></div>
       </section>
 
+      <section class="zones" id="zones">
+        <div class="stripHead reveal">
+          <h2>On the body</h2>
+          <p>Один мотив по-різному дихає на hip, thigh, shoulder чи spine.</p>
+        </div>
+        <div class="zoneGrid">
+          <article class="zone reveal">
+            <img src="./assets/neo-hip.svg" alt="" loading="lazy" />
+            <div><h3>Hip flow</h3><p>Криві лінії вздовж тазу — як на dark hip / thigh референсах.</p></div>
+          </article>
+          <article class="zone reveal">
+            <img src="./assets/neo-thigh.svg" alt="" loading="lazy" />
+            <div><h3>Thigh black</h3><p>Щільний blackwork і негативний простір на стегні.</p></div>
+          </article>
+          <article class="zone reveal">
+            <img src="./assets/work-1.jpg" alt="" loading="lazy" />
+            <div><h3>Spine spear</h3><p>Вертикаль уздовж хребта — ритм і симетрія.</p></div>
+          </article>
+          <article class="zone reveal">
+            <img src="./assets/work-2.jpg" alt="" loading="lazy" />
+            <div><h3>Shoulder band</h3><p>Пояс навколо плеча — рух руки підкреслює лінію.</p></div>
+          </article>
+        </div>
+      </section>
+
       <section class="journal" id="journal">
-        <div class="stripHead">
-          <h2>Articles</h2>
-          <p>Студія, майстри, процес і догляд — без опитувань.</p>
+        <div class="stripHead reveal">
+          <h2>Journal</h2>
+          <p>Студія, майстри, процес і догляд.</p>
         </div>
         <div class="posts" id="posts"></div>
       </section>
 
       <section class="reviews" id="reviews">
-        <div class="stripHead">
+        <div class="stripHead reveal">
           <h2>Reviews</h2>
-          <p>Відгуки клієнтів.</p>
+          <p>Відгуки після сесій.</p>
         </div>
         <div class="reviewGrid" id="reviewGrid"></div>
-        <form class="reviewForm" id="reviewForm">
+        <form class="reviewForm reveal" id="reviewForm">
           <h3>Залишити відгук</h3>
           <div class="row2">
             <input id="revName" type="text" maxlength="40" placeholder="Ім’я" required />
@@ -100,7 +140,7 @@
       </section>
 
       <section class="mapSec" id="map">
-        <div class="mapCopy">
+        <div class="mapCopy reveal">
           <h2>Where</h2>
           <p id="addrText">Київ, Поділ · вул. Сагайдачного 12</p>
           <p class="muted" id="hoursText">Вт–Нд · 12:00–21:00 · лише за записом</p>
@@ -118,17 +158,20 @@
       </section>
 
       <section class="book" id="book">
-        <div>
-          <h2>Book a seat</h2>
-          <p id="bookText">Напиши ідею — зберемо ескіз під твій силует.</p>
-          <p class="contactLine" id="contactLine"></p>
+        <div class="bookVisual" aria-hidden="true">
+          <img src="./assets/work-3.jpg" alt="" />
         </div>
-        <a class="btn" id="mailBtn" href="mailto:book@inkward.studio">Написати</a>
+        <div class="bookCopy">
+          <h2>Book a seat</h2>
+          <p id="bookText">Кинь зону на тілі й 1–2 референси — зберемо нео-ескіз під твій силует.</p>
+          <p class="contactLine" id="contactLine"></p>
+          <a class="btn" id="mailBtn" href="mailto:book@inkward.studio">Написати</a>
+        </div>
       </section>
     </main>
 
     <footer>
-      <span>INKWARD · demo studio</span>
+      <span>INKWARD · neo tribal demo</span>
       <a href="/">MYDANCHIK portfolio</a>
     </footer>
 
@@ -180,7 +223,7 @@
           </label>
           <img id="bannerPreview" class="logoPreview hidden" alt="" />
           <button type="button" class="btn" id="bannerAdd">Додати банер</button>
-          <p class="muted" style="margin:0;font-size:12px">Без фото підставиться дефолтний банер студії.</p>
+          <p class="muted" style="margin:0;font-size:12px">Без фото підставиться дефолтний банер.</p>
           <div class="adminList" id="adminBanners"></div>
         </section>
 
@@ -197,7 +240,7 @@
         <section class="adminPane" data-pane="posts">
           <h3>Стаття + фото</h3>
           <input id="postTitle" type="text" placeholder="Заголовок" />
-          <input id="postTag" type="text" placeholder="Тег: Студія / Майстри / Процес…" />
+          <input id="postTag" type="text" placeholder="Тег: Neo / Майстри / Процес…" />
           <textarea id="postBody" rows="4" placeholder="Текст статті"></textarea>
           <label class="up">
             <span>Прикріпити фото</span>
@@ -232,7 +275,7 @@
       </div>
     </aside>
 
-    <script src="app.js?v=8"></script>
+    <script src="app.js?v=9"></script>
     <script src="../_shared/demo-note.js"></script>
   </body>
 </html>
