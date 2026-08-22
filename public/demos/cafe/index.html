@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=12" />
+    <link rel="stylesheet" href="style.css?v=13" />
     <link rel="stylesheet" href="../_shared/demo-note.css" />
   </head>
   <body>
@@ -43,28 +43,32 @@
             </div>
           </div>
           <figure class="heroPanel heroArt">
-            <img src="assets/illu-hero.svg" alt="" width="900" height="720" />
+            <img src="assets/hero.jpg?v=7" alt="Кава KŌHI" />
+            <figcaption>Espresso bar</figcaption>
           </figure>
           <figure class="heroPanel heroSip">
-            <img src="assets/illu-sip.svg" alt="" width="640" height="640" />
+            <img src="assets/flat.jpg?v=7" alt="Flat white" />
+            <figcaption>Flat white</figcaption>
           </figure>
           <figure class="heroPanel heroIcons">
-            <img src="assets/illu-icons.svg" alt="" width="800" height="420" />
+            <img src="assets/croissant.jpg?v=7" alt="Випічка" />
+            <figcaption>Bakery</figcaption>
           </figure>
         </div>
         <div class="batchBar">
-          <img class="batchBadge" src="assets/illu-badge.svg" alt="" width="220" height="84" />
+          <img class="batchBadge" src="assets/guji.jpg?v=7" alt="" width="88" height="88" />
           <div>
             <b>Batch #218 · зараз</b>
             <strong id="batchName">Ethiopia Guji</strong>
           </div>
+          <a class="btn batchCta" href="#menu">Дивитись меню</a>
         </div>
       </section>
 
       <section class="menu" id="menu">
         <div class="secHead">
           <h2>MENU</h2>
-          <p>Еспресо · пуровер · тортики · у кошик</p>
+          <p>Обери розділ · додай у кошик · оплати онлайн або стіл</p>
         </div>
         <div class="menuTabs" id="menuTabs"></div>
         <div class="menuGrid" id="menuGrid"></div>
@@ -76,21 +80,27 @@
           <p>Про заклад KŌHI</p>
         </div>
         <div class="aboutGrid">
-          <article class="aboutCard">
-            <p class="aboutKicker">Локація</p>
-            <h3>Поділ · вітрина</h3>
-            <p>Вул. Сагайдачного · запах свіжого роасту, місце біля розетки.</p>
-            <ul>
-              <li>Вт–Нд · 09:00–21:00</li>
-              <li>Самовивіз · Wi‑Fi</li>
-              <li>Batch roast кілька разів на тиждень</li>
-            </ul>
+          <article class="aboutCard aboutPhoto">
+            <img src="assets/shop.jpg?v=7" alt="KŌHI на Подолі" />
+            <div>
+              <p class="aboutKicker">Локація</p>
+              <h3>Поділ · вітрина</h3>
+              <p>Вул. Сагайдачного · запах свіжого роасту, місце біля розетки.</p>
+              <ul>
+                <li>Вт–Нд · 09:00–21:00</li>
+                <li>Самовивіз · Wi‑Fi</li>
+                <li>Batch roast кілька разів на тиждень</li>
+              </ul>
+            </div>
           </article>
-          <article class="aboutCard invert">
-            <p class="aboutKicker">Всередині</p>
-            <h3>Бар · V60 · вітрина</h3>
-            <p>Еспресо, пуровер, тортики. Теплий двотонний вайб — щоб одразу відчути KŌHI.</p>
-            <p class="muted">Демо: оплата локальна, гроші не списуються.</p>
+          <article class="aboutCard aboutPhoto invert">
+            <img src="assets/moka.jpg?v=7" alt="Бар KŌHI" />
+            <div>
+              <p class="aboutKicker">Всередині</p>
+              <h3>Бар · V60 · вітрина</h3>
+              <p>Еспресо, пуровер, тортики. Теплий простір під меню й оплату.</p>
+              <p class="muted">Демо: оплата локальна, гроші не списуються.</p>
+            </div>
           </article>
           <article class="aboutCard mapCard">
             <h3>На мапі</h3>
@@ -281,7 +291,7 @@
       <span>KŌHI · demo café</span>
       <a href="/">Portfolio</a>
     </footer>
-    <script src="app.js?v=12"></script>
+    <script src="app.js?v=13"></script>
     <script src="../_shared/demo-note.js"></script>
   </body>
 </html>

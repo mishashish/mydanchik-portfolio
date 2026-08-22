@@ -1,7 +1,7 @@
 (() => {
   'use strict'
 
-  const IMG = (file) => `assets/${file}?v=6`
+  const IMG = (file) => `assets/${file}?v=7`
 
   const MENU = [
     {
@@ -225,9 +225,10 @@
       .replace(/"/g, '&quot;')
   }
 
-  function cardHtml(m) {
+  function cardHtml(m, i = 0) {
+    const span = i % 7 === 0 || i % 7 === 4 ? ' wide' : ''
     return `
-      <article class="card">
+      <article class="card reveal${span}" style="--d:${(i % 8) * 50}ms">
         <div class="cardMedia">
           <img src="${escapeHtml(m.img)}" alt="${escapeHtml(m.name)}" loading="lazy" decoding="async" />
           <span class="cat">${escapeHtml(m.cat === 'Cakes' ? 'Тортики' : m.cat)}</span>
@@ -237,7 +238,7 @@
           <p>${escapeHtml(m.desc)}</p>
           <div class="priceRow">
             <div class="price">${money(m.price)}</div>
-            <button type="button" data-add="${m.id}">Додати</button>
+            <button type="button" data-add="${m.id}">+ У кошик</button>
           </div>
         </div>
       </article>`
@@ -245,29 +246,55 @@
 
   function renderTabs() {
     $('menuTabs').innerHTML = CATS.map((c) => {
-      const label = c === 'Cakes' ? 'Тортики' : c
-      return `<button type="button" class="menuTab ${c === cat ? 'on' : ''}" data-cat="${escapeHtml(c)}">${escapeHtml(label)}</button>`
+      const label = c === 'Cakes' ? 'Тортики' : c === 'All' ? 'Усе меню' : c
+      const count =
+        c === 'All' ? MENU.length : MENU.filter((m) => m.cat === c).length
+      return `<button type="button" class="menuTab ${c === cat ? 'on' : ''}" data-cat="${escapeHtml(c)}">${escapeHtml(label)} <em>${count}</em></button>`
     }).join('')
   }
 
   function renderMenu() {
-    const sections = cat === 'All' ? SECTIONS : SECTIONS.filter((s) => s.cat === cat)
-    $('menuGrid').innerHTML = sections
-      .map((sec) => {
-        const items = MENU.filter((m) => m.cat === sec.cat)
-        if (!items.length) return ''
-        return `
-        <section class="menuBlock">
-          <header class="menuDivider">
-            <h3>${escapeHtml(sec.title)}</h3>
-            <span>${escapeHtml(sec.note)}</span>
-          </header>
-          <div class="menuRow">
-            ${items.map(cardHtml).join('')}
-          </div>
-        </section>`
-      })
-      .join('')
+    if (cat === 'All') {
+      $('menuGrid').innerHTML = `
+        <div class="menuBento">
+          ${MENU.map((m, i) => cardHtml(m, i)).join('')}
+        </div>`
+    } else {
+      const sections = SECTIONS.filter((s) => s.cat === cat)
+      $('menuGrid').innerHTML = sections
+        .map((sec) => {
+          const items = MENU.filter((m) => m.cat === sec.cat)
+          if (!items.length) return ''
+          return `
+          <section class="menuBlock">
+            <header class="menuDivider">
+              <h3>${escapeHtml(sec.title)}</h3>
+              <span>${escapeHtml(sec.note)} · ${items.length}</span>
+            </header>
+            <div class="menuBento menuBento--cat">
+              ${items.map((m, i) => cardHtml(m, i)).join('')}
+            </div>
+          </section>`
+        })
+        .join('')
+    }
+    observeReveal()
+  }
+
+  function observeReveal() {
+    const nodes = document.querySelectorAll('.reveal:not(.in)')
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in')
+            io.unobserve(e.target)
+          }
+        })
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' },
+    )
+    nodes.forEach((n) => io.observe(n))
   }
 
   function renderOrigins() {
