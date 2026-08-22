@@ -142,28 +142,28 @@
       name: 'Ethiopia',
       note: 'Жасмин · бергамот',
       taste: 'Квітковий, чайний body, довгий солодкий фініш. Ідеально під V60 і Crocodile Sunrise.',
-      tone: '#e11d2e',
+      tone: '#e8783a',
     },
     {
       id: 'col',
       name: 'Colombia',
       note: 'Какао · карамель',
       taste: 'Щільніший cup, горіхова солодкість. Дружить з молоком і Shadow Roast.',
-      tone: '#0033ff',
+      tone: '#d46528',
     },
     {
       id: 'ken',
       name: 'Kenya',
       note: 'Смородина · вино',
       taste: 'Яскрава кислота, соковитий mid. Для тих, хто любить «вау».',
-      tone: '#2b4c7e',
+      tone: '#1a2744',
     },
     {
       id: 'bra',
       name: 'Brazil',
       note: 'Горіх · шоколад',
       taste: 'М’який, низька кислота. База для еспресо-бленду KŌHI.',
-      tone: '#b81422',
+      tone: '#f0dfc0',
     },
   ]
 

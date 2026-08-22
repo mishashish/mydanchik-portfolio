@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" fill="none">
+  <rect width="800" height="420" fill="#E8783A"/>
+  <g stroke="#F6E8D0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- croissant -->
+    <path d="M90 220c40-80 140-100 200-40 20 20 10 50-20 55-70 10-130 20-160 55-20 25-40 20-20-70z"/>
+    <path d="M130 200c40-20 90-15 120 10"/>
+    <!-- cup -->
+    <path d="M360 160h110v90c0 40-30 70-55 70s-55-30-55-70z"/>
+    <path d="M470 185h40c25 0 45 20 45 45s-20 45-45 45h-20"/>
+    <path d="M390 120c8-30 28-48 50-55"/>
+    <path d="M420 125c6-24 20-40 40-48"/>
+    <!-- donut -->
+    <circle cx="640" cy="210" r="70"/>
+    <circle cx="640" cy="210" r="28"/>
+    <path d="M590 175c20-10 40-8 55 5"/>
+    <path d="M670 185c15 10 22 28 15 45"/>
+    <!-- baguette -->
+    <path d="M80 340c120-40 280-30 380 10"/>
+    <path d="M140 325c8 12 8 20 0 28"/>
+    <path d="M220 318c8 12 8 20 0 28"/>
+    <path d="M300 315c8 12 8 20 0 28"/>
+    <path d="M380 320c8 12 8 20 0 28"/>
+  </g>
+</svg>

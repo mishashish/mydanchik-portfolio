@@ -6,14 +6,14 @@
     <title>KŌHI — Coffee · Kyiv</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=11" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=12" />
     <link rel="stylesheet" href="../_shared/demo-note.css" />
   </head>
   <body>
     <header class="top">
       <a class="logo" href="#top" aria-label="KŌHI home">
-        <img class="logoMark" src="assets/logo.png?v=5" alt="" width="40" height="40" />
+        <span class="logoDot" aria-hidden="true"></span>
         <span>KŌHI</span>
       </a>
       <nav>
@@ -31,35 +31,40 @@
 
     <main id="top">
       <section class="hero">
-        <div class="heroBleed">
-          <img class="heroPhoto" src="assets/croc-menu.png?v=7" alt="KŌHI coffee" />
-          <div class="heroOverlay">
+        <div class="heroStage">
+          <div class="heroPanel heroBrand">
             <p class="tag">Kyiv · Podil · コーヒー</p>
             <h1>KŌHI</h1>
-            <p class="script">order · roast · pay</p>
-            <p class="lead">Кава з характером на Подолі. Меню з фото, кошик, оплата столика через mono або онлайн — усе в одному демо.</p>
+            <p class="script">любов до кави</p>
+            <p class="lead">Тепла кавʼярня на Подолі: меню, кошик, оплата столика через mono або онлайн.</p>
             <div class="cta">
-              <a class="btn" href="#menu">Замовити з меню</a>
+              <a class="btn" href="#menu">До меню</a>
               <a class="btn ghost" href="#order">Оплатити стіл</a>
             </div>
           </div>
+          <figure class="heroPanel heroArt">
+            <img src="assets/illu-hero.svg" alt="" width="900" height="720" />
+          </figure>
+          <figure class="heroPanel heroSip">
+            <img src="assets/illu-sip.svg" alt="" width="640" height="640" />
+          </figure>
+          <figure class="heroPanel heroIcons">
+            <img src="assets/illu-icons.svg" alt="" width="800" height="420" />
+          </figure>
         </div>
-        <aside class="heroAside">
-          <img class="shopLine" src="assets/shop-line.png?v=7" alt="Cafe storefront" />
-          <div class="badgeRow">
-            <img class="mokaLine" src="assets/moka-line.png?v=7" alt="Moka pot logo" />
-            <div>
-              <b>Batch #218 · зараз</b>
-              <strong id="batchName">Ethiopia Guji</strong>
-            </div>
+        <div class="batchBar">
+          <img class="batchBadge" src="assets/illu-badge.svg" alt="" width="220" height="84" />
+          <div>
+            <b>Batch #218 · зараз</b>
+            <strong id="batchName">Ethiopia Guji</strong>
           </div>
-        </aside>
+        </div>
       </section>
 
       <section class="menu" id="menu">
         <div class="secHead">
           <h2>MENU</h2>
-          <p>Фото · розділи · тортики · у кошик · оплата в демо</p>
+          <p>Еспресо · пуровер · тортики · у кошик</p>
         </div>
         <div class="menuTabs" id="menuTabs"></div>
         <div class="menuGrid" id="menuGrid"></div>
@@ -74,17 +79,17 @@
           <article class="aboutCard">
             <p class="aboutKicker">Локація</p>
             <h3>Поділ · вітрина</h3>
-            <p>Вул. Сагайдачного · світло з вулиці, запах свіжого роасту, місце біля розетки.</p>
+            <p>Вул. Сагайдачного · запах свіжого роасту, місце біля розетки.</p>
             <ul>
               <li>Вт–Нд · 09:00–21:00</li>
               <li>Самовивіз · Wi‑Fi</li>
               <li>Batch roast кілька разів на тиждень</li>
             </ul>
           </article>
-          <article class="aboutCard">
+          <article class="aboutCard invert">
             <p class="aboutKicker">Всередині</p>
             <h3>Бар · V60 · вітрина</h3>
-            <p>Еспресо, пуровер, тортики. Синій moka на стіні — щоб не переплутати з іншими кавʼярнями.</p>
+            <p>Еспресо, пуровер, тортики. Теплий двотонний вайб — щоб одразу відчути KŌHI.</p>
             <p class="muted">Демо: оплата локальна, гроші не списуються.</p>
           </article>
           <article class="aboutCard mapCard">
@@ -276,7 +281,7 @@
       <span>KŌHI · demo café</span>
       <a href="/">Portfolio</a>
     </footer>
-    <script src="app.js?v=11"></script>
+    <script src="app.js?v=12"></script>
     <script src="../_shared/demo-note.js"></script>
   </body>
 </html>

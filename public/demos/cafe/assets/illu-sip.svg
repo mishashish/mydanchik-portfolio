@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640" fill="none">
+  <rect width="640" height="640" fill="#F6E8D0"/>
+  <g stroke="#E8783A" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <circle cx="320" cy="250" r="70"/>
+    <path d="M250 250c10-40 40-65 70-70"/>
+    <circle cx="295" cy="240" r="7" fill="#E8783A" stroke="none"/>
+    <circle cx="345" cy="240" r="7" fill="#E8783A" stroke="none"/>
+    <path d="M300 265c12 12 28 12 40 0"/>
+    <path d="M250 320c20 90 100 120 140 40"/>
+    <path d="M280 380h90v70c0 35-25 60-45 60s-45-25-45-60z"/>
+    <path d="M370 400h40c22 0 40 18 40 40s-18 40-40 40h-25"/>
+    <path d="M300 250c-5-35 5-60 25-75"/>
+    <path d="M330 245c0-30 12-55 35-68"/>
+    <ellipse cx="325" cy="545" rx="90" ry="16"/>
+  </g>
+  <text x="320" y="600" text-anchor="middle" fill="#E8783A" font-family="Arial" font-size="26" font-weight="700" letter-spacing="3"> ( '(</text>
+</svg>

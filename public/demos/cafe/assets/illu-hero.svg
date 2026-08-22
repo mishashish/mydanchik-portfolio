@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="720" viewBox="0 0 900 720" fill="none">
+  <rect width="900" height="720" fill="#E8783A"/>
+  <g stroke="#F6E8D0" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M520 470c0 70-55 120-120 120s-120-50-120-120"/>
+    <path d="M400 470v-70h120v70"/>
+    <path d="M520 420h55c28 0 50 22 50 50s-22 50-50 50h-30"/>
+    <path d="M430 280c10-40 40-70 80-80"/>
+    <path d="M470 285c8-36 30-60 65-70"/>
+    <path d="M510 295c6-28 22-48 48-56"/>
+    <circle cx="300" cy="360" r="8" fill="#F6E8D0" stroke="none"/>
+    <circle cx="340" cy="360" r="8" fill="#F6E8D0" stroke="none"/>
+    <path d="M280 300c20-55 70-70 110-40"/>
+    <path d="M250 420c35 55 100 70 155 35"/>
+    <path d="M230 380h55"/>
+    <ellipse cx="300" cy="500" rx="70" ry="18"/>
+  </g>
+  <text x="70" y="160" fill="#F6E8D0" font-family="Arial Black, Arial" font-size="110" font-weight="900" letter-spacing="4">KLHI</text>
+  <text x="74" y="210" fill="#F6E8D0" font-family="Arial" font-size="28" letter-spacing="6">.  </text>
+</svg>

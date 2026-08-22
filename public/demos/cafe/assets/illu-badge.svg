@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="200" viewBox="0 0 520 200" fill="none">
+  <rect width="520" height="200" rx="28" fill="#F6E8D0"/>
+  <text x="40" y="95" fill="#E8783A" font-family="Arial Black, Arial" font-size="64" font-weight="900" letter-spacing="2">KLHI</text>
+  <text x="44" y="145" fill="#E8783A" font-family="Arial" font-size="22" letter-spacing="4">Kyiv · Podil</text>
+  <g stroke="#E8783A" stroke-width="7" stroke-linecap="round" fill="none">
+    <path d="M400 70h70v55c0 25-18 42-35 42s-35-17-35-42z"/>
+    <path d="M470 90h28c16 0 28 12 28 28s-12 28-28 28h-16"/>
+    <path d="M420 45c6-20 20-32 36-36"/>
+  </g>
+</svg>

@@ -139,8 +139,8 @@ const dict = {
         {
           id: 'cafe',
           title: 'KŌHI',
-          text: 'Кавʼярня під продаж: меню з фото, кошик, mono-стіл / онлайн-оплата, roast.',
-          tags: ['Website', 'Cafe', 'Pay'],
+          text: 'Кавʼярня в двотонному вайбі: меню, кошик, mono-стіл / онлайн-оплата, roast.',
+          tags: ['Cafe', 'Brand', 'Pay'],
         },
       ],
     },
@@ -291,8 +291,8 @@ const dict = {
         {
           id: 'cafe',
           title: 'KŌHI',
-          text: 'Café built to sell: photo menu, cart, mono table / online pay, roast.',
-          tags: ['Website', 'Cafe', 'Pay'],
+          text: 'Two-tone café vibe: photo menu, cart, mono table / online pay, roast.',
+          tags: ['Cafe', 'Brand', 'Pay'],
         },
       ],
     },
