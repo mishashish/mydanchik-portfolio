@@ -166,7 +166,7 @@ async function serpApiSearch(apiKey: string, params: URLSearchParams): Promise<{
 
   const r = await fetch(url.toString())
   if (!r.ok) throw new Error('SerpApi HTTP ' + r.status)
-  const data = await r.json()
+  const data = (await r.json()) as any
   if (data?.error) throw new Error(String(data.error))
 
   const organic = data?.organic_results || []
