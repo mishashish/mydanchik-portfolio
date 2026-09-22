@@ -744,4 +744,8 @@
   renderReviews()
   renderHistory()
   renderCart()
+
+  if (window.DemoLang) {
+    window.DemoLang.mount(document.getElementById('langMount'), 'kohi')
+  }
 })()

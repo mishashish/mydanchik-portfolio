@@ -6,17 +6,18 @@
     <title>INKWARD — Neo Tribal Studio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=9" />
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=14" />
     <link rel="stylesheet" href="../_shared/demo-note.css" />
+    <link rel="stylesheet" href="../_shared/demo-lang.css" />
   </head>
   <body>
     <div class="noise" aria-hidden="true"></div>
     <div class="inkDrift" aria-hidden="true"></div>
 
-    <header class="nav">
+    <header class="nav" id="siteNav">
       <a class="mark" href="#top">
-        <img id="navLogo" class="logoImg" src="./assets/logo.svg" alt="" width="32" height="32" />
+        <img id="navLogo" class="logoImg" src="./assets/logo.svg" alt="" width="36" height="36" />
         <span id="markText">INKWARD</span>
       </a>
       <nav>
@@ -27,8 +28,9 @@
         <a href="#book">Book</a>
       </nav>
       <div class="navRight">
+        <div id="langMount"></div>
         <button type="button" class="ghostBtn" id="adminOpen">Admin</button>
-        <a class="mini" href="/">← Portfolio</a>
+        <a class="mini" href="/" data-i18n-uk="← Portfolio" data-i18n-en="← Portfolio">← Portfolio</a>
       </div>
     </header>
 
@@ -37,39 +39,42 @@
         <div class="heroMedia" id="heroMedia">
           <img class="heroPhoto" src="./assets/hero-ink.jpg" alt="" />
           <div class="heroShade"></div>
-          <svg class="heroLines" viewBox="0 0 400 640" fill="none" aria-hidden="true">
-            <path class="draw" d="M120 40 C180 20 260 60 280 140 C300 220 240 300 200 380 C160 460 140 540 160 600" />
-            <path class="draw d2" d="M160 80 C220 70 270 120 260 180 C250 250 200 300 180 360" />
-            <path class="draw d3" d="M200 200 L260 260 L230 310 L290 370 L250 430" />
-            <path class="draw d4" d="M90 220 C140 200 170 260 150 320 C130 380 90 430 70 480" />
-            <circle class="pulse" cx="200" cy="100" r="4" fill="currentColor" />
-          </svg>
         </div>
         <div class="heroCopy">
           <p class="eyebrow" id="heroEyebrow">Neo Tribal · Kyiv</p>
           <h1 id="heroTitle">INKWARD</h1>
           <p class="lead" id="heroLead">Нео-трайбл, що лягає на тіло: гострі лінії, blackwork, негативний простір і рух силуету.</p>
           <div class="cta">
-            <a class="btn" href="#book">Записатись</a>
-            <a class="btn ghost" href="#work">Дивитись роботи</a>
+            <a class="btn" href="#book" data-i18n-uk="Записатись" data-i18n-en="Book now">Записатись</a>
+            <a class="btn ghost" href="#work" data-i18n-uk="Дивитись роботи" data-i18n-en="View works">Дивитись роботи</a>
           </div>
         </div>
+        <div class="scrollCue" aria-hidden="true">Scroll<i></i></div>
       </section>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marqueeTrack">
+          <span>Neo tribal</span> · Blackwork · Negative space · Anatomy first ·
+          <span>Hip flow</span> · Spine spear · Thigh black · Shoulder band ·
+          <span>Neo tribal</span> · Blackwork · Negative space · Anatomy first ·
+          <span>Hip flow</span> · Spine spear · Thigh black · Shoulder band ·
+        </div>
+      </div>
 
       <section class="neo" id="neo">
         <div class="neoText reveal">
-          <p class="kicker">Що таке neo</p>
-          <h2>Лінії як частина силуету</h2>
-          <p>
+          <p class="kicker" data-i18n-uk="Що таке neo" data-i18n-en="What is neo">Що таке neo</p>
+          <h2 data-i18n-uk="Лінії як частина силуету" data-i18n-en="Lines as part of the body">Лінії як частина силуету</h2>
+          <p data-i18n-uk="Не класичний орнамент «поверх шкіри», а сучасна графіка під анатомію: витягнуті штрихи, симетрія, щільний black і повітря між формами." data-i18n-en="Not classic ornament sitting on skin — contemporary graphics shaped to anatomy: long strokes, symmetry, dense black, and air between forms.">
             Не класичний орнамент «поверх шкіри», а сучасна графіка під анатомію:
             витягнуті штрихи, симетрія, щільний black і повітря між формами.
           </p>
         </div>
         <ul class="neoList reveal">
-          <li><b>Анатомія</b><span>композиція під плече, стегно, спину</span></li>
-          <li><b>Blackwork</b><span>контраст і глибина без шуму</span></li>
-          <li><b>Негатив</b><span>порожнеча працює як частина малюнка</span></li>
-          <li><b>Рух</b><span>лінії ведуть по м’язу, не проти нього</span></li>
+          <li><b data-i18n-uk="Анатомія" data-i18n-en="Anatomy">Анатомія</b><span data-i18n-uk="композиція під плече, стегно, спину" data-i18n-en="composition for shoulder, thigh, back">композиція під плече, стегно, спину</span></li>
+          <li><b>Blackwork</b><span data-i18n-uk="контраст і глибина без шуму" data-i18n-en="contrast and depth without noise">контраст і глибина без шуму</span></li>
+          <li><b data-i18n-uk="Негатив" data-i18n-en="Negative">Негатив</b><span data-i18n-uk="порожнеча працює як частина малюнка" data-i18n-en="empty space is part of the drawing">порожнеча працює як частина малюнка</span></li>
+          <li><b data-i18n-uk="Рух" data-i18n-en="Motion">Рух</b><span data-i18n-uk="лінії ведуть по м’язу, не проти нього" data-i18n-en="lines follow the muscle, not against it">лінії ведуть по м’язу, не проти нього</span></li>
         </ul>
       </section>
 
@@ -80,7 +85,7 @@
       <section class="strip" id="work">
         <div class="stripHead reveal">
           <h2>Selected marks</h2>
-          <p id="gallerySub">Нео на тілі — від тонкої лінії до щільного black. У Admin можна додати свої фото.</p>
+          <p id="gallerySub" data-i18n-uk="Нео на тілі — від тонкої лінії до щільного black. У Admin можна додати свої фото." data-i18n-en="Neo on the body — from fine line to dense black. Add your own photos in Admin.">Нео на тілі — від тонкої лінії до щільного black. У Admin можна додати свої фото.</p>
         </div>
         <div class="gallery" id="gallery"></div>
       </section>
@@ -88,32 +93,36 @@
       <section class="zones" id="zones">
         <div class="stripHead reveal">
           <h2>On the body</h2>
-          <p>Один мотив по-різному дихає на hip, thigh, shoulder чи spine.</p>
+          <p data-i18n-uk="Один мотив по-різному дихає на hip, thigh, shoulder чи spine." data-i18n-en="One motif breathes differently on hip, thigh, shoulder or spine.">Один мотив по-різному дихає на hip, thigh, shoulder чи spine.</p>
         </div>
         <div class="zoneGrid">
-          <article class="zone reveal">
-            <img src="./assets/neo-hip.svg" alt="" loading="lazy" />
-            <div><h3>Hip flow</h3><p>Криві лінії вздовж тазу — як на dark hip / thigh референсах.</p></div>
-          </article>
-          <article class="zone reveal">
-            <img src="./assets/neo-thigh.svg" alt="" loading="lazy" />
-            <div><h3>Thigh black</h3><p>Щільний blackwork і негативний простір на стегні.</p></div>
-          </article>
-          <article class="zone reveal">
+          <article class="zone zoneWide reveal">
             <img src="./assets/work-1.jpg" alt="" loading="lazy" />
-            <div><h3>Spine spear</h3><p>Вертикаль уздовж хребта — ритм і симетрія.</p></div>
+            <div><h3>Hip flow</h3><p data-i18n-uk="Криві лінії вздовж тазу — як на dark hip / thigh референсах." data-i18n-en="Curves along the hip — like dark hip / thigh references.">Криві лінії вздовж тазу — як на dark hip / thigh референсах.</p></div>
           </article>
           <article class="zone reveal">
-            <img src="./assets/work-2.jpg" alt="" loading="lazy" />
-            <div><h3>Shoulder band</h3><p>Пояс навколо плеча — рух руки підкреслює лінію.</p></div>
+            <img src="./assets/work-5.jpg" alt="" loading="lazy" />
+            <div><h3>Thigh black</h3><p data-i18n-uk="Щільний blackwork і негативний простір на стегні." data-i18n-en="Dense blackwork and negative space on the thigh.">Щільний blackwork і негативний простір на стегні.</p></div>
+          </article>
+          <article class="zone reveal">
+            <img src="./assets/work-4.jpg" alt="" loading="lazy" />
+            <div><h3>Spine spear</h3><p data-i18n-uk="Вертикаль уздовж хребта — ритм і симетрія." data-i18n-en="Vertical along the spine — rhythm and symmetry.">Вертикаль уздовж хребта — ритм і симетрія.</p></div>
+          </article>
+          <article class="zone reveal">
+            <img src="./assets/work-6.jpg" alt="" loading="lazy" />
+            <div><h3>Shoulder band</h3><p data-i18n-uk="Пояс навколо плеча — рух руки підкреслює лінію." data-i18n-en="A band around the shoulder — arm motion accents the line.">Пояс навколо плеча — рух руки підкреслює лінію.</p></div>
           </article>
         </div>
+      </section>
+
+      <section class="statement" aria-hidden="true">
+        <p>Ink follows bone · space cuts form · black holds silence</p>
       </section>
 
       <section class="journal" id="journal">
         <div class="stripHead reveal">
           <h2>Journal</h2>
-          <p>Студія, майстри, процес і догляд.</p>
+          <p data-i18n-uk="Студія, майстри, процес і догляд." data-i18n-en="Studio, artists, process and aftercare.">Студія, майстри, процес і догляд.</p>
         </div>
         <div class="posts" id="posts"></div>
       </section>
@@ -121,21 +130,21 @@
       <section class="reviews" id="reviews">
         <div class="stripHead reveal">
           <h2>Reviews</h2>
-          <p>Відгуки після сесій.</p>
+          <p data-i18n-uk="Відгуки після сесій." data-i18n-en="Notes after sessions.">Відгуки після сесій.</p>
         </div>
         <div class="reviewGrid" id="reviewGrid"></div>
         <form class="reviewForm reveal" id="reviewForm">
-          <h3>Залишити відгук</h3>
+          <h3 data-i18n-uk="Залишити відгук" data-i18n-en="Leave a review">Залишити відгук</h3>
           <div class="row2">
-            <input id="revName" type="text" maxlength="40" placeholder="Ім’я" required />
+            <input id="revName" type="text" maxlength="40" data-i18n-ph-uk="Ім’я" data-i18n-ph-en="Name" placeholder="Ім’я" required />
             <select id="revStars">
               <option value="5">★★★★★</option>
               <option value="4">★★★★</option>
               <option value="3">★★★</option>
             </select>
           </div>
-          <textarea id="revText" rows="3" maxlength="280" placeholder="Як пройшла сесія…" required></textarea>
-          <button type="submit" class="btn">Надіслати</button>
+          <textarea id="revText" rows="3" maxlength="280" data-i18n-ph-uk="Як пройшла сесія…" data-i18n-ph-en="How was the session…" placeholder="Як пройшла сесія…" required></textarea>
+          <button type="submit" class="btn" data-i18n-uk="Надіслати" data-i18n-en="Send">Надіслати</button>
         </form>
       </section>
 
@@ -144,7 +153,7 @@
           <h2>Where</h2>
           <p id="addrText">Київ, Поділ · вул. Сагайдачного 12</p>
           <p class="muted" id="hoursText">Вт–Нд · 12:00–21:00 · лише за записом</p>
-          <a class="btn ghost" id="mapsLink" href="https://www.openstreetmap.org/?mlat=50.4635&mlon=30.5215#map=17/50.4635/30.5215" target="_blank" rel="noreferrer">Відкрити мапу</a>
+          <a class="btn ghost" id="mapsLink" href="https://www.openstreetmap.org/?mlat=50.4635&mlon=30.5215#map=17/50.4635/30.5215" target="_blank" rel="noreferrer" data-i18n-uk="Відкрити мапу" data-i18n-en="Open map">Відкрити мапу</a>
         </div>
         <div class="mapFrame">
           <iframe
@@ -159,13 +168,13 @@
 
       <section class="book" id="book">
         <div class="bookVisual" aria-hidden="true">
-          <img src="./assets/work-3.jpg" alt="" />
+          <img src="./assets/hero-ink.jpg" alt="" />
         </div>
         <div class="bookCopy">
           <h2>Book a seat</h2>
           <p id="bookText">Кинь зону на тілі й 1–2 референси — зберемо нео-ескіз під твій силует.</p>
           <p class="contactLine" id="contactLine"></p>
-          <a class="btn" id="mailBtn" href="mailto:book@inkward.studio">Написати</a>
+          <a class="btn" id="mailBtn" href="mailto:book@inkward.studio" data-i18n-uk="Написати" data-i18n-en="Write us">Написати</a>
         </div>
       </section>
     </main>
@@ -275,7 +284,8 @@
       </div>
     </aside>
 
-    <script src="app.js?v=9"></script>
+    <script src="../_shared/demo-lang.js"></script>
+    <script src="app.js?v=14"></script>
     <script src="../_shared/demo-note.js"></script>
   </body>
 </html>

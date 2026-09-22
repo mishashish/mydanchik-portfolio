@@ -25,82 +25,96 @@
     <script>
       const id = new URLSearchParams(location.search).get('id') || 'bot'
       const data = {
-        support: {
-          title: 'Support / CRM Bot',
-          path: 'portfolio demo',
-          text: 'Тикеты, статусы и ответы админа в Telegram.',
-          stack: 'aiogram, CRM, Support',
-          demo: '/demos/support/index.html'
-        },
-        shop: {
-          title: 'Shop / Orders Bot',
-          path: 'portfolio demo',
-          text: 'Каталог, корзина и оформление заказа в боте.',
-          stack: 'Telegram, Shop, Orders',
-          demo: '/demos/shop/index.html'
-        },
         void: {
           title: 'VOID.OS Board',
-          path: 'https://ashy-gamma-42.vercel.app/',
-          text: 'Live voidmind map board.',
+          path: 'voidos-main',
+          text: 'Live voidmind map board: claim, ledger, interactive lots.',
           stack: 'Web3, React, Live',
           demo: 'https://ashy-gamma-42.vercel.app/'
+        },
+        nexus: {
+          title: 'NEXUS',
+          path: '0000',
+          text: 'Shared digital character: 128 cells, honeycomb cortex, public memory.',
+          stack: 'Next.js, 3D',
+          demo: 'https://nexus-nine-wine-41.vercel.app/'
         },
         ebay: {
           title: 'BayFinder (eBay Search)',
           path: 'public/demos/ebay',
-          text: 'Пошук як на eBay з реальними посиланнями на лоти.',
-          stack: 'HTML, JS, eBay links',
+          text: 'Live eBay via SerpApi + deal scoring.',
+          stack: 'SerpApi eBay Search API, Vite proxy',
           demo: '/demos/ebay/index.html'
         },
-        olx: {
-          title: 'Smart OLX Parser',
-          path: 'C:\\Users\\yoiso\\.gemini\\antigravity\\scratch\\olx-parser',
-          text: 'Парсер OLX с веб-интерфейсом.',
-          stack: 'HTML, JS, Parser',
-          demo: '/demos/olx/index.html'
+        tribal: {
+          title: 'INKWARD',
+          path: 'public/demos/tribal',
+          text: 'Neo tribal studio with gallery, journal, booking and CMS.',
+          stack: 'Brand, CMS, Book',
+          demo: '/demos/tribal/index.html'
         },
-        bot: {
-          title: 'SHORTS LAB',
-          path: 'public/demos/shorts',
-          text: 'Хуки и превью для TikTok / YouTube Shorts.',
-          stack: 'HTML, JS, Canvas-free UI',
-          demo: '/demos/shorts/index.html'
-        },
-        signal: {
-          title: 'SHORTS LAB',
-          path: 'public/demos/shorts',
-          text: 'Хуки и превью для TikTok / YouTube Shorts.',
-          stack: 'HTML, JS',
-          demo: '/demos/shorts/index.html'
-        },
-        shorts: {
-          title: 'SHORTS LAB',
-          path: 'public/demos/shorts',
-          text: 'Хуки и превью для TikTok / YouTube Shorts.',
-          stack: 'HTML, JS',
-          demo: '/demos/shorts/index.html'
+        cafe: {
+          title: 'KŌHI',
+          path: 'public/demos/cafe',
+          text: 'Café brand site: menu, cart, pay flow.',
+          stack: 'Cafe, Brand, Pay',
+          demo: '/demos/cafe/index.html'
         },
         buh: {
           title: 'Buh Bot + Parsers',
-          path: 'C:\\Users\\yoiso\\OneDrive\\Desktop\\buh-bot_1',
-          text: 'Бух-бот: PDF/DOCX/OCR, Excel, Google Sheets.',
+          path: 'buh-bot_1',
+          text: 'Accounting bot: PDF/DOCX/OCR, Excel, Google Sheets.',
           stack: 'aiogram, easyocr, pandas, gspread',
           demo: '/demos/buh/index.html'
         },
+        bot: {
+          title: 'Access / Pay Bot',
+          path: 'bot',
+          text: 'Telegram access & payment bot with TON webapp checkout.',
+          stack: 'aiogram, TON, WebApp',
+          demo: '/demos/bot/index.html'
+        },
+        shop: {
+          title: 'Shop / Orders Bot',
+          path: 'public/demos/shop',
+          text: 'Catalog, cart and checkout inside Telegram.',
+          stack: 'Telegram, Shop, Orders',
+          demo: '/demos/shop/index.html'
+        },
+        support: {
+          title: 'Support / CRM Bot',
+          path: 'public/demos/support',
+          text: 'Tickets, statuses and admin replies in Telegram.',
+          stack: 'aiogram, CRM, Support',
+          demo: '/demos/support/index.html'
+        },
         clinic: {
           title: 'Clinic Group Parser Bot',
-          path: 'C:\\Users\\yoiso\\clinic-group-parser',
-          text: 'Сбор сообщений из Telegram-групп + Excel.',
+          path: 'public/demos/clinic',
+          text: 'Collect messages from Telegram groups + Excel export.',
           stack: 'python-telegram-bot, openpyxl, SQLite',
           demo: '/demos/clinic/index.html'
         },
         films: {
           title: 'Film Advisor Bot',
-          path: 'C:\\Users\\yoiso\\.gemini\\antigravity\\scratch\\film_advisor_bot',
-          text: 'Telegram-бот-советчик по фильмам.',
+          path: 'public/demos/films',
+          text: 'Telegram film advisor by mood and genre.',
           stack: 'aiogram, Python',
           demo: '/demos/films/index.html'
+        },
+        tasty: {
+          title: 'Tasty Beach Merge',
+          path: '0101',
+          text: 'Casual merge game on Python + Kivy.',
+          stack: 'Python, Kivy, Mobile',
+          demo: '/demos/tasty/index.html'
+        },
+        ext: {
+          title: 'TranslateFlow',
+          path: 'tf3',
+          text: 'Chrome MV3 extension: detect language + translate selection on-page.',
+          stack: 'Chrome Extension, JS',
+          demo: '/demos/ext/index.html'
         }
       }
       const p = data[id] || data.bot
@@ -118,7 +132,6 @@
       `
       document.getElementById('copyBtn').onclick = async () => {
         await navigator.clipboard.writeText(p.path)
-        alert('Путь скопирован')
       }
     </script>
   </body>

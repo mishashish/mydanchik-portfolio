@@ -1,0 +1,52 @@
+.demoLang {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 2px;
+  border-radius: 999px;
+}
+.demoLang button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  font: 600 10px/1 system-ui, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 9px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.demoLang button.on {
+  background: #fff;
+  color: #111;
+}
+.demoLang--ink {
+  border-color: rgba(244, 239, 230, 0.22);
+  background: rgba(3, 3, 3, 0.55);
+}
+.demoLang--ink button { color: #9a9288; }
+.demoLang--ink button.on {
+  background: #f4efe6;
+  color: #111;
+}
+.demoLang--kohi {
+  border-color: rgba(40, 28, 18, 0.18);
+  background: rgba(255, 248, 236, 0.85);
+}
+.demoLang--kohi button { color: #7a6552; }
+.demoLang--kohi button.on {
+  background: #2a1c12;
+  color: #fff8ec;
+}
+.demoLang--bay {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(12, 14, 22, 0.7);
+}
+.demoLang--bay button { color: #9aa3b5; }
+.demoLang--bay button.on {
+  background: #e8ff47;
+  color: #111;
+}

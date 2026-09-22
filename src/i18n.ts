@@ -75,12 +75,12 @@ const dict = {
       what: 'ЩО РОБЛЮ',
       run: 'ВІДКРИТИ →',
       notice:
-        'Демо нижче — приклади підходу. Під клієнта збираю повний продукт: дизайн, логіка, адмінка, інтеграції.',
+        'Нижче — живі продукти й робочі демо з реальних білдів, не заглушки.',
       items: [
         {
           title: 'САЙТИ',
           text: 'Лендінги, студії, магазини, адмінки. Чистий UX, анімації, адаптовано під бренд клієнта.',
-          href: '#projects',
+          href: '/demos/cafe/index.html',
         },
         {
           title: 'ПАРСЕРИ',
@@ -95,7 +95,7 @@ const dict = {
         {
           title: 'СКРИПТИ І ТУЛИ',
           text: 'CLI, дашборди, карти, адмін-панелі та кастомні IT-інструменти.',
-          href: '/demos/tribal/index.html',
+          href: '/demos/ebay/index.html',
         },
       ],
     },
@@ -112,11 +112,11 @@ const dict = {
     },
     projects: {
       head: '04 // ПРОЄКТИ',
-      selected: 'ВИБРАНІ БІЛДИ',
-      active: 'DEMO',
-      demo: 'ДЕМО',
+      selected: 'ЖИВІ БІЛДИ',
+      active: 'LIVE',
+      demo: 'ВІДКРИТИ',
       notice:
-        'Демо показують приблизний функціонал. Повноцінні продукти збираються під клієнта — це лише частина можливостей.',
+        'Тільки робочі продукти: live-додатки з папки «робота» + повноцінні демо (без заглушок).',
       items: [
         {
           id: 'void',
@@ -125,21 +125,27 @@ const dict = {
           tags: ['Web3', 'React', 'Live'],
         },
         {
+          id: 'nexus',
+          title: 'NEXUS',
+          text: 'Спільний цифровий персонаж: 128 клітин, 3D honeycomb, публічна памʼять.',
+          tags: ['3D', 'Mind', 'Next'],
+        },
+        {
           id: 'ebay',
-          title: 'OLX Pulse',
-          text: 'Живий пошук OLX + deal score. Приклад парсера під моніторинг угод.',
-          tags: ['OLX', 'Parser', 'Score'],
+          title: 'BayFinder eBay',
+          text: 'Live eBay через SerpApi + deal score (ціна, seller trust, shipping).',
+          tags: ['eBay', 'SerpApi', 'Score'],
         },
         {
           id: 'tribal',
           title: 'INKWARD',
-          text: 'Neo tribal studio: атмосфера, галерея на тілі, journal, запис і Admin CMS.',
-          tags: ['Neo Tribal', 'CMS', 'Book'],
+          text: 'Neo tribal studio: cinematic gallery, body zones, journal, booking.',
+          tags: ['Neo Tribal', 'Studio', 'CMS'],
         },
         {
           id: 'cafe',
           title: 'KŌHI',
-          text: 'Кавʼярня в двотонному вайбі: меню, кошик, mono-стіл / онлайн-оплата, roast.',
+          text: 'Кавʼярня: меню, кошик, mono-стіл / онлайн-оплата, roast.',
           tags: ['Cafe', 'Brand', 'Pay'],
         },
       ],
@@ -227,12 +233,12 @@ const dict = {
       what: 'WHAT I BUILD',
       run: 'OPEN →',
       notice:
-        'Demos below are approach samples. For clients I ship the full product: design, logic, admin, integrations.',
+        'Below are live products and working demos from real builds — not stubs.',
       items: [
         {
           title: 'WEBSITES',
           text: 'Landing pages, studios, shops, admin panels. Clean UX, motion, tailored to the brand.',
-          href: '#projects',
+          href: '/demos/cafe/index.html',
         },
         {
           title: 'PARSERS',
@@ -247,7 +253,7 @@ const dict = {
         {
           title: 'SCRIPTS & TOOLS',
           text: 'CLI tools, dashboards, maps, admin panels and custom IT utilities.',
-          href: '/demos/tribal/index.html',
+          href: '/demos/ebay/index.html',
         },
       ],
     },
@@ -264,11 +270,11 @@ const dict = {
     },
     projects: {
       head: '04 // PROJECTS',
-      selected: 'SELECTED BUILDS',
-      active: 'DEMO',
-      demo: 'DEMO',
+      selected: 'LIVE BUILDS',
+      active: 'LIVE',
+      demo: 'OPEN',
       notice:
-        'Demos show sample functionality. Full products are built per client — this is only a slice of what I can demonstrate.',
+        'Only working products: live apps from the work folder + full demos (no stubs).',
       items: [
         {
           id: 'void',
@@ -277,21 +283,27 @@ const dict = {
           tags: ['Web3', 'React', 'Live'],
         },
         {
+          id: 'nexus',
+          title: 'NEXUS',
+          text: 'Shared digital character: 128 cells, 3D honeycomb, public memory.',
+          tags: ['3D', 'Mind', 'Next'],
+        },
+        {
           id: 'ebay',
-          title: 'OLX Pulse',
-          text: 'Live OLX search + deal score. A parser sample for deal monitoring.',
-          tags: ['OLX', 'Parser', 'Score'],
+          title: 'BayFinder eBay',
+          text: 'Live eBay via SerpApi + deal score (price, seller trust, shipping).',
+          tags: ['eBay', 'SerpApi', 'Score'],
         },
         {
           id: 'tribal',
           title: 'INKWARD',
-          text: 'Neo tribal studio: body-led gallery, journal, booking, and Admin CMS.',
-          tags: ['Neo Tribal', 'CMS', 'Book'],
+          text: 'Neo tribal studio: cinematic gallery, body zones, journal, booking.',
+          tags: ['Neo Tribal', 'Studio', 'CMS'],
         },
         {
           id: 'cafe',
           title: 'KŌHI',
-          text: 'Two-tone café vibe: photo menu, cart, mono table / online pay, roast.',
+          text: 'Café: menu, cart, mono table / online pay, roast.',
           tags: ['Cafe', 'Brand', 'Pay'],
         },
       ],
@@ -324,6 +336,10 @@ export const PROJECT_META: Record<
 > = {
   void: {
     demo: 'https://ashy-gamma-42.vercel.app/',
+    preview: '/previews/void.png',
+  },
+  nexus: {
+    demo: 'https://nexus-nine-wine-41.vercel.app/',
     preview: '/previews/void.png',
   },
   ebay: {

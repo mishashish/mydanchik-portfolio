@@ -1,9 +1,73 @@
 (() => {
   'use strict'
 
-  const KEY = 'inkward_studio_v8'
+  const KEY = 'inkward_studio_v12'
   const PASS = 'inkward'
   const MAX_STORE = 2_500_000 // ~2.5MB — інакше вкладка «не відповідає»
+
+  const CONTACT_EN = {
+    title: 'INKWARD',
+    eyebrow: 'Neo Tribal · Kyiv',
+    lead: 'Neo-tribal that fits the body: sharp lines, blackwork, negative space, and silhouette motion.',
+    addr: 'Kyiv, Podil · Sahaidachnoho St 12',
+    hours: 'Tue–Sun · 12:00–21:00 · by appointment only',
+    email: 'book@inkward.studio',
+    phone: '+380 67 000 00 00',
+    tg: '@inkward',
+    lat: '50.4635',
+    lon: '30.5215',
+    bookText: 'Send a body zone and 1–2 references — we’ll shape a neo sketch to your silhouette.',
+    logo: './assets/logo.svg',
+  }
+
+  const BANNERS_EN = [
+    {
+      id: 'b1',
+      src: './assets/banner.jpg',
+      title: 'Neo under the skin',
+      text: 'Lines built for anatomy — hip, thigh, spine, shoulder. Not ornament on top, but part of the silhouette.',
+    },
+    {
+      id: 'b2',
+      src: './assets/hero-ink.jpg',
+      title: 'Black · sharp · quiet',
+      text: 'A quiet room in Podil. Sketch → session → aftercare. No walk-ins, booking only.',
+    },
+  ]
+
+  const POSTS_EN = {
+    a1: {
+      title: 'Neo-tribal at INKWARD',
+      body: 'We work only with neo tribal and blackwork: sharp lines, abstract forms, symmetry and negative space. Every sketch is fitted to shoulder, thigh or back — so the mark moves with the body.',
+      tag: 'Neo',
+    },
+    a2: {
+      title: 'Artist Oleh · blackwork',
+      body: 'Oleh builds large pieces: spine, thigh black, dense mesh. Long calm sessions and a clean line. Book via TG — send zone and reference.',
+      tag: 'Artists',
+    },
+    a3: {
+      title: 'Artist Nina · fine neo',
+      body: 'Nina does fine neo on forearm, collarbone and hip flow. She reads anatomy and leaves air between forms. Prefer lighter work without heavy fill — she’s your artist.',
+      tag: 'Artists',
+    },
+    a4: {
+      title: 'How neo sits on the body',
+      body: '1) Zone and references. 2) Sketch to your silhouette. 3) Stencil and line work. 4) Aftercare pack. Mid-size — 2–4 hours. Large thigh / spine splits across visits.',
+      tag: 'Process',
+    },
+    a5: {
+      title: 'Aftercare · first 14 days',
+      body: 'Gentle wash, thin ointment film, no sun or pool. If itching gets intense — message the artist on TG. We stay reachable after the session.',
+      tag: 'Care',
+    },
+  }
+
+  const REVIEWS_EN = {
+    r1: 'Hip flow sits like a second skin. Clean line, quiet studio.',
+    r2: 'Spine spear — exactly what I wanted from neo. No extra noise.',
+    r3: 'Thigh blackwork came out deep. The sketch was fitted to how the leg moves.',
+  }
 
   const DEFAULTS = {
     contact: {
@@ -23,7 +87,7 @@
     banners: [
       {
         id: 'b1',
-        src: './assets/banner-neo.svg',
+        src: './assets/banner.jpg',
         title: 'Neo under the skin',
         text: 'Лінії під анатомію — hip, thigh, spine, shoulder. Не орнамент зверху, а частина силуету.',
       },
@@ -36,9 +100,9 @@
     ],
     gallery: [
       { id: 'g1', src: './assets/work-1.jpg', caption: 'Spine spear' },
-      { id: 'g2', src: './assets/neo-hip.svg', caption: 'Hip flow' },
+      { id: 'g2', src: './assets/work-4.jpg', caption: 'Back mesh' },
       { id: 'g3', src: './assets/work-2.jpg', caption: 'Shoulder band' },
-      { id: 'g4', src: './assets/neo-thigh.svg', caption: 'Thigh black' },
+      { id: 'g4', src: './assets/work-6.jpg', caption: 'Arm flow' },
       { id: 'g5', src: './assets/work-3.jpg', caption: 'Forearm neo' },
       { id: 'g6', src: './assets/work-5.jpg', caption: 'Session lines' },
     ],
@@ -47,7 +111,7 @@
         id: 'a1',
         title: 'Нео-трайбл у INKWARD',
         body: 'Ми працюємо лише з neo tribal і blackwork: гострі лінії, абстрактні форми, симетрія й негативний простір. Ескіз завжди підганяється під плече, стегно, спину чи стегно — щоб малюнок рухався разом із тілом.',
-        image: './assets/banner-neo.svg',
+        image: './assets/banner.jpg',
         tag: 'Neo',
         at: Date.now() - 86400000 * 12,
       },
@@ -63,7 +127,7 @@
         id: 'a3',
         title: 'Майстриня Ніна · fine neo',
         body: 'Ніна робить тонкий neo на передпліччя, ключицю й hip flow. Читає анатомію, залишає повітря між формами. Якщо хочеш легший рисунок без важкої заливки — до неї.',
-        image: './assets/neo-hip.svg',
+        image: './assets/work-4.jpg',
         tag: 'Майстри',
         at: Date.now() - 86400000 * 5,
       },
@@ -209,8 +273,45 @@
     })
   }
 
-  function renderPublic() {
+  function lang() {
+    return window.DemoLang ? window.DemoLang.get() : 'uk'
+  }
+
+  function displayContact() {
     const c = state.contact
+    if (lang() !== 'en') return c
+    const d = DEFAULTS.contact
+    const isDefault =
+      c.lead === d.lead && c.addr === d.addr && c.bookText === d.bookText && c.hours === d.hours
+    return isDefault ? { ...c, ...CONTACT_EN, logo: c.logo || CONTACT_EN.logo } : c
+  }
+
+  function displayBanners() {
+    if (lang() !== 'en') return state.banners
+    return state.banners.map((b) => {
+      const en = BANNERS_EN.find((x) => x.id === b.id)
+      return en && b.src === en.src ? { ...b, title: en.title, text: en.text } : b
+    })
+  }
+
+  function displayPosts() {
+    if (lang() !== 'en') return state.posts
+    return state.posts.map((p) => {
+      const en = POSTS_EN[p.id]
+      return en ? { ...p, title: en.title, body: en.body, tag: en.tag } : p
+    })
+  }
+
+  function displayReviews() {
+    if (lang() !== 'en') return state.reviews
+    return state.reviews.map((r) => {
+      const text = REVIEWS_EN[r.id]
+      return text ? { ...r, text } : r
+    })
+  }
+
+  function renderPublic() {
+    const c = displayContact()
     $('heroTitle').textContent = c.title || 'INKWARD'
     $('heroEyebrow').textContent = c.eyebrow
     $('heroLead').textContent = c.lead
@@ -233,7 +334,7 @@
     $('navLogo').alt = c.title || 'INKWARD'
     $('markText').textContent = c.title || 'INKWARD'
 
-    $('banners').innerHTML = state.banners
+    $('banners').innerHTML = displayBanners()
       .map(
         (b) => `
       <article class="banner">
@@ -257,9 +358,7 @@
       )
       .join('')
 
-    observeReveal()
-
-    $('posts').innerHTML = state.posts
+    $('posts').innerHTML = displayPosts()
       .slice()
       .sort((a, b) => b.at - a.at)
       .map(
@@ -268,7 +367,7 @@
         ${p.image ? `<img class="postImg" src="${escapeHtml(p.image)}" alt="" loading="lazy" onerror="this.remove()" />` : ''}
         <div class="articleBody">
           ${p.tag ? `<span class="articleTag">${escapeHtml(p.tag)}</span>` : ''}
-          <time>${new Date(p.at).toLocaleDateString('uk-UA')}</time>
+          <time>${new Date(p.at).toLocaleDateString(lang() === 'en' ? 'en-GB' : 'uk-UA')}</time>
           <h3>${escapeHtml(p.title)}</h3>
           <p>${escapeHtml(p.body)}</p>
         </div>
@@ -276,7 +375,7 @@
       )
       .join('')
 
-    $('reviewGrid').innerHTML = state.reviews
+    $('reviewGrid').innerHTML = displayReviews()
       .filter((r) => r.ok)
       .slice()
       .sort((a, b) => b.at - a.at)
@@ -289,6 +388,8 @@
       </article>`,
       )
       .join('')
+
+    observeReveal()
   }
 
   function observeReveal() {
@@ -475,7 +576,7 @@
   $('bannerAdd').onclick = () => {
     const title = $('bannerTitle').value.trim() || 'INKWARD'
     const text = $('bannerText').value.trim()
-    const src = pendingBannerImage || './assets/banner-neo.svg'
+    const src = pendingBannerImage || './assets/banner.jpg'
     state.banners.unshift({ id: uid(), src, title, text })
     pendingBannerImage = ''
     $('bannerTitle').value = ''
@@ -635,6 +736,22 @@
       },
       { passive: true },
     )
+  }
+
+  const siteNav = document.getElementById('siteNav')
+  if (siteNav) {
+    const onScroll = () => siteNav.classList.toggle('scrolled', window.scrollY > 40)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+  }
+
+  if (window.DemoLang) {
+    window.DemoLang.mount(document.getElementById('langMount'), 'ink')
+    window.addEventListener('demo-lang', () => {
+      try {
+        renderPublic()
+      } catch (_) {}
+    })
   }
 
   observeReveal()

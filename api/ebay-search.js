@@ -1,30 +1,4 @@
-import type { Plugin } from 'vite'
-import type { Connect } from 'vite'
-import { loadEnv } from 'vite'
-
-export type EbayItem = {
-  id: string
-  title: string
-  subtitle: string | null
-  url: string
-  price: number | null
-  priceTo: number | null
-  currency: string
-  image: string | null
-  condition: string | null
-  shipping: string | null
-  location: string | null
-  buyingOptions: string[]
-  buyingFormat: string | null
-  sponsored: boolean
-  seller: {
-    username: string | null
-    reviews: number | null
-    feedback: number | null
-  }
-}
-
-function buildPublicSearchUrl(params: URLSearchParams) {
+function buildPublicSearchUrl(params) {
   const q = params.get('q') || 'electronics'
   const url = new URL('https://www.ebay.com/sch/i.html')
   url.searchParams.set('_nkw', q)
@@ -42,7 +16,7 @@ function buildPublicSearchUrl(params: URLSearchParams) {
   return url.toString()
 }
 
-function extractPrice(node: any): { price: number | null; priceTo: number | null; currency: string } {
+function extractPrice(node) {
   if (node?.price?.extracted != null) {
     return { price: Number(node.price.extracted), priceTo: null, currency: 'USD' }
   }
@@ -63,9 +37,9 @@ function extractPrice(node: any): { price: number | null; priceTo: number | null
   return { price: null, priceTo: null, currency: 'USD' }
 }
 
-function mapBuyingOptions(node: any): string[] {
+function mapBuyingOptions(node) {
   const fmt = String(node?.buying_format || node?.buying_format_text || '').toLowerCase()
-  const out: string[] = []
+  const out = []
   if (fmt.includes('buy') || fmt === 'bin' || fmt.includes('fixed')) out.push('FIXED_PRICE')
   if (fmt.includes('auction')) out.push('AUCTION')
   if (fmt.includes('offer') || fmt === 'bo') out.push('BEST_OFFER')
@@ -75,28 +49,28 @@ function mapBuyingOptions(node: any): string[] {
   return [...new Set(out)]
 }
 
-function mapSerpOrganic(nodes: any[]): EbayItem[] {
+function mapSerpOrganic(nodes) {
   return (nodes || [])
-    .map((it: any, i: number) => {
-      const { price, priceTo, currency } = extractPrice(it)
-      const ship = String(it?.shipping || '')
+    .map((it, i) => {
+      const price = extractPrice(it)
+      const opts = mapBuyingOptions(it)
       return {
-        id: String(it?.product_id || it?.link || i),
-        title: String(it?.title || 'eBay item'),
+        id: String(it?.product_id || it?.epid || it?.link || i),
+        title: String(it?.title || 'Listing'),
         subtitle: it?.subtitle ? String(it.subtitle) : null,
-        url: String(it?.link || ''),
-        price,
-        priceTo,
-        currency,
-        image: it?.thumbnail || null,
+        url: String(it?.link || it?.product_link || ''),
+        price: price.price,
+        priceTo: price.priceTo,
+        currency: price.currency,
+        image: it?.thumbnail || it?.image || null,
         condition: it?.condition ? String(it.condition) : null,
-        shipping: /free/i.test(ship) ? 'Free shipping' : ship || null,
+        shipping: it?.shipping ? String(it.shipping) : it?.delivery ? String(it.delivery) : null,
         location: it?.location ? String(it.location) : null,
-        buyingOptions: mapBuyingOptions(it),
-        buyingFormat: it?.buying_format_text || it?.buying_format || null,
-        sponsored: !!it?.sponsored,
+        buyingOptions: opts,
+        buyingFormat: it?.buying_format ? String(it.buying_format) : null,
+        sponsored: Boolean(it?.sponsored),
         seller: {
-          username: it?.seller?.username ? String(it.seller.username) : null,
+          username: it?.seller?.username || it?.seller?.name || null,
           reviews:
             it?.seller?.reviews != null && Number.isFinite(Number(it.seller.reviews))
               ? Number(it.seller.reviews)
@@ -106,17 +80,12 @@ function mapSerpOrganic(nodes: any[]): EbayItem[] {
               ? Number(it.seller.positive_feedback_in_percentage)
               : null,
         },
-      } satisfies EbayItem
+      }
     })
     .filter((x) => x.url)
 }
 
-/** SerpApi eBay Search — https://serpapi.com/ebay-search-api */
-async function serpApiSearch(apiKey: string, params: URLSearchParams): Promise<{
-  items: EbayItem[]
-  total: number | null
-  query: string
-}> {
+async function serpApiSearch(apiKey, params) {
   const q = params.get('q') || 'electronics'
   const url = new URL('https://serpapi.com/search.json')
   url.searchParams.set('engine', 'ebay')
@@ -124,7 +93,7 @@ async function serpApiSearch(apiKey: string, params: URLSearchParams): Promise<{
   url.searchParams.set('_nkw', q)
 
   const marketplace = params.get('marketplace') || 'EBAY_US'
-  const domainMap: Record<string, string> = {
+  const domainMap = {
     EBAY_US: 'ebay.com',
     EBAY_GB: 'ebay.co.uk',
     EBAY_DE: 'ebay.de',
@@ -136,8 +105,8 @@ async function serpApiSearch(apiKey: string, params: URLSearchParams): Promise<{
   url.searchParams.set('_ipg', ipg)
   url.searchParams.set('_pgn', params.get('page') || '1')
 
-  if (params.get('min')) url.searchParams.set('_udlo', params.get('min')!)
-  if (params.get('max')) url.searchParams.set('_udhi', params.get('max')!)
+  if (params.get('min')) url.searchParams.set('_udlo', params.get('min'))
+  if (params.get('max')) url.searchParams.set('_udhi', params.get('max'))
 
   const condition = params.get('condition')
   if (condition === 'new') url.searchParams.set('LH_ItemCondition', '1000')
@@ -147,14 +116,14 @@ async function serpApiSearch(apiKey: string, params: URLSearchParams): Promise<{
   if (format === 'bin') url.searchParams.set('buying_format', 'BIN')
   if (format === 'auction') url.searchParams.set('buying_format', 'Auction')
 
-  const show: string[] = []
+  const show = []
   if (params.get('freeShipping') === '1') show.push('FS')
   if (params.get('returns') === '1') show.push('RPA')
   if (params.get('auth') === '1') show.push('AV')
   if (params.get('deals') === '1') show.push('Savings')
   if (show.length) url.searchParams.set('show_only', show.join(','))
 
-  const sortMap: Record<string, string> = {
+  const sortMap = {
     priceAsc: '15',
     priceDesc: '16',
     new: '10',
@@ -177,68 +146,50 @@ async function serpApiSearch(apiKey: string, params: URLSearchParams): Promise<{
 
   return {
     items: mapSerpOrganic(organic),
-    total: Number.isFinite(total as number) ? (total as number) : null,
+    total: Number.isFinite(total) ? total : null,
     query: String(data?.search_information?.query_displayed || q),
   }
 }
 
-function mountEbayApi(middlewares: Connect.Server, root: string, mode: string) {
-  middlewares.use('/api/ebay-search', async (req, res) => {
-    try {
-      const env = loadEnv(mode, root, '')
-      const serpKey = (
-        env.SERPAPI_API_KEY ||
-        env['\ufeffSERPAPI_API_KEY'] ||
-        process.env.SERPAPI_API_KEY ||
-        ''
-      ).trim()
-      const full = new URL(req.url || '', 'http://localhost')
-      const searchUrl = buildPublicSearchUrl(full.searchParams)
+module.exports = async function handler(req, res) {
+  try {
+    const serpKey = String(process.env.SERPAPI_API_KEY || '').trim()
+    const full = new URL(req.url || '/', `https://${req.headers.host || 'localhost'}`)
+    const searchUrl = buildPublicSearchUrl(full.searchParams)
 
-      if (!serpKey) {
-        res.setHeader('Content-Type', 'application/json; charset=utf-8')
-        res.end(
-          JSON.stringify({
-            ok: false,
-            reason: 'no_credentials',
-            searchUrl,
-            message:
-              'Add SERPAPI_API_KEY to .env for live eBay via SerpApi (https://serpapi.com/ebay-search-api)',
-          }),
-        )
-        return
-      }
-
-      const result = await serpApiSearch(serpKey, full.searchParams)
+    if (!serpKey) {
+      res.statusCode = 200
       res.setHeader('Content-Type', 'application/json; charset=utf-8')
-      res.setHeader('Cache-Control', 'no-store')
       res.end(
         JSON.stringify({
-          ok: true,
-          source: 'serpapi-ebay',
-          query: result.query,
-          count: result.items.length,
-          total: result.total,
+          ok: false,
+          reason: 'no_credentials',
           searchUrl,
-          items: result.items,
+          message:
+            'Add SERPAPI_API_KEY in Vercel env for live eBay via SerpApi (https://serpapi.com/ebay-search-api)',
         }),
       )
-    } catch (err) {
-      res.statusCode = 500
-      res.setHeader('Content-Type', 'application/json; charset=utf-8')
-      res.end(JSON.stringify({ ok: false, error: String(err) }))
+      return
     }
-  })
-}
 
-export function ebaySearchPlugin(): Plugin {
-  return {
-    name: 'ebay-search-proxy',
-    configureServer(server) {
-      mountEbayApi(server.middlewares, server.config.root, server.config.mode)
-    },
-    configurePreviewServer(server) {
-      mountEbayApi(server.middlewares, server.config.root, server.config.mode)
-    },
+    const result = await serpApiSearch(serpKey, full.searchParams)
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'application/json; charset=utf-8')
+    res.setHeader('Cache-Control', 'no-store')
+    res.end(
+      JSON.stringify({
+        ok: true,
+        source: 'serpapi-ebay',
+        query: result.query,
+        count: result.items.length,
+        total: result.total,
+        searchUrl,
+        items: result.items,
+      }),
+    )
+  } catch (err) {
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'application/json; charset=utf-8')
+    res.end(JSON.stringify({ ok: false, error: String(err) }))
   }
 }

@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css?v=13" />
     <link rel="stylesheet" href="../_shared/demo-note.css" />
+    <link rel="stylesheet" href="../_shared/demo-lang.css" />
   </head>
   <body>
     <header class="top">
@@ -24,7 +25,8 @@
         <a href="#order">Pay</a>
       </nav>
       <div class="topRight">
-        <button type="button" class="chip" id="cartBtn">Cart <b id="cartCount">0</b></button>
+        <div id="langMount"></div>
+        <button type="button" class="chip" id="cartBtn"><span data-i18n-uk="Кошик" data-i18n-en="Cart">Cart</span> <b id="cartCount">0</b></button>
         <a class="back" href="/">← Portfolio</a>
       </div>
     </header>
@@ -33,13 +35,13 @@
       <section class="hero">
         <div class="heroStage">
           <div class="heroPanel heroBrand">
-            <p class="tag">Kyiv · Podil · コーヒー</p>
+            <p class="tag" data-i18n-uk="Київ · Поділ · コーヒー" data-i18n-en="Kyiv · Podil · コーヒー">Kyiv · Podil · コーヒー</p>
             <h1>KŌHI</h1>
-            <p class="script">любов до кави</p>
-            <p class="lead">Тепла кавʼярня на Подолі: меню, кошик, оплата столика через mono або онлайн.</p>
+            <p class="script" data-i18n-uk="любов до кави" data-i18n-en="love for coffee">любов до кави</p>
+            <p class="lead" data-i18n-uk="Тепла кавʼярня на Подолі: меню, кошик, оплата столика через mono або онлайн." data-i18n-en="A warm café in Podil: menu, cart, table pay via mono or online checkout.">Тепла кавʼярня на Подолі: меню, кошик, оплата столика через mono або онлайн.</p>
             <div class="cta">
-              <a class="btn" href="#menu">До меню</a>
-              <a class="btn ghost" href="#order">Оплатити стіл</a>
+              <a class="btn" href="#menu" data-i18n-uk="До меню" data-i18n-en="See menu">До меню</a>
+              <a class="btn ghost" href="#order" data-i18n-uk="Оплатити стіл" data-i18n-en="Pay table">Оплатити стіл</a>
             </div>
           </div>
           <figure class="heroPanel heroArt">
@@ -58,17 +60,17 @@
         <div class="batchBar">
           <img class="batchBadge" src="assets/guji.jpg?v=7" alt="" width="88" height="88" />
           <div>
-            <b>Batch #218 · зараз</b>
+            <b data-i18n-uk="Batch #218 · зараз" data-i18n-en="Batch #218 · now">Batch #218 · зараз</b>
             <strong id="batchName">Ethiopia Guji</strong>
           </div>
-          <a class="btn batchCta" href="#menu">Дивитись меню</a>
+          <a class="btn batchCta" href="#menu" data-i18n-uk="Дивитись меню" data-i18n-en="View menu">Дивитись меню</a>
         </div>
       </section>
 
       <section class="menu" id="menu">
         <div class="secHead">
           <h2>MENU</h2>
-          <p>Обери розділ · додай у кошик · оплати онлайн або стіл</p>
+          <p data-i18n-uk="Обери розділ · додай у кошик · оплати онлайн або стіл" data-i18n-en="Pick a section · add to cart · pay online or at the table">Обери розділ · додай у кошик · оплати онлайн або стіл</p>
         </div>
         <div class="menuTabs" id="menuTabs"></div>
         <div class="menuGrid" id="menuGrid"></div>
@@ -77,7 +79,7 @@
       <section class="about" id="about">
         <div class="secHead">
           <h2>ABOUT</h2>
-          <p>Про заклад KŌHI</p>
+          <p data-i18n-uk="Про заклад KŌHI" data-i18n-en="About KŌHI">Про заклад KŌHI</p>
         </div>
         <div class="aboutGrid">
           <article class="aboutCard aboutPhoto">
@@ -174,13 +176,13 @@
 
       <section class="order" id="order">
         <div class="secHead">
-          <h2>ОПЛАТА</h2>
-          <p>QR столика → mono · меню онлайн · демо-оплата</p>
+          <h2 data-i18n-uk="ОПЛАТА" data-i18n-en="PAY">ОПЛАТА</h2>
+          <p data-i18n-uk="Стіл через mono · або онлайн з кошика" data-i18n-en="Table via mono · or online from the cart">Стіл через mono · або онлайн з кошика</p>
         </div>
         <div class="payChoices">
           <article class="payChoice">
-            <h3>Оплатити столик</h3>
-            <p>На столі QR → відкривається <b>mono</b> → платиш без імені й телефону. Демо для портфоліо.</p>
+            <h3 data-i18n-uk="Оплатити столик" data-i18n-en="Pay the table">Оплатити столик</h3>
+            <p data-i18n-uk="На столі QR → відкривається mono → платиш без імені й телефону. Демо для портфоліо." data-i18n-en="Table QR → opens mono → pay without name or phone. Portfolio demo.">На столі QR → відкривається <b>mono</b> → платиш без імені й телефону. Демо для портфоліо.</p>
             <div class="tablePick" id="tablePick" role="group" aria-label="Стіл">
               <button type="button" class="tableChip on" data-table="3" data-total="420" data-label="біля вікна">
                 <span>Стіл №3</span>
@@ -199,20 +201,20 @@
                 <b>290 ₴</b>
               </button>
             </div>
-            <button type="button" class="btn monoBtn" id="tableMonoBtn">Відкрити mono · оплатити</button>
-            <p class="formNote" id="tableNote">Симуляція скану QR столика №3</p>
+            <button type="button" class="btn monoBtn" id="tableMonoBtn" data-i18n-uk="Відкрити mono · оплатити" data-i18n-en="Open mono · pay">Відкрити mono · оплатити</button>
+            <p class="formNote" id="tableNote" data-i18n-uk="Симуляція скану QR столика №3" data-i18n-en="Simulated QR scan for table №3">Симуляція скану QR столика №3</p>
           </article>
           <article class="payChoice online">
-            <h3>Оплатити онлайн</h3>
-            <p>Зібрав кошик з меню — оплати самовивіз / pickup карткою.</p>
+            <h3 data-i18n-uk="Оплатити онлайн" data-i18n-en="Pay online">Оплатити онлайн</h3>
+            <p data-i18n-uk="Зібрав кошик з меню — оплати самовивіз / pickup карткою." data-i18n-en="Built a cart from the menu — pay pickup by card.">Зібрав кошик з меню — оплати самовивіз / pickup карткою.</p>
             <ul class="payBullets">
-              <li>Додай позиції в MENU</li>
-              <li>Відкрий Cart</li>
-              <li>Натисни «Оплатити онлайн»</li>
+              <li data-i18n-uk="Додай позиції в MENU" data-i18n-en="Add items from MENU">Додай позиції в MENU</li>
+              <li data-i18n-uk="Відкрий Cart" data-i18n-en="Open Cart">Відкрий Cart</li>
+              <li data-i18n-uk="Натисни «Оплатити онлайн»" data-i18n-en="Tap “Pay online”">Натисни «Оплатити онлайн»</li>
             </ul>
             <div class="payOnlineActions">
-              <a class="btn" href="#menu">До меню</a>
-              <button type="button" class="btn ghostInk" id="payOnlineBtn">Оплатити онлайн</button>
+              <a class="btn" href="#menu" data-i18n-uk="До меню" data-i18n-en="To menu">До меню</a>
+              <button type="button" class="btn ghostInk" id="payOnlineBtn" data-i18n-uk="Оплатити онлайн" data-i18n-en="Pay online">Оплатити онлайн</button>
             </div>
             <p class="formNote" id="onlineNote"></p>
           </article>
@@ -222,13 +224,13 @@
 
     <aside class="cartDrawer hidden" id="cartDrawer">
       <div class="cartTop">
-        <h3>Cart</h3>
+        <h3 data-i18n-uk="Кошик" data-i18n-en="Cart">Cart</h3>
         <button type="button" id="cartClose">✕</button>
       </div>
       <div id="cartList"></div>
-      <div class="cartSum">Разом: <b id="cartSum">0 ₴</b></div>
-      <button type="button" class="btn full" id="payBtn">Оплатити онлайн</button>
-      <button type="button" class="btn ghostInk full" id="cartClear">Очистити</button>
+      <div class="cartSum"><span data-i18n-uk="Разом:" data-i18n-en="Total:">Разом:</span> <b id="cartSum">0 ₴</b></div>
+      <button type="button" class="btn full" id="payBtn" data-i18n-uk="Оплатити онлайн" data-i18n-en="Pay online">Оплатити онлайн</button>
+      <button type="button" class="btn ghostInk full" id="cartClear" data-i18n-uk="Очистити" data-i18n-en="Clear">Очистити</button>
     </aside>
 
     <div class="payModal hidden" id="payModal" role="dialog" aria-modal="true">
@@ -291,7 +293,8 @@
       <span>KŌHI · demo café</span>
       <a href="/">Portfolio</a>
     </footer>
-    <script src="app.js?v=13"></script>
+    <script src="../_shared/demo-lang.js"></script>
+    <script src="app.js?v=14"></script>
     <script src="../_shared/demo-note.js"></script>
   </body>
 </html>
