@@ -151,7 +151,7 @@ async function serpApiSearch(apiKey, params) {
   }
 }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   try {
     const serpKey = String(process.env.SERPAPI_API_KEY || '').trim()
     const full = new URL(req.url || '/', `https://${req.headers.host || 'localhost'}`)
